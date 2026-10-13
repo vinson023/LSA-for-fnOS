@@ -103,6 +103,30 @@ myapp/
 | 常见路径 | `http://host:<port>/` | `/cgi/ThirdParty/{appname}/index.cgi/` | `/app/{appname}` |
 | 代码适配成本 | 低 | 低（静态页） | 服务需适配网关路由与鉴权 |
 
+> ⚠️ **端口服务模式在 HTTPS 门户下会失效（本项目踩过的坑）**
+>
+> 桌面前端把入口解析为 `{host, path, port, protocol}` 后按下式拼 iframe 地址（门户 bundle 中的 `wYe()`）：
+>
+> ```js
+> wYe = (e, t) => {
+>   if (!le && t) return t;                                   // full_url 优先
+>   if (de && e.fnDomain && e.port) return `https://${e.fnDomain}.${location.host}${e.path}`;
+>   let n = e.host || location.hostname,
+>       r = e.path || '',
+>       i = e.port || location.port;
+>   return `${e.protocol || location.protocol.replace(':','')}://${n}:${i}${r}`;
+> }
+> ```
+>
+> 注意 `protocol` 与 `port` **缺省时回退到 `location.protocol` / `location.port`**。
+> 因此端口服务模式下若应用自己的端口只有明文 HTTP，从 `https://<nas>:5667/` 打开时会得到
+> `https://<nas>:<port>/...`，TLS 握手失败（同时触发混合内容拦截），表现为**窗口内容区空白破图**。
+>
+> - 只走 HTTP 门户（5666）时不会暴露该问题，容易漏测。
+> - **需要同时支持 HTTP 与 HTTPS 门户时，应使用 index.cgi（同源路径）或统一网关。**
+> - 若坚持端口服务模式，则应用端口必须同时提供 TLS，或把 `protocol` 固定为 `http`
+>   （但 HTTPS 门户下仍会被混合内容策略拦截，不可行）。
+
 **统一网关机制**：
 - 入口声明 `gatewayPrefix`（`/app/{appname}` 或带子路径）与 `gatewaySocket`（如 `app.sock`，只填文件名，Socket 放在 `target/` 下）。
 - 请求 `/app/myapp` → fnOS 校验会话 → 转发到 `/var/apps/myapp/target/app.sock`。
@@ -434,8 +458,8 @@ interface PlatformConfig {
 
 | 项 | LSA 现状 | 官方规范 | 评估 |
 | --- | --- | --- | --- |
-| 访问模型 | **端口服务模式**（`app/ui/config` 用 `type=iframe` + `port=${wizard_web_port}` + `url=/ui/remoteserver/index.html`，iframe 直连 LSA 自带 nginx 的 2463） | 端口服务 / index.cgi / 统一网关三选一 | 合规。RELEASE_NOTES 8.17.10 明确"改为端口服务模式"以修复应用内登录后页面打不开 |
-| CGI 代理 | 包内**同时保留** `app/ui/index.cgi` + `cgi_proxy.py`（同源代理 + 注入 `<base href>` 与 URL 拦截器） | index.cgi 是独立访问模型 | **遗留/备用路径**。当前入口不依赖它；需确认是否仍可达、是否可清理 |
+| 访问模型 | **index.cgi 同源路径模式**（`app/ui/config` 用 `type=iframe` + `url=/cgi/ThirdParty/lsa/index.cgi/`，不再声明 `protocol`/`port`） | 端口服务 / index.cgi / 统一网关三选一 | 合规。**2026-10-13 由端口服务模式切换而来**，原因：端口服务模式下 HTTPS 门户(5667)打开会空白破图（详见 §4 的 ⚠️ 说明与根目录 `HTTPS_ACCESS_FIX_2026-10-13.md`） |
+| CGI 代理 | 包内 `app/ui/index.cgi` + `cgi_proxy.py`（同源代理 + 注入 `<base href>` 与 URL 拦截器） | index.cgi 是独立访问模型 | **已转为正式入口**。真机验证：HTML/JS/后端 JSON API 均 200，目录穿越返回 400；每次请求约 0.03–0.04s，首屏 10–12 个资源，可接受 |
 | `micro_app` | `micro_app=true` | 调 JS SDK 才需要 | 与官方用途不完全对应（LSA 的 GWT 界面未用 TrimApp SDK）；改动前需确认对 iframe 宿主行为的影响 |
 | `config/privilege` | `run-as: root` | 强烈不推荐 root | **有理由的偏离**：需直接访问 RAID 控制器设备节点。可评估 `join-groups` 能否替代 |
 | `config/resource` | `usr-local-linker` 三项均为空数组 | 只声明实际需要的资源 | 空声明等价于不声明；可考虑精简为 `{}` |
@@ -449,9 +473,10 @@ interface PlatformConfig {
 
 1. **用 `TRIM_SERVICE_PORT` 替换硬编码端口**：`cmd/main` 与 `lsa-fnos-start` 从环境变量或 `conf/fnos_ports.conf` 读端口，彻底打通自定义端口路径。
 2. **评估迁移到统一网关**：LSA 需要"复用系统域名 + NAS 登录态 + 常驻服务"，正是统一网关的目标场景（`gatewayPrefix` + `gatewaySocket` + `X-Trim-Userid`）。可去掉自带 nginx 的对外端口与 CGI 代理两套机制，但改造量大、风险高，需在真机充分验证。
-3. **清理或明确保留 CGI 代理**：确认 `index.cgi`/`cgi_proxy.py` 是否仍被引用；若不再需要，删除以减少维护面。
+3. ~~**清理或明确保留 CGI 代理**~~ **已完成**：`index.cgi`/`cgi_proxy.py` 现为正式入口（2026-10-13），不再是遗留路径。后续若要迁移统一网关，需连同这套代理一起评估替换。
 4. **接线或移除安装模式选项**：让 `wizard_install_mode` 真正影响 `installtype`/`installation_type`，或从向导中删除。
 5. **补齐 manifest 元数据**：`changelog`、`distributor`、按实测填写 `os_max_version`。
+6. **让入口配置与注册表自动同步**：桌面入口在安装期写入 `appcenter.app_service(url/default_url)` 与 `trim_sac.entry(url)` 两处，运行期不重读 `app/ui/config`。若要做"免重装切换访问模型"，需在 `cmd/` 中主动同步这两处。
 
 ---
 

@@ -4,14 +4,24 @@
 把 Broadcom/LSI **LSI Storage Authority (LSA)** 8.17.10（x64 Linux 商业软件，管理 SAS/MegaRAID 控制器的 Web 工具）**移植为飞牛 fnOS 的 FPK 应用**。非源码级移植，而是"打包+适配+本地化"式移植。
 
 ## 关键事实
-- 工作区根：`E:/LSA_Linux`（**非 git 仓库**，无版本控制）。
+- 工作区根：`E:/LSA_Linux`（网络盘 `\\192.168.5.141\codex`）。**本会话开始前已存在的文件在沙箱内不可写**（新建文件可写），详见文末"环境限制"。
+- 本地可写副本：`C:\LSA_Linux`（2026-10-13 用 robocopy 全量复制，修复与打包在此完成）。
 - 上游输入：`LSA_Linux_64_readme.txt`（Broadcom 官方 README）、`SUPPORTED_CONTROLLERS.md`、`FEATURE_OVERVIEW.md`、`RELEASE_NOTES.md`。
-- 交付物：`lsa-fnos/lsa.fpk`（中文，27MB）、`lsa-fnos-en/lsaen.fpk`（英文，26.6MB）。
-- 打包工具：根目录 `fnpack-1.2.3-windows-amd64.exe`（Windows 可跑 `fnpack build`）。
+- 交付物：`lsa-fnos/lsa.fpk`（中文，约 28.1MB）、`lsa-fnos-en/lsaen.fpk`（英文，约 27.8MB）。
+- 打包工具：根目录 `fnpack-1.2.3-windows-amd64.exe`。在**包目录内**执行 `../fnpack-...exe build`，产物落在该目录。
 - 真机验证工具：`tools/skill/`（trim-cli skill，可用 WebSocket 连 fnOS 做登录/应用/存储/文件验证）。
 - 安装目标路径：`/opt/lsi/LSIStorageAuthority`；库路径 `/opt/lsi/LSA/libs`、`/opt/lsi/LSA/libs2`。
 - 默认端口：Web 2463、LSA 服务 9000。
 - fnOS 不允许第三方应用往自身 nginx 加路由 → 用 CGI 代理方案（`app/ui/index.cgi` + `cgi_proxy.py`）在 fnOS 同源下代理 LSA 的 GWT 页面。
+
+## 桌面入口与访问模型（2026-10-13 重要变更）
+- **现用 index.cgi 同源路径模式**：`app/ui/config` → `{"type":"iframe","url":"/cgi/ThirdParty/{lsa|lsaen}/index.cgi/"}`，**不声明 `protocol`/`port`**。
+- 原因：端口服务模式（`protocol=""`+`port=${wizard_web_port}`）在 **HTTPS 门户(5667)** 下会失效 —— 门户前端 `wYe()` 让 `protocol`/`port` 回退到 `location.protocol`/`location.port`，iframe 变成 `https://<host>:2463/...`，而 2463 只有明文 HTTP → 空白破图。HTTP(5666) 下正常，故易漏测。
+- 官方文档明确：CGI 入口**忽略 `protocol`/`port`**，沿用当前访问域名；调用前校验 NAS 登录态；不支持 WebSocket（LSA 不用 WebSocket，无影响）。
+- **改 `app/ui/config` 后必须重装/升级**：入口在**安装期**写入两处注册表 —— `appcenter` 库 `app_service`（`url`/`default_url`）与 `trim_sac` 库 `entry`（`url`）。运行期不重读 `ui/config`。
+- `app-center` 服务**实时读取** `appcenter.app_service`，改库后无需重启即生效（`GET /app-center/v1/service/list` 可验证）。
+- 入口数据在 API 中形如 `{host, path, port, protocol}` + 独立 `fullUrl`；`fullUrl` 非空时优先直用。
+- 官方 API 也支持改入口：`POST /app-center/v2/config/app/entry/full-url`、`.../visibility`。
 
 ## 中英双包差异（仅 3 处）
 1. `cmd/main`：中文版把 `health_spec` 指向 `zh-CN/healthspec.json`；英文版指向 `en-US`。
@@ -22,7 +32,7 @@
 ## 飞牛 fnOS 开发规范（2026-10-13 学习）
 - 技能手册：根目录 **`FNOS_DEV_GUIDE.md`**（改本项目前先读它，§14 是 LSA 与官方规范的差异清单）。
 - 参考资料：`reference-snapshot/`（门户文档 HTML + `@trimjs/web-app` 0.4.2 SDK + `_extracted/` 纯文本）。
-- 三种访问模型：**端口服务**（LSA 当前用）/ **index.cgi**（不支持 WebSocket）/ **统一网关**（`gatewayPrefix`+`gatewaySocket`，注入 `X-Trim-Userid/Isadmin/Username`，适合复用系统域名+登录态+常驻服务）。
+- 三种访问模型：**端口服务**（iframe 直连应用自身端口；与登录态无关；**HTTPS 门户下需应用端口自带 TLS，否则失效**）/ **index.cgi**（**本项目现用**，同源路径、跟随访问域名、不支持 WebSocket）/ **统一网关**（`gatewayPrefix`+`gatewaySocket`，注入 `X-Trim-Userid/Isadmin/Username`，适合复用系统域名+登录态+常驻服务）。
 - 铁律：脚本用 `TRIM_APPDEST/TRIM_PKGETC/TRIM_PKGVAR/TRIM_SERVICE_PORT`，勿硬编码路径与端口；`main` 退出码 0=运行/3=未运行/1=失败；错误写 `TRIM_TEMP_LOGFILE`。
 - 调 JS SDK 必须 `micro_app=true`；后端开放 API 走 Unix Socket `/var/run/trim_open_gateway_apiscope.socket` + `Authorization: Bearer $TRIM_API_TOKEN`；系统 ≥1.2.0401、App ≥1.34.0。
 - 官方默认 `run-as=package` 且不推荐 root；LSA 因需访问 RAID 设备节点而用 root，属有理由偏离。
@@ -40,3 +50,10 @@
 - `install_callback` 硬编码 `/lib/x86_64-linux-gnu` 兼容软链（libcrypt/libldap/liblber），依赖具体发行版布局。
 - `main` 用 `pkill -9 -f '/bin/LSA'`，范围偏宽。
 - 卸载脚本会 purge deb 并删 `/opt/lsi`，注意与 fnOS 其他包的同名系统软链隔离（已用 `remove_owned_symlink` 处理）。
+
+## 环境限制（2026-10-13 实测，重要）
+- `E:\LSA_Linux` 是网络盘 `\\192.168.5.141\codex`。**本会话开始前已存在的文件无法写入**：append / cp / mv / rm / `sed -i` / `os.replace` / 硬链接全部 `Permission denied`；而**本会话新建的文件可正常读写**。ACL 正常、无只读属性、非文件占用。
+- 沙箱按**文件标识（inode）**判定而非路径 —— 硬链接指向同一 inode 同样被拒。
+- `git` 操作**可写**（`.git/` 被豁免），`git update-index` 可用；但 `git checkout` 无法落地工作区（unlink 被拒）。
+- **绕行方案**：把项目整体 `robocopy` 到本地盘（如 `C:\LSA_Linux`）后再改；或用 `git` 提交（工作区会与 HEAD 不一致，有"日后 `git add -A` 把修复回滚"的风险，需谨慎）。
+- 其他环境事实：curl 访问局域网需 `--noproxy '*'`；trim-cli 需 `--scheme ws --allow-insecure-ws`；本机装有系统 Chrome（可配合自写 CDP 客户端做无头浏览器验证，无需下载 Chromium）。

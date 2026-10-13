@@ -110,9 +110,13 @@ fnOS 桌面图标 (app/ui/config, type=iframe, port=${wizard_web_port})
 
 ## 5. 移植机制详解
 
-> **重要澄清（访问模型）**：`RELEASE_NOTES.md` 8.17.10 记录"应用入口改为**端口服务模式**：桌面图标以 iframe 直连 LSA Web 管理端口"。因此**当前生效的入口是端口服务**（`app/ui/config` 的 `port=${wizard_web_port}` + `url=/ui/remoteserver/index.html`，iframe 直连 LSA 自带 nginx 的 2463）。包内的 CGI 代理（`index.cgi` + `cgi_proxy.py`）是**此前的实现，现已退居遗留/备用路径**；其是否仍可达、是否可清理，需在真机确认。
+> **重要澄清（访问模型，2026-10-13 更新）**：历史上 `RELEASE_NOTES.md` 8.17.10 记录"应用入口改为**端口服务模式**：桌面图标以 iframe 直连 LSA Web 管理端口"，此后一段时间生效的入口是端口服务（`app/ui/config` 的 `port=${wizard_web_port}` + `url=/ui/remoteserver/index.html`，iframe 直连 LSA 自带 nginx 的 2463）。
+>
+> **但端口服务模式在 HTTPS 门户下会失效**：fnOS 桌面前端拼 iframe 地址时，`protocol`/`port` 缺省会回退到 `location.protocol`/`location.port`，于是从 `https://<nas>:5667/` 打开会得到 `https://<nas>:2463/...`，而 2463 只有明文 HTTP、无 TLS → 握手失败，窗口内容区空白破图（HTTP 5666 下正常，故容易漏测）。
+>
+> **现已改回 index.cgi 同源路径模式**（`url=/cgi/ThirdParty/lsa/index.cgi/`，不声明 `protocol`/`port`），HTTP 与 HTTPS 门户均可正常工作。包内的 CGI 代理（`index.cgi` + `cgi_proxy.py`）因此**重新成为正式入口**。详见根目录 `HTTPS_ACCESS_FIX_2026-10-13.md` 与 `FNOS_DEV_GUIDE.md` §4。
 
-### 5.1 同源代理（历史机制，现为遗留/备用）
+### 5.1 同源代理（正式入口）
 
 LSA 是 GWT 应用，使用 `/ui/core/index.html`、`/LSI/Storage/MR/API/...` 这类**原点绝对路径**导航，这些路径在 fnOS 域名下不存在。fnOS 又不允许第三方应用往自身 nginx 加 location。
 
@@ -126,7 +130,10 @@ LSA 是 GWT 应用，使用 `/ui/core/index.html`、`/LSI/Storage/MR/API/...` �
 
 ### 5.2 桌面入口
 
-`app/ui/config` 定义 `.url` 条目：`type=iframe`、`port=${wizard_web_port}`、`url=/ui/remoteserver/index.html`。`manifest` 的 `desktop_applaunchname` 指向它（`lsa.main` / `lsaen.main`）。
+`app/ui/config` 定义 `.url` 条目：`type=iframe`、`url=/cgi/ThirdParty/lsa/index.cgi/`（**不声明 `protocol`/`port`**，由 fnOS 沿用当前访问域名）。`manifest` 的 `desktop_applaunchname` 指向它（`lsa.main` / `lsaen.main`）。
+
+> **改这个文件后必须重装/升级才会生效**：桌面入口在**安装期**被写入两处注册表 —— `appcenter` 库 `app_service` 表的 `url`/`default_url`，以及 `trim_sac` 库 `entry` 表的 `url`。运行期不会重读 `app/ui/config`，仅重启应用也不会刷新这两处。
+> 其中 `app-center` 服务是**实时读取** `appcenter.app_service` 的，改库后无需重启服务即生效。
 
 ### 5.3 全权限模式
 
@@ -226,6 +233,8 @@ cd lsa-fnos        # 或 lsa-fnos-en
 5. **进程匹配偏宽**：`cmd/main` 使用 `pkill -9 -f '/bin/LSA'`，理论上可能误伤同名字符串进程。
 6. **`build.sh` 依赖缺失目录**（见 §7）。
 7. **英文包 README 未本地化**（见 §6）。
+8. **入口注册表不会随运行期变更同步**：桌面入口只在安装期写入 `appcenter.app_service` 与 `trim_sac.entry`。若日后要支持"免重装切换访问模型/端口"，需在 `cmd/` 中主动同步这两处，否则用户改完 `app/ui/config` 会看不到效果。
+9. **HTTPS 门户路径曾长期未验证**：直到 2026-10-13 才在真机确认端口服务模式在 5667 下失效（见 §5 澄清）。后续任何改动入口/协议/端口的变更，**都必须在 5666 与 5667 两个门户各走一遍**。
 
 ---
 
@@ -241,4 +250,7 @@ cd lsa-fnos        # 或 lsa-fnos-en
 
 ## 12. 变更记录
 
-- **2026-10-13**：项目接管。建立 git 版本控制（分支 `main`，本地身份 `LSA fnOS Maintainer`）；新增 `.gitignore`（排除 `*.fpk`、fnpack 可执行文件、`tools/skill/bin/` 平台二进制）；撰写本交接文档；记录 §10 风险清单。
+- **2026-10-13（接管）**：项目接管。建立 git 版本控制（分支 `main`，本地身份 `LSA fnOS Maintainer`）；新增 `.gitignore`（排除 `*.fpk`、fnpack 可执行文件、`tools/skill/bin/` 平台二进制）；撰写本交接文档；记录 §10 风险清单。提交 `b1f9650`。
+- **2026-10-13（学习规范）**：精读 `reference-snapshot/` 门户文档与 JS SDK，产出 `FNOS_DEV_GUIDE.md`（15 节技能手册）。提交 `012a2c0`。
+- **2026-10-13（真机验证）**：在 `192.168.5.24` 完成整体验证，产出 `VERIFICATION_REPORT_2026-10-13.md`。提交 `ae36597`。
+- **2026-10-13（修复 HTTPS 入口）**：定位并修复"HTTPS(5667) 打开应用空白破图"。根因是端口服务模式在 HTTPS 门户下把 iframe 指向无 TLS 的 2463；改用 index.cgi 同源路径入口。同步更新 `app/ui/config`（中英双包）、`FNOS_DEV_GUIDE.md` §4/§14、`HANDOVER.md` §5/§10，新增 `HTTPS_ACCESS_FIX_2026-10-13.md`。提交 `5ed44cc`。
