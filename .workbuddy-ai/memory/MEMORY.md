@@ -23,6 +23,17 @@
 - 入口数据在 API 中形如 `{host, path, port, protocol}` + 独立 `fullUrl`；`fullUrl` 非空时优先直用。
 - 官方 API 也支持改入口：`POST /app-center/v2/config/app/entry/full-url`、`.../visibility`。
 
+## 安装 / 升级 / 卸载（2026-10-13 真机实测，必读）
+- **fnOS 没有本地 FPK 就地升级能力。** `POST /app-center/v1/install/task` 只要 `appname` 已存在就返回 **`10236 = ErrCodeInstalledException`（「应用已安装」）**，**与版本号无关、与运行状态无关**（已用 `version=8.17.11` 的包 + running/stopped 各试，四次全 10236）。`trim-cli app update` 只走云端下载（`/v1/download/task`），本地包报 `10030`。
+- **⇒ 真实部署路径 = 卸载 → 全新安装。** 发布说明里不要承诺"就地升级"。详细验证见 `UPGRADE_FLOW_VERIFICATION_2026-10-13.md`。
+- **入口注册表在安装期自动刷新（已验证）**：装完即把 `app/ui/config` 的 `url` 写入 `appcenter.app_service`(`url`+`default_url`) 与 `trim_sac.entry`(`url`)。**所以"改 `app/ui/config` → 重装"是当前可行的变更方式，无需手工改库。** id/app_id 每次安装递增属正常。
+- **`upgrade_init`/`upgrade_callback` 是死代码**（没有升级路径，永不被调用）。跨重装保留配置应改在 `uninstall_init`（备份到 `$TRIM_PKGVAR`，卸载后仍保留）+ `install_callback`（还原）。
+- **开机后看门狗失效（P1）**：`cmd/main` 的 `start_watchdog` 在第 108 行，第 77–80 行有"已在运行就 exit 0"的提前返回；自行添加的 systemd 单元 `enabled` 且开机抢跑（日志实证 `08:33:24 msg="already running" appName=lsa class=start`）→ 提前返回 → **自愈从未生效**。安装后立即启动的场景下看门狗正常。修法：删单元统一走 `cmd/main`，或提前返回前先 `start_watchdog`。
+- **卸载残留**：`/usr/local/sbin/lsa-fnos-start` **不会被删**（两次都如此）；`uninstall_init` 的 `purge_package` 里 `|| exit 1` 过于激进，单点失败会让后续清理全跳过（留 deb `ii` + `/opt/lsi`）。首次卸载曾报 `10392 = ErrCodeUninstallInitException`，**插桩复跑两次均完整成功、未能复现**（appcenter `error.log` 反复出现 `hook error ... nil pointer dereference`，疑其钩子执行器不稳）。
+- **systemd 单元的两处缺陷**：`ExecStop` 缺 `cd`，`-p .` 解析到 `/` → 每次停止都报 `open() "./conf/nginx.conf" failed` 并打成 `failed`；`appcenter.app.is_systemd_uint` 对 lsa 为 `f`（fnOS 不认为它是 systemd 单元应用）。
+- **厂商硬编码字符串无法本地化**：`Gateway - Authenticate`、`Load More`、`HOST` 不在 `message_en.js` 键集中（编译进 GWT），`message_zh.js` 覆盖层触及不到。属厂商限制。
+- 设备侧查错入口：`/var/log/trim_app_center/info.log`（成功路径）与 `error.log`（`10236`/`10392`/`hook error`）。
+
 ## 中英双包差异（仅 3 处）
 1. `cmd/main`：中文版把 `health_spec` 指向 `zh-CN/healthspec.json`；英文版指向 `en-US`。
 2. `cmd/install_callback`：中文版多装 message_zh.js 覆盖层 + zh-CN 语言资源；英文版只删除 message_zh.js 恢复原生英文。

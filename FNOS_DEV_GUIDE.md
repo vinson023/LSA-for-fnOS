@@ -229,6 +229,17 @@ checkport=false
 | `config_init` | 配置变更前 | 停服、写新配置 |
 | `config_callback` | 配置变更后 | 重启服务 |
 
+> ⚠️ **`upgrade_init` / `upgrade_callback` 在本 fnOS 版本上是死代码（2026-10-13 实测）**
+> fnOS 应用中心**不提供本地 FPK 的就地升级能力**：`POST /app-center/v1/install/task` 只要 `appname` 已存在就返回 `10236 = ErrCodeInstalledException`（「应用已安装」），**与版本号无关、与运行状态无关**（已用版本号递增到 8.17.11 的包验证）；`app update` 只走云端下载（`/v1/download/task`），本地包不可用。
+> **⇒ 新包上线必须走「卸载 → 全新安装」，因此这两个钩子永远不会被调用。** 需要"跨重装保留配置"时，应把职责放在 `uninstall_init`（备份到 `$TRIM_PKGVAR`，该目录卸载后仍保留）+ `install_callback`（还原），**不要**依赖 `upgrade_*`。
+
+> ⚠️ **不要自行添加 systemd 单元来启动应用（除非应用确实是系统服务）**
+> fnOS 用 `cmd/main` 管理应用生命周期，`appcenter.app` 表的 `is_systemd_uint` 字段标记应用是否走 systemd。自行附加 `enabled` 的单元会与 `cmd/main` **双启动**，并带来两个具体后果：
+> 1. 开机时单元抢跑 → `main start` 检测到"已在运行"提前返回 → **位于 `main start` 后段的看门狗/自愈逻辑被跳过**。
+> 2. 单元的 `ExecStop` 若未 `cd` 到正确目录，`-p .` 会解析到 systemd 的工作目录（`/`），**每次停止都把单元打成 `failed`**，且 `daemon-reload` 不会清除该状态。
+>
+> **推荐做法**：把启动/停止/自愈全部收敛到 `cmd/main`；确需 systemd 时，让 `main start|stop` 委托 `systemctl`，避免两套机制并存。
+
 **`main` 退出码约定**（关键）：
 - `0`：成功；在 `status` 中表示**正在运行**
 - `1`：失败
@@ -437,6 +448,18 @@ interface PlatformConfig {
 
 **后端 API**：`200001` Invalid Params（200/400）；`200004` Unauthorized（401）；`200003` Forbidden（403，查 Scope 与 token）；`200005` Not Found（404，查 `req` 与系统版本）；`200006` Internal Error（200/500）。
 
+**应用中心安装/卸载错误码**（从门户 bundle 提取，实测命中过前两个）：
+
+| 码 | 枚举名 | 前端文案 | 含义与处置 |
+| --- | --- | --- | --- |
+| `10236` | `ErrCodeInstalledException` | 应用已安装 | `install/task` 对已存在的 `appname` 恒返回，**与版本/运行状态无关** → 先 `app uninstall` |
+| `10392` | `ErrCodeUninstallInitException` | 执行脚本出错且原因未知 | `uninstall_init` 返回非零 → 查 `error.log` 的 `msg="uninstall script error"`，并在脚本内加 trace |
+| `10393` | `ErrCodeUninstallCallbackException` | 执行脚本出错且原因未知 | `uninstall_callback` 返回非零 |
+| `10235` | `ErrCodeInstallingException` | 应用正在安装 | 上一任务未结束，等 `app task-status` |
+| `10030` | （非安装类） | — | 实测出现在 `app update` / 云应用详情查询失败（本地包走云端接口）时 |
+
+查错入口：`/var/log/trim_app_center/error.log`（`msg="app already installed"` / `msg="uninstall script error"` / `msg="hook error"`）。
+
 ---
 
 ## 13. 安全与最佳实践清单
@@ -476,7 +499,25 @@ interface PlatformConfig {
 3. ~~**清理或明确保留 CGI 代理**~~ **已完成**：`index.cgi`/`cgi_proxy.py` 现为正式入口（2026-10-13），不再是遗留路径。后续若要迁移统一网关，需连同这套代理一起评估替换。
 4. **接线或移除安装模式选项**：让 `wizard_install_mode` 真正影响 `installtype`/`installation_type`，或从向导中删除。
 5. **补齐 manifest 元数据**：`changelog`、`distributor`、按实测填写 `os_max_version`。
-6. **让入口配置与注册表自动同步**：桌面入口在安装期写入 `appcenter.app_service(url/default_url)` 与 `trim_sac.entry(url)` 两处，运行期不重读 `app/ui/config`。若要做"免重装切换访问模型"，需在 `cmd/` 中主动同步这两处。
+6. **让入口配置与注册表自动同步**：桌面入口在安装期写入 `appcenter.app_service(url/default_url)` 与 `trim_sac.entry(url)` 两处，运行期不重读 `app/ui/config`。若要做"免重装切换访问模型"，需在 `cmd/` 中主动同步这两处。**（已实测：重装会自动同步，因此"改 `app/ui/config` → 重装"是当前可行的变更方式。）**
+7. **收敛启动机制**：删除自行添加的 systemd 单元，统一由 `cmd/main` 负责启动、停止与看门狗（理由见 §7 的 ⚠️ 说明）。当前单元既会在开机与 `cmd/main` 抢跑导致自愈失效，其 `ExecStop` 又因缺 `cd` 而恒失败。
+8. **加固 `uninstall_init`**：
+   - 去掉 `purge_package` 里的 `|| exit 1` —— 单点失败会让后续清理全部跳过，留下半卸载状态（deb 仍 `ii`、`/opt/lsi` 仍在）。应写入 `$TRIM_TEMP_LOGFILE` 后继续。
+   - 补删 `/usr/local/sbin/lsa-fnos-start`（当前卸载后固定残留）。
+9. **把配置保留职责从 `upgrade_*` 迁走**：见 §7 顶部说明 —— 备份到 `$TRIM_PKGVAR` + 安装时还原。
+
+### 14.3 实测参考：一次完整部署链路的耗时与表现
+
+在 `192.168.5.24`（fnOS 1.2.0800）上的实测数据：
+
+| 步骤 | 耗时 | 说明 |
+| --- | --- | --- |
+| `app install-fpk`（本地 FPK，28 MB） | 安装任务 ~3 s，随后自动启动 ~2 s | 应用中心日志：`install_start` → `install_success` → `start_start` → `success` |
+| `app uninstall` | ~3 s（含 3 个 deb purge、`/opt/lsi` 删除） | 脚本本身能卸干净，但见 §14.2 第 8 项 |
+| CGI 入口响应 | 5667：0.0035 s / 5666：0.0006 s | 同源路径，无 TLS 协商开销 |
+| 首次打开应用界面 | ~10 s | GWT 首屏加载 |
+
+服务端日志位置：`/var/log/trim_app_center/info.log`（成功路径）与 `error.log`（`10236` 等错误码）。
 
 ---
 

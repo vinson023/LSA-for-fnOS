@@ -149,11 +149,31 @@ readonly_access_groups =
 
 ### 5.4 幂等启动与看门狗（解决"真机枚举慢 / 端口被占导致启动误报失败"）
 
+> ⚠️ **已知缺陷：开机场景下看门狗实际不会启动（2026-10-13 实测）**
+> `cmd/main` 的 `start_watchdog` 在第 108 行，但第 77–80 行有提前返回：
+> ```bash
+> if port_open "$WEB_PORT" && lsa_running; then
+>     echo "LSA is already running; keeping the existing instance"
+>     exit 0        # ← 到不了 start_watchdog
+> fi
+> ```
+> 而 `install_callback` 又写了 `enabled` 的 systemd 单元（`WantedBy=multi-user.target`）。开机时二者赛跑，**日志实证 systemd 抢先**：
+> ```
+> 08:33:16  systemd 启动 lsistorageauthority.service
+> 08:33:24  appName=lsa class=start  msg="already running"  code=0
+> ```
+> ⇒ 开机后处于**无自愈**状态。注意：**安装后立即启动**的场景下看门狗是正常的（单元未被 systemd 启动，`main start` 走到了第 108 行）。
+> **修复建议**：删除 systemd 单元、统一走 `cmd/main`（推荐）；或把提前返回改为"先 `start_watchdog` 再返回"。
+
 - 厂商 init 脚本在 nginx 或 LSA 已存在时返回失败；fnOS 开机竞争场景很常见。
 - `install_callback` 写入 `/usr/local/sbin/lsa-fnos-start`（幂等包装器）与 `lsistorageauthority.service`（`Type=oneshot`、`RemainAfterExit=yes`、`TimeoutStartSec=180`）。
 - 包装器逻辑：先等 `slpd` 的 UDP 427 端口就绪（必要时自行拉起 `/opt/lsi/LSA/libs2/slpd`）；nginx 端口未开才启动；首次启动前清掉残留 LSA；最后 `./LSA -start`。
 - `cmd/main` 启动后启动 10s 轮询看门狗，后端掉线自动拉起；启动等待上限 `LSA_START_TIMEOUT`（默认 120s），不再用旧的 5 秒固定窗口误判失败。
 - 环境变量：`LD_LIBRARY_PATH="/opt/lsi/LSA/libs:/opt/lsi/LSA/libs2:$LSA_HOME/lib:$LSA_HOME/bin:$LSA_HOME/plugins"`。
+
+> ⚠️ **systemd 单元的两处附加缺陷**：
+> 1. `ExecStop` 缺 `cd`，`-p .` 被解析成 systemd 的工作目录（`/`），每次停止都报 `open() "./conf/nginx.conf" failed` 并把单元打成 `failed`；`daemon-reload` 不会清除该状态。
+> 2. `appcenter.app.is_systemd_uint` 对 lsa 为 `f` —— fnOS **不认为**本应用是 systemd 单元应用，这个单元是项目自行附加的，脱离了 fnOS 生命周期管理。
 
 ### 5.5 中文本地化（中文包核心）
 
@@ -200,10 +220,17 @@ cd lsa-fnos        # 或 lsa-fnos-en
 
 ## 8. 安装 / 升级 / 卸载生命周期要点
 
+> ⚠️ **升级路径的重要事实（2026-10-13 真机实测）**：fnOS **不支持**用本地 FPK 就地升级 —— `POST /app-center/v1/install/task` 只要 `appname` 已存在就返回 `10236 = ErrCodeInstalledException`（「应用已安装」），**与版本号无关、与运行状态无关**（已用版本号递增到 8.17.11 的包验证）。`app update` 只走云端下载，本地包不可用。
+> **⇒ 新包上线 = 卸载 → 全新安装。** 详见 `UPGRADE_FLOW_VERIFICATION_2026-10-13.md`。
+
 - **安装**：`install_init` 校验架构 → 释放文件 → `install_callback` 依次 `dpkg -i`（lib_utils2 → lib_utils → 主包）→ 写 `fnos_ports.conf` → 装本地化 → 建兼容软链 → 修 `LSA.conf` → 写 systemd 单元并 `enable`。
 - **端口**：`install_callback` 把 nginx.conf 的 `nginx_default` / `LSA_Default` 占位符替换成向导端口，并改 `LSA.conf` 的 `listening_port` / `client_listening_port`。
-- **升级**：`upgrade_init` 备份 `LSA.conf`、`nginx.conf`、`smtpServer`、`key.store`、`value.store`、`managedservers/`、`monitor/` 到 `$TRIM_TEMP_UPGRADE_FOLDER` → `upgrade_callback` 恢复并重刷本地化与权限。
+- **入口注册表**：安装期会把 `app/ui/config` 的 `url` 写入 `appcenter.app_service`（`url` + `default_url`）与 `trim_sac.entry`（`url`）两处。**实测确认：改 `app/ui/config` 后重装即自动生效，无需手工改库。**
+- **升级**：`upgrade_init` / `upgrade_callback` 存在，但**在当前 fnOS 上属死代码**（没有就地升级路径，永不会被调用）。其"升级保留配置"的职责因此**完全落空**；目前配置之所以在重装后还在，只是因为首次卸载中止、`/opt/lsi` 被意外保留 —— 属侥幸。
 - **卸载**：`uninstall_init` 停 systemd 单元、停进程与 nginx、`dpkg --purge` 三个包、删 `/opt/lsi` 与 `/opt/lsi/LSA`、`rmdir /opt/lsi`。兼容软链用 `remove_owned_symlink` 只删"确实指向本项目目标"的链接，避免误删其他包的同名系统软链。
+  - 插桩实测：**脚本逻辑本身能把三个 deb 全部 purge、`/opt/lsi` 完全删除**。
+  - 但**首次卸载曾以 `10392 = ErrCodeUninstallInitException` 中止**（未复现，两次插桩复跑均成功），推测与 appcenter 钩子执行器的偶发 panic 有关（其 `error.log` 中反复出现 `hook error ... nil pointer dereference`）。中止的后果是留下半卸载状态（deb 仍 `ii`、`/opt/lsi` 仍在）。
+  - **固定残留**：`/usr/local/sbin/lsa-fnos-start` **不会被删除**（两次卸载都如此）。
 
 ---
 
@@ -233,8 +260,19 @@ cd lsa-fnos        # 或 lsa-fnos-en
 5. **进程匹配偏宽**：`cmd/main` 使用 `pkill -9 -f '/bin/LSA'`，理论上可能误伤同名字符串进程。
 6. **`build.sh` 依赖缺失目录**（见 §7）。
 7. **英文包 README 未本地化**（见 §6）。
-8. **入口注册表不会随运行期变更同步**：桌面入口只在安装期写入 `appcenter.app_service` 与 `trim_sac.entry`。若日后要支持"免重装切换访问模型/端口"，需在 `cmd/` 中主动同步这两处，否则用户改完 `app/ui/config` 会看不到效果。
+8. **入口注册表不会随运行期变更同步**：桌面入口只在安装期写入 `appcenter.app_service` 与 `trim_sac.entry`。若日后要支持"免重装切换访问模型/端口"，需在 `cmd/` 中主动同步这两处，否则用户改完 `app/ui/config` 会看不到效果。**（已实测确认：重装会自动同步，所以当前"改 config → 重装"的流程是可行的。）**
 9. **HTTPS 门户路径曾长期未验证**：直到 2026-10-13 才在真机确认端口服务模式在 5667 下失效（见 §5 澄清）。后续任何改动入口/协议/端口的变更，**都必须在 5666 与 5667 两个门户各走一遍**。
+
+### 10.1 2026-10-13 升级流程实测新增（详见 `UPGRADE_FLOW_VERIFICATION_2026-10-13.md`）
+
+10. **fnOS 无本地 FPK 就地升级能力**（P0 认知项）：`install/task` 对已存在的 `appname` 恒返回 `10236`，与版本/运行状态无关。**新包上线 = 卸载 → 安装**；所有发布说明与用户指引都必须按此表述。
+11. **开机后看门狗失效**（P1，见 §5.4）：systemd 单元抢跑 → `main start` 提前返回 → `start_watchdog` 未执行。修复方向见 §5.4。
+12. **卸载不删 `/usr/local/sbin/lsa-fnos-start`**（P1）：两次卸载均残留。
+13. **`uninstall_init` 的 `|| exit 1` 过于激进**（P1）：`purge_package` 内 `sudo dpkg --purge "$package" || exit 1` 会让单点失败导致**后续清理全部跳过**，留下半卸载状态（deb 仍 `ii`、`/opt/lsi` 仍在）。应改为记录到 `$TRIM_TEMP_LOGFILE` 后继续。
+14. **卸载偶发中止**（P2）：首次卸载以 `10392 = ErrCodeUninstallInitException` 中止，插桩复跑两次均完整成功，未能复现。appcenter `error.log` 中反复出现 `hook error ... nil pointer dereference`，推测为其钩子执行器不稳定。
+15. **`ExecStop` 缺 `cd`**（P2，见 §5.4）：单元每次停止都变 `failed`。
+16. **配置保留职责落空**（P2）：`upgrade_*` 是死代码，配置保留应迁到 `uninstall_init`（备份到 `$TRIM_PKGVAR`）+ `install_callback`（还原）。
+17. **厂商硬编码字符串无法本地化**（P3，非本项目缺陷）：`Gateway - Authenticate`、`Load More` 等不在 `message_en.js` 键集中，被编译进 GWT 模块，`message_zh.js` 覆盖层无法触及。
 
 ---
 
@@ -245,6 +283,7 @@ cd lsa-fnos        # 或 lsa-fnos-en
 - 本地化资源是"双写"（zh-CN 与 en-US 各一份），新增资源文件时不要只写一处。
 - 改动 `cgi_proxy.py` 时同步核对 `CGI_BASE` 与 manifest `appname`。
 - 交付前在真机走一遍：安装 → 启动 → 应用内入口 → 登录 → 改端口 → 重启 → 卸载清理。
+- **发布/交付时不要承诺"就地升级"**：fnOS 不支持本地 FPK 升级，用户必须先卸载再安装（见 §8 顶部提示）。发布说明里应写明这一点。
 
 ---
 
@@ -254,3 +293,4 @@ cd lsa-fnos        # 或 lsa-fnos-en
 - **2026-10-13（学习规范）**：精读 `reference-snapshot/` 门户文档与 JS SDK，产出 `FNOS_DEV_GUIDE.md`（15 节技能手册）。提交 `012a2c0`。
 - **2026-10-13（真机验证）**：在 `192.168.5.24` 完成整体验证，产出 `VERIFICATION_REPORT_2026-10-13.md`。提交 `ae36597`。
 - **2026-10-13（修复 HTTPS 入口）**：定位并修复"HTTPS(5667) 打开应用空白破图"。根因是端口服务模式在 HTTPS 门户下把 iframe 指向无 TLS 的 2463；改用 index.cgi 同源路径入口。同步更新 `app/ui/config`（中英双包）、`FNOS_DEV_GUIDE.md` §4/§14、`HANDOVER.md` §5/§10，新增 `HTTPS_ACCESS_FIX_2026-10-13.md`。提交 `5ed44cc`。
+- **2026-10-13（升级流程实测）**：用新构建的 FPK 在真机走完整部署链路，得出「fnOS 无本地 FPK 就地升级能力（`10236`），实际路径为卸载 → 安装」的结论；安装后逐项验证（注册表自动刷新为 CGI、本地化落地、双门户渲染）全部通过；并发现开机看门狗失效、卸载残留 `lsa-fnos-start`、`uninstall_init` 的 `|| exit 1` 过于激进、`ExecStop` 缺 `cd`、`upgrade_*` 属死代码等 7 项新问题。新增 `UPGRADE_FLOW_VERIFICATION_2026-10-13.md`、`docs/upgrade-flow/`；更新本文件 §5.4/§8/§10/§10.1。
