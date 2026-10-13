@@ -40,6 +40,12 @@
 3. `app/ui/cgi_proxy.py`：`CGI_BASE` 路径 `lsa` vs `lsaen`；`app/ui/config` 的 desktop 入口 title/name。
 - 英文包**不含** `message_zh.js` 和 `languages/` 目录；两个 README.md 完全相同（沿用中文说明，属遗漏）。
 
+## CGI 拦截器机制（2026-10-13 定型）
+- `cgi_proxy.py` 对每个 HTML 注入 `<base href>` + URL 拦截器：改写 `a[href]`/XHR/fetch/`location.assign`/`location.replace`/`window.open`。
+- **`location.href = ...` 赋值无法 patch**（`href` 是 Location 实例 `[LegacyUnforgeable]` 属性，原型上无描述符）→ 用 **Navigation API** `navigate` 事件 + `event.intercept()` 兜住，这是 GWT 登录跳转（`/ui/core/index.html?locale=...&serverID=...`）能留在代理前缀内的唯一手段；需 Chrome/WebView 102+。
+- 改后两包文件除 `CGI_BASE` 外完全一致；改完需同步中英双包（可用 `sed` 替换 `ThirdParty/lsa/`→`lsaen/` 派生）。
+- 详见 `LOGIN_NAV_FIX_2026-10-13.md`。
+
 ## 飞牛 fnOS 开发规范（2026-10-13 学习）
 - 技能手册：根目录 **`FNOS_DEV_GUIDE.md`**（改本项目前先读它，§14 是 LSA 与官方规范的差异清单）。
 - 参考资料：`reference-snapshot/`（门户文档 HTML + `@trimjs/web-app` 0.4.2 SDK + `_extracted/` 纯文本）。

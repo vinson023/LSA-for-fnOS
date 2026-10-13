@@ -482,7 +482,7 @@ interface PlatformConfig {
 | 项 | LSA 现状 | 官方规范 | 评估 |
 | --- | --- | --- | --- |
 | 访问模型 | **index.cgi 同源路径模式**（`app/ui/config` 用 `type=iframe` + `url=/cgi/ThirdParty/lsa/index.cgi/`，不再声明 `protocol`/`port`） | 端口服务 / index.cgi / 统一网关三选一 | 合规。**2026-10-13 由端口服务模式切换而来**，原因：端口服务模式下 HTTPS 门户(5667)打开会空白破图（详见 §4 的 ⚠️ 说明与根目录 `HTTPS_ACCESS_FIX_2026-10-13.md`） |
-| CGI 代理 | 包内 `app/ui/index.cgi` + `cgi_proxy.py`（同源代理 + 注入 `<base href>` 与 URL 拦截器） | index.cgi 是独立访问模型 | **已转为正式入口**。真机验证：HTML/JS/后端 JSON API 均 200，目录穿越返回 400；每次请求约 0.03–0.04s，首屏 10–12 个资源，可接受 |
+| CGI 代理 | 包内 `app/ui/index.cgi` + `cgi_proxy.py`（同源代理 + 注入 `<base href>` 与 URL 拦截器：改写 `a/XHR/fetch/location.assign/replace/window.open`，并用 **Navigation API `navigate` 事件 + `event.intercept()`** 兜住 GWT 的 `location.href` 赋值） | index.cgi 是独立访问模型 | **已转为正式入口**。真机验证：HTML/JS/后端 JSON API 均 200，目录穿越返回 400；每次请求约 0.03–0.04s，首屏 10–12 个资源，可接受。`location.href` 是 `[LegacyUnforgeable]` 属性、原型上无描述符，只能靠 Navigation API 拦截（详见根目录 `LOGIN_NAV_FIX_2026-10-13.md`） |
 | `micro_app` | `micro_app=true` | 调 JS SDK 才需要 | 与官方用途不完全对应（LSA 的 GWT 界面未用 TrimApp SDK）；改动前需确认对 iframe 宿主行为的影响 |
 | `config/privilege` | `run-as: root` | 强烈不推荐 root | **有理由的偏离**：需直接访问 RAID 控制器设备节点。可评估 `join-groups` 能否替代 |
 | `config/resource` | `usr-local-linker` 三项均为空数组 | 只声明实际需要的资源 | 空声明等价于不声明；可考虑精简为 `{}` |

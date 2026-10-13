@@ -72,12 +72,63 @@ INTERCEPTOR_TEMPLATE = '''
 <script>
 (function() {
   var cgiBase = '__CGI_BASE__';
-  function rewriteUrl(url) {
-    if (typeof url !== 'string' || url.length === 0) { return url; }
-    if (url.charAt(0) !== '/' || url.charAt(1) === '/') { return url; }
-    if (url.indexOf(cgiBase) === 0) { return url; }
-    return cgiBase + url.substring(1);
+  // LSA performs its module hand-offs (the "Sign in" button, server
+  // selection, ...) with root-relative locations such as
+  // '/ui/core/index.html?locale=en&serverID=...'. Those URLs assume the app
+  // is served from the origin root, so they must be pulled back into the CGI
+  // prefix or the browser lands on an fnOS 404 page.
+  var navigationPrefixes = ['/ui/'];
+
+  /* Normalise a URL to a root-relative path. Returns null when the target
+     cannot be parsed or points at another origin (those are left alone). */
+  function normalizeToPath(url) {
+    if (typeof url !== 'string' || url.length === 0) { return null; }
+    if (url.charAt(0) === '/' && url.charAt(1) !== '/') { return url; }
+    if (url.indexOf('://') < 0 && url.indexOf('//') !== 0) { return url; }
+    try {
+      var absolute = new URL(url, window.location.href);
+      if (absolute.host !== window.location.host) { return null; }
+      return absolute.pathname + absolute.search + absolute.hash;
+    } catch (e) { return null; }
   }
+
+  function rewriteUrl(url) {
+    var path = normalizeToPath(url);
+    if (path === null) { return url; }
+    if (path.charAt(0) !== '/') { return url; }
+    if (path.indexOf(cgiBase) === 0) { return path; }
+    return cgiBase + path.substring(1);
+  }
+
+  /* location.href is an own, non-configurable property of the Location
+     instance (WebIDL [LegacyUnforgeable]), so it cannot be patched. The
+     Navigation API is therefore the only hook that can catch script-driven
+     navigations. */
+  function installNavigationGuard() {
+    var navigation = window.navigation;
+    if (!navigation || typeof navigation.addEventListener !== 'function') { return; }
+    navigation.addEventListener('navigate', function(event) {
+      var destination = event.destination;
+      if (!destination || destination.sameDocument) { return; }
+      var path = normalizeToPath(destination.url);
+      if (path === null || path.charAt(0) !== '/') { return; }
+      if (path.indexOf(cgiBase) === 0) { return; }
+      var matched = false;
+      for (var i = 0; i < navigationPrefixes.length; i++) {
+        if (path.indexOf(navigationPrefixes[i]) === 0) { matched = true; break; }
+      }
+      if (!matched) { return; }
+      var target = cgiBase + path.substring(1);
+      try {
+        event.intercept({
+          handler: function() { return navigation.navigate(target, { history: 'replace' }); }
+        });
+      } catch (e) {
+        try { window.location.replace(target); } catch (e2) {}
+      }
+    });
+  }
+  installNavigationGuard();
   function rewriteAnchor(link) {
     if (!link || link.nodeType !== 1 || link.tagName !== 'A') { return; }
     var href = link.getAttribute('href');
@@ -144,17 +195,11 @@ INTERCEPTOR_TEMPLATE = '''
       return origFetch.call(this, input, options);
     };
   }
+  /* location.href / location.assign / location.replace: href is an own,
+     non-configurable property ([LegacyUnforgeable]) so it cannot be patched,
+     but assign/replace live on Location.prototype and LSA uses them too. */
   try {
     var locationProto = Object.getPrototypeOf(window.location);
-    var hrefDescriptor = Object.getOwnPropertyDescriptor(locationProto, 'href');
-    if (hrefDescriptor && hrefDescriptor.set) {
-      Object.defineProperty(locationProto, 'href', {
-        get: function() { return hrefDescriptor.get.call(this); },
-        set: function(value) { hrefDescriptor.set.call(this, rewriteUrl(value)); },
-        configurable: true,
-        enumerable: true
-      });
-    }
     var origAssign = locationProto.assign;
     locationProto.assign = function(url) { return origAssign.call(this, rewriteUrl(url)); };
     var origReplace = locationProto.replace;
