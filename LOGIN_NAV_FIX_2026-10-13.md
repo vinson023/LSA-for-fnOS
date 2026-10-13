@@ -97,7 +97,8 @@ server .../index.cgi/ui/server/index.html?locale=en&&eventURI=...&serverID=...#s
 - Navigation API 需要 Chrome/Edge 102+（2022-06）。fnOS 桌面 WebView 与本机浏览器均满足。
   若不满足，守卫注册时静默退出，行为退化为修复前（仅 `assign`/`replace` 被改）。
 - 守卫只拦**脚本发起的跨文档导航**；用户在地址栏手输 `/ui/...` 仍会 404（属预期）。
-- 真机上的部署是手工 SFTP 替换 `/vol1/@appcenter/lsa/ui/cgi_proxy.py`（md5 已核对一致）；
-  正式发布需重新 `fnpack build` 出包。fnOS 无本地 FPK 就地升级能力（见
-  `UPGRADE_FLOW_VERIFICATION_2026-10-13.md`），实际路径仍是卸载 → 安装。
+- 真机上的部署：先手工 SFTP 替换 `/vol1/@appcenter/lsa/ui/cgi_proxy.py`（md5 已核对一致）完成验证，
+  随后双包已重新 `fnpack build` 并核对包内 `ui/cgi_proxy.py` 与真机部署版 md5 一致
+  （新 `lsa.fpk` md5 `ca4b9abb1ef4411d8dfaf9794976d026`、`lsaen.fpk` md5 `48d1a8e933e809e979935d4d3e1b6e48`）。
+  fnOS 无本地 FPK 就地升级能力（见 `UPGRADE_FLOW_VERIFICATION_2026-10-13.md`），实际路径仍是卸载 → 安装。
 - 英文包（`lsaen`）同步了同一改动，两个文件除 `CGI_BASE`（`lsa` / `lsaen`）外完全一致。

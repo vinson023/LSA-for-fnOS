@@ -273,7 +273,7 @@ cd lsa-fnos        # 或 lsa-fnos-en
 15. **`ExecStop` 缺 `cd`**（P2，见 §5.4）：单元每次停止都变 `failed`。
 16. **配置保留职责落空**（P2）：`upgrade_*` 是死代码，配置保留应迁到 `uninstall_init`（备份到 `$TRIM_PKGVAR`）+ `install_callback`（还原）。
 17. **厂商硬编码字符串无法本地化**（P3，非本项目缺陷）：`Gateway - Authenticate`、`Load More` 等不在 `message_en.js` 键集中，被编译进 GWT 模块，`message_zh.js` 覆盖层无法触及。
-18. **登录跳转依赖 Navigation API**（P2，见 `LOGIN_NAV_FIX_2026-10-13.md`）：CGI 注入的拦截器用 `navigation.navigate` 事件 + `event.intercept()` 兜住 GWT 的 `location.href` 赋值，需浏览器/WebView 支持 Chrome 102+（fnOS 桌面 WebView 满足）。用户在地址栏手输 `/ui/...` 仍会 404（预期行为）。真机部署为手工 SFTP 替换，正式发布需重新 `fnpack build`。
+18. **登录跳转依赖 Navigation API**（P2，见 `LOGIN_NAV_FIX_2026-10-13.md`）：CGI 注入的拦截器用 `navigation.navigate` 事件 + `event.intercept()` 兜住 GWT 的 `location.href` 赋值，需浏览器/WebView 支持 Chrome 102+（fnOS 桌面 WebView 满足）。用户在地址栏手输 `/ui/...` 仍会 404（预期行为）。真机除手工 SFTP 部署外，已重新 `fnpack build` 双包并核对包内 `ui/cgi_proxy.py` 与真机部署版 md5 一致（中文包 `9dfee3c8…`）。
 
 ---
 
@@ -295,4 +295,4 @@ cd lsa-fnos        # 或 lsa-fnos-en
 - **2026-10-13（真机验证）**：在 `192.168.5.24` 完成整体验证，产出 `VERIFICATION_REPORT_2026-10-13.md`。提交 `ae36597`。
 - **2026-10-13（修复 HTTPS 入口）**：定位并修复"HTTPS(5667) 打开应用空白破图"。根因是端口服务模式在 HTTPS 门户下把 iframe 指向无 TLS 的 2463；改用 index.cgi 同源路径入口。同步更新 `app/ui/config`（中英双包）、`FNOS_DEV_GUIDE.md` §4/§14、`HANDOVER.md` §5/§10，新增 `HTTPS_ACCESS_FIX_2026-10-13.md`。提交 `5ed44cc`。
 - **2026-10-13（升级流程实测）**：用新构建的 FPK 在真机走完整部署链路，得出「fnOS 无本地 FPK 就地升级能力（`10236`），实际路径为卸载 → 安装」的结论；安装后逐项验证（注册表自动刷新为 CGI、本地化落地、双门户渲染）全部通过；并发现开机看门狗失效、卸载残留 `lsa-fnos-start`、`uninstall_init` 的 `|| exit 1` 过于激进、`ExecStop` 缺 `cd`、`upgrade_*` 属死代码等 7 项新问题。新增 `UPGRADE_FLOW_VERIFICATION_2026-10-13.md`、`docs/upgrade-flow/`；更新本文件 §5.4/§8/§10/§10.1。
-- **2026-10-13（修复登录跳转 404）**：修复"登录后跳到 fnOS 404"。根因是 GWT 用 `location.href = '/ui/core/index.html?...'` 做跨文档赋值，而 `href` 是 Location 实例上的 `[LegacyUnforgeable]` 属性、原型上无描述符，原有拦截器补不进去。改用 Navigation API `navigate` 事件 + `event.intercept()` 兜底（带 `/ui/` 前缀白名单与 `location.replace` 兜底），删除 `location.href` 死代码，`rewriteUrl` 增加 `normalizeToPath` 归一化。中英双包同步（仅 `CGI_BASE` 不同）。真机实测完整登录闭环（入口 → core 页 → server 控制台，控制器 PERC H740P 状态"最佳"）。新增 `LOGIN_NAV_FIX_2026-10-13.md`；更新本文件 §5.1、§10.1。
+- **2026-10-13（修复登录跳转 404）**：修复"登录后跳到 fnOS 404"。根因是 GWT 用 `location.href = '/ui/core/index.html?...'` 做跨文档赋值，而 `href` 是 Location 实例上的 `[LegacyUnforgeable]` 属性、原型上无描述符，原有拦截器补不进去。改用 Navigation API `navigate` 事件 + `event.intercept()` 兜底（带 `/ui/` 前缀白名单与 `location.replace` 兜底），删除 `location.href` 死代码，`rewriteUrl` 增加 `normalizeToPath` 归一化。中英双包同步（仅 `CGI_BASE` 不同）。真机实测完整登录闭环（入口 → core 页 → server 控制台，控制器 PERC H740P 状态"最佳"）。部署：先手工 SFTP 替换 `/vol1/@appcenter/lsa/ui/cgi_proxy.py` 完成验证，再重新 `fnpack build` 双包并核对包内该文件 md5 与真机一致（中文包 `9dfee3c8…`，新 `lsa.fpk` md5 `ca4b9abb…`、`lsaen.fpk` md5 `48d1a8e9…`）。新增 `LOGIN_NAV_FIX_2026-10-13.md`；更新本文件 §5.1、§10.1、§12。
