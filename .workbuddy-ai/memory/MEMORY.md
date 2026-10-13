@@ -19,8 +19,23 @@
 3. `app/ui/cgi_proxy.py`：`CGI_BASE` 路径 `lsa` vs `lsaen`；`app/ui/config` 的 desktop 入口 title/name。
 - 英文包**不含** `message_zh.js` 和 `languages/` 目录；两个 README.md 完全相同（沿用中文说明，属遗漏）。
 
+## 飞牛 fnOS 开发规范（2026-10-13 学习）
+- 技能手册：根目录 **`FNOS_DEV_GUIDE.md`**（改本项目前先读它，§14 是 LSA 与官方规范的差异清单）。
+- 参考资料：`reference-snapshot/`（门户文档 HTML + `@trimjs/web-app` 0.4.2 SDK + `_extracted/` 纯文本）。
+- 三种访问模型：**端口服务**（LSA 当前用）/ **index.cgi**（不支持 WebSocket）/ **统一网关**（`gatewayPrefix`+`gatewaySocket`，注入 `X-Trim-Userid/Isadmin/Username`，适合复用系统域名+登录态+常驻服务）。
+- 铁律：脚本用 `TRIM_APPDEST/TRIM_PKGETC/TRIM_PKGVAR/TRIM_SERVICE_PORT`，勿硬编码路径与端口；`main` 退出码 0=运行/3=未运行/1=失败；错误写 `TRIM_TEMP_LOGFILE`。
+- 调 JS SDK 必须 `micro_app=true`；后端开放 API 走 Unix Socket `/var/run/trim_open_gateway_apiscope.socket` + `Authorization: Bearer $TRIM_API_TOKEN`；系统 ≥1.2.0401、App ≥1.34.0。
+- 官方默认 `run-as=package` 且不推荐 root；LSA 因需访问 RAID 设备节点而用 root，属有理由偏离。
+- 读 HTML 文档注意：快照部分文件含 NUL 字节，Read 工具会判为二进制，需用 python 去 NUL。
+
+## 版本控制约定（2026-10-13 建立）
+- 已 `git init`，分支 `main`，本地身份 `LSA fnOS Maintainer <maintainer@local>`；仓库在 `//192.168.5.141/codex/LSA_Linux`（网络盘，已加 safe.directory）。
+- **必须保持 `.gitattributes`（`* text=auto eol=lf`）与 `core.autocrlf=false`**：否则 cmd/ 与 app/ui/ 脚本在 Windows 检出时会变 CRLF，部署到 Linux 后 shebang 失效。
+- 忽略 `*.fpk`、`fnpack-*.exe`、`tools/skill/bin/`；**deb 必须入库**（不可再生）。
+- 交接文档：根目录 `HANDOVER.md`。首提交 `b1f9650`。
+
 ## 待办/风险（接管时注意）
-- 无版本控制，建议 `git init`。
+- 无版本控制 → 已解决（见上）。
 - `cmd/main` 与 systemd wrapper `lsa-fnos-start` 里 WEB_PORT/BACKEND_PORT **硬编码 2463/9000**，与安装向导自定义端口不完全一致（自定义端口非充分验证路径）。
 - `install_callback` 硬编码 `/lib/x86_64-linux-gnu` 兼容软链（libcrypt/libldap/liblber），依赖具体发行版布局。
 - `main` 用 `pkill -9 -f '/bin/LSA'`，范围偏宽。

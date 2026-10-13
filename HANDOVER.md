@@ -106,9 +106,13 @@ fnOS 桌面图标 (app/ui/config, type=iframe, port=${wizard_web_port})
 
 ---
 
+> **规范对照与开发技能**：飞牛 fnOS 应用开发的完整规范（访问模型、manifest、权限资源、生命周期、环境变量、向导、开放 API）已整理为 `FNOS_DEV_GUIDE.md`，其中 §14 专门列出本项目与官方规范的差异清单与改进方向。改动本项目前建议先读该文档。
+
 ## 5. 移植机制详解
 
-### 5.1 同源代理（解决"fnOS 不允许第三方应用加 nginx 路由"）
+> **重要澄清（访问模型）**：`RELEASE_NOTES.md` 8.17.10 记录"应用入口改为**端口服务模式**：桌面图标以 iframe 直连 LSA Web 管理端口"。因此**当前生效的入口是端口服务**（`app/ui/config` 的 `port=${wizard_web_port}` + `url=/ui/remoteserver/index.html`，iframe 直连 LSA 自带 nginx 的 2463）。包内的 CGI 代理（`index.cgi` + `cgi_proxy.py`）是**此前的实现，现已退居遗留/备用路径**；其是否仍可达、是否可清理，需在真机确认。
+
+### 5.1 同源代理（历史机制，现为遗留/备用）
 
 LSA 是 GWT 应用，使用 `/ui/core/index.html`、`/LSI/Storage/MR/API/...` 这类**原点绝对路径**导航，这些路径在 fnOS 域名下不存在。fnOS 又不允许第三方应用往自身 nginx 加 location。
 
