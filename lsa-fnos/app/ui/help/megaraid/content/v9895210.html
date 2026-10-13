@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="concept"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="DC.Relation" scheme="URI" content="../content/v9896067.html"><meta name="DC.Relation" scheme="URI" content="../content/v9895228.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_raid_level_migration"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v9895210"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>RAID 级别迁移</title></head><body id="v9895210"><main role="main"><article role="article" aria-labelledby="v9895210__v9895211">
+  <h1 class="title topictitle1" id="v9895210__v9895211">RAID 级别迁移</h1>
+  
+  <div class="body conbody" id="v9895210__v9895224">
+    <p class="p" id="v9895210__v9895274">RAID 级别迁移是将一种 RAID 配置转换为另一种配置的过程。您可以在磁盘组级别执行 RAID 级别迁移。下表描述了有效的 RAID 级别迁移矩阵。</p>
+    <table class="table frame-all table--pgwide-0" id="v9895210__table_1"><caption><span class="table--title-label">表 1. </span><span id="v9895210__title_1" class="title">磁盘组 – RAID 级别迁移</span></caption><colgroup><col style="width:3.375in"><col style="width:3.375in"></colgroup><thead class="thead" id="v9895210__thead_1">
+          <tr class="row rowsep-1" id="v9895210__row_1">
+            <th class="entry colsep-1 rowsep-1" id="v9895210__entry_1">初始 RAID 级别</th>
+            <th class="entry colsep-1 rowsep-1" id="v9895210__entry_2">迁移的 RAID 级别</th>
+          </tr>
+        </thead><tbody class="tbody" id="v9895210__tbody_1">
+          <tr class="row rowsep-1" id="v9895210__row_2">
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_3" headers="v9895210__entry_1 ">RAID 0</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_4" headers="v9895210__entry_2 ">RAID 1</td>
+          </tr>
+          <tr class="row rowsep-1" id="v9895210__row_3">
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_5" headers="v9895210__entry_1 ">RAID 0</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_6" headers="v9895210__entry_2 ">RAID 5</td>
+          </tr>
+          <tr class="row rowsep-1" id="v9895210__row_4">
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_7" headers="v9895210__entry_1 ">RAID 0</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_8" headers="v9895210__entry_2 ">RAID 6</td>
+          </tr>
+          <tr class="row rowsep-1" id="v9895210__row_5">
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_9" headers="v9895210__entry_1 ">RAID 1</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_10" headers="v9895210__entry_2 ">RAID 0</td>
+          </tr>
+          <tr class="row rowsep-1" id="v9895210__row_6">
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_11" headers="v9895210__entry_1 ">RAID 1</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_12" headers="v9895210__entry_2 ">RAID 5</td>
+          </tr>
+          <tr class="row rowsep-1" id="v9895210__row_7">
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_13" headers="v9895210__entry_1 ">RAID 1</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_14" headers="v9895210__entry_2 ">RAID 6</td>
+          </tr>
+          <tr class="row rowsep-1" id="v9895210__row_8">
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_15" headers="v9895210__entry_1 ">RAID 5</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_16" headers="v9895210__entry_2 ">RAID 0</td>
+          </tr>
+          <tr class="row rowsep-1" id="v9895210__row_9">
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_17" headers="v9895210__entry_1 ">RAID 5</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_18" headers="v9895210__entry_2 ">RAID 6</td>
+          </tr>
+          <tr class="row rowsep-1" id="v9895210__row_10">
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_19" headers="v9895210__entry_1 ">RAID 6</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_20" headers="v9895210__entry_2 ">RAID 0</td>
+          </tr>
+          <tr class="row rowsep-0" id="v9895210__row_11">
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_21" headers="v9895210__entry_1 ">RAID 6</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v9895210__entry_22" headers="v9895210__entry_2 ">RAID 5</td>
+          </tr>
+        </tbody></table>
+  </div>
+<nav role="navigation" class="related-links"><ul class="ullinks"><li class="link ulchildlink"><strong><a href="../content/v9895228.html">迁移磁盘组的 RAID 级别</a></strong><br></li></ul><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v9896067.html" title="LSI 存储管理软件可让您监控磁盘组和跨区磁盘组的状态。">管理磁盘组</a></div></div></nav></article></main></body></html>

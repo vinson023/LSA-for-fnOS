@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="reference"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="DC.Relation" scheme="URI" content="../content/v11861640.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v12290802"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>事件历史记录的行为</title></head><body id="v12290802"><main role="main"><article role="article" aria-labelledby="v12290802__v12290803">
+  <h1 class="title topictitle1" id="v12290802__v12290803">事件历史记录的行为</h1>
+  
+  <div class="body refbody" id="v12290802__v12290816">
+    <section class="section" id="v12290802__v12290817">
+      <p class="p">LSI Storage Authority 支持检索以前事件的列表，也称为事件历史记录。</p>
+      <figure class="fig fignone" id="v12290802__fig_2"><figcaption><span class="fig--title-label">图 1. </span>事件历史记录的行为</figcaption>
+        
+        <img class="image" id="v12290802__image_4" height="282" src="LSA8-Behavior-Event-History.png" width="550">
+      </figure>
+      <p class="p">LSA 以三个不同的日志级别维护事件历史记录：</p>
+      <ul class="ul" id="v12290802__v12290818">
+        <li class="li" id="v12290802__v12290819">
+          <p class="p"><code class="ph codeph" id="v12290802__v12290821">0</code> – 始终从固件读取。</p>
+          <p class="p">固件维护单独的空间来保存事件历史记录，可通过 <code class="ph codeph" id="v12290802__codeph_1">LSA.conf</code> 文件进行配置。</p>
+          <ul class="ul" id="v12290802__v12831556">
+            <li class="li" id="v12290802__v12831557"><strong class="ph b">MegaRAID 行为</strong> – 事件源是固件。所有事件都保存在固件中，并且可以在任何时间点检索。</li>
+            <li class="li" id="v12290802__v12831559"><strong class="ph b">非 MegaRAID 行为</strong> – 事件源是固件、驱动程序和 StoreLib。固件生成的事件只能持久化，之后才能检索。</li>
+          </ul>
+        </li>
+        <li class="li" id="v12290802__v12290830"><code class="ph codeph" id="v12290802__v12290832">1</code> – 默认情况下，仅在日志文件中保留非 MegaRAID 事件。
+          <ul class="ul" id="v12290802__v12290833">
+            <li class="li" id="v12290802__v12290834">非 MegaRAID 事件包括 IR/HBA。</li>
+          </ul>
+        </li>
+        <li class="li" id="v12290802__v12290836"><code class="ph codeph" id="v12290802__v12290838">255</code> – 在日志文件中保留所有事件。
+          <ul class="ul" id="v12290802__v12290839">
+            <li class="li" id="v12290802__v12290840">LSA 监控下各个控制器的日志位置 <span class="ph filepath" id="v12290802__v12290842">$LSA_HOME/Conf/监视器/日志</span>。</li>
+            <li class="li" id="v12290802__v12290843">文件中保存的最大事件数为 300，可通过 <code class="ph codeph" id="v12290802__v12290845">LSA.conf</code> 文件配置。</li>
+            <li class="li" id="v12290802__v12290846">单个页面可检索的最大事件数为 30，可通过 <code class="ph codeph" id="v12290802__v12290848">LSA.conf</code> 文件配置。</li>
+            <li class="li" id="v12290802__v12290849">LSA 在日志文件中维护一组事件。</li>
+            <li class="li" id="v12290802__v12290851">LSA 从 LSA 启动时开始维护网关、独立和 DirectAgent 安装程序的事件历史记录。</li>
+            
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v11861640.html" title="本节概述了在 VMware ESXi 操作系统上运行和管理 LSA 所必需的安装前和安装后要求。">管理 VMware ESXi 操作系统上的 LSA</a></div></div></nav></article></main></body></html>
+

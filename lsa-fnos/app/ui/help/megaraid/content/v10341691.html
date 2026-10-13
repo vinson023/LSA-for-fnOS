@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="DC.Relation" scheme="URI" content="../content/v12398236.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_create_cc_vd"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v10341691"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>创建 CacheCade 虚拟磁盘</title></head><body id="v10341691"><main role="main"><article role="article" aria-labelledby="v10341691__v10341692">
+  <h1 class="title topictitle1" id="v10341691__v10341692">创建 CacheCade 虚拟磁盘</h1>
+  
+  <div class="body taskbody" id="v10341691__v10341705">
+    <section class="section context" id="v10341691__v10341706">
+      <p class="p" id="v10341691__v10341896">执行以下步骤创建 CacheCade 虚拟磁盘。</p>
+    </section>
+    <ol class="ol steps" id="v10341691__v10341897"><li class="li step stepexpand" id="v10341691__v10341898">
+        <span class="ph cmd" id="v10341691__v10341899">在服务器仪表板或控制器仪表板中，选择 <span class="ph menucascade" id="v10341691__v10341900"><span class="ph uicontrol" id="v10341691__v10341901">配置</span><abbr title="然后"> &gt; </abbr><span class="ph uicontrol" id="v10341691__v10341902">CacheCade – SSD 缓存配置</span></span>。</span>
+        <div class="itemgroup stepresult" id="v10341691__v10341903">将显示 <span class="keyword wintitle" id="v10341691__v10341904">CacheCade – SSD 缓存配置</span> 窗口。
+          <figure class="fig fignone" id="v10341691__v10341905"><figcaption><span class="fig--title-label">图 1. </span>CacheCade – SSD 缓存配置窗口</figcaption>
+            
+            <br><div class="imageleft"><img class="image imageleft" height="220" src="LSA_CacheCade_SSDCaching-Configuration.png" width="550"></div><br>
+          </figure>
+        </div>
+      </li><li class="li step stepexpand" id="v10341691__v10341907">
+        <span class="ph cmd" id="v10341691__v10341908">为磁盘组选择 RAID 级别。例如，选择 <span class="ph uicontrol" id="v10341691__v10341909">RAID 0</span>。</span>
+      </li><li class="li step stepexpand" id="v10341691__v11484385">
+        <span class="ph cmd" id="v10341691__v11484386">（可选）单击 <span class="ph uicontrol" id="v10341691__v11484387">比较和选择</span> 查看每个 RAID 级别的详细信息。</span>
+      </li><li class="li step stepexpand" id="v10341691__v10341913">
+        <span class="ph cmd" id="v10341691__v10341914">如果要应用加密逻辑来保护虚拟磁盘中的数据，请选择 <span class="ph uicontrol" id="v10341691__v10341915">加密</span> 复选框。</span>
+      </li><li class="li step stepexpand" id="v10341691__v10341916">
+        <span class="ph cmd" id="v10341691__v10341917">单击 <span class="ph uicontrol" id="v10341691__v10341918">下一步</span>。</span>
+      </li><li class="li step stepexpand" id="v10341691__v10341919">
+        <span class="ph cmd" id="v10341691__v10341920">单击 <span class="ph uicontrol" id="v10341691__v10341921">添加 SSD 物理磁盘</span>，将 SSD 物理磁盘添加到磁盘组。</span>
+        <div class="itemgroup stepresult" id="v10341691__v10341922">将显示 <span class="keyword wintitle" id="v10341691__v10341923">可用的未配置 SSD 物理磁盘</span> 窗口。
+          <div class="p" id="v10341691__v10341924">
+            <figure class="fig fignone" id="v10341691__v10341925"><figcaption><span class="fig--title-label">图 2. </span>可用的未配置 SSD 物理磁盘窗口</figcaption>
+              
+              <br><div class="imageleft"><img class="image imageleft" height="269" src="LSA_cc_create_vd_available_SSD.png" width="450"></div><br>
+            </figure>
+          </div>
+        </div>
+      </li><li class="li step stepexpand" id="v10341691__v10341927">
+        <span class="ph cmd" id="v10341691__v10341928">选择 SSD 物理磁盘，然后单击 <span class="ph uicontrol" id="v10341691__v10341984">添加 SSD 物理磁盘</span>。</span>
+      </li><li class="li step stepexpand" id="v10341691__v10341929">
+        <span class="ph cmd" id="v10341691__v10341930">单击 <span class="ph uicontrol" id="v10341691__v10341931">添加 CacheCade – SSD 缓存虚拟磁盘</span> 将 CacheCade 虚拟磁盘添加到磁盘组。</span>
+        <div class="itemgroup stepresult" id="v10341691__v10341932">将显示 <span class="keyword wintitle" id="v10341691__v10341933">CacheCade – SSD 缓存虚拟磁盘设置</span> 窗口。
+          <figure class="fig fignone" id="v10341691__v10341934"><figcaption><span class="fig--title-label">图 3. </span>CacheCade – SSD 缓存虚拟磁盘设置窗口</figcaption>
+            
+            <img class="image" id="v10341691__image_2" height="621" src="LSA_cc_vd_settings.png" width="550">
+          </figure>
+          <div class="note note note_note" id="v10341691__v10436790"><span class="note__title">注意：</span> 
+            <p class="p" id="v10341691__v10436791">您只能创建一个 CacheCade – SSD 缓存虚拟磁盘，因为该虚拟磁盘的全部容量都用于创建 CacheCade – SSD 缓存虚拟磁盘。</p>
+          </div>
+        </div>
+      </li><li class="li step stepexpand" id="v10341691__v10341950">
+        <span class="ph cmd" id="v10341691__v10341951">在 <span class="ph uicontrol" id="v10341691__v10341952">CacheCade – SSD 缓存虚拟磁盘名称</span> 字段中输入 CacheCade – SSD 缓存虚拟磁盘名称。</span>
+        <div class="itemgroup info" id="v10341691__v11484388">
+          <p class="p" id="v10341691__v11484389">虚拟磁盘名称最多可以有 15 个字符。</p>
+        </div>
+      </li><li class="li step stepexpand" id="v10341691__v10341955">
+        <span class="ph cmd" id="v10341691__v10341956">指定 CacheCade – SSD 缓存虚拟磁盘的写入策略。</span>
+          <div class="itemgroup info" id="v10341691__v24023061">写入策略取决于 阵列卡电池/超级电容 的状态。如果未安装 阵列卡电池/超级电容、电量不足、发生故障或正在充电，则当前写入策略将切换为直写。</div>
+        <div class="itemgroup info" id="v10341691__v11484390">选项如下：</div>
+        <ul class="ul choices" id="v10341691__v10341957">
+          <li class="li choice" id="v10341691__v10341962"><span class="ph uicontrol" id="v10341691__v10341963">直写</span></li>
+          <li class="li choice" id="v10341691__v10341960"><span class="ph uicontrol" id="v10341691__v10341961">回写</span></li>
+        </ul>
+      </li><li class="li step stepexpand" id="v10341691__v10341965">
+        <span class="ph cmd" id="v10341691__v10341966">单击 <span class="ph uicontrol" id="v10341691__v10341967">添加 CacheCade – SSD 缓存虚拟磁盘</span>。</span>
+        <div class="itemgroup info" id="v10341691__v10341968">新创建的 CacheCade – SSD 缓存虚拟磁盘出现在 <span class="keyword wintitle" id="v10341691__v10341969">CacheCade – SSD 缓存配置</span> 窗口正下方 <span class="ph uicontrol" id="v10341691__v10341970">添加 CacheCade – SSD 缓存虚拟磁盘</span> 部分。</div>
+        <div class="itemgroup info" id="v10341691__v10341971">
+          <p class="p" id="v10341691__v10341972">如果要在完成配置之前修改 CacheCade – SSD 缓存虚拟磁盘设置，请单击 <img class="image" height="16" src="LSA_modify_vd_icon.png" width="21"> 图标。</p>
+        </div>
+      </li><li class="li step stepexpand" id="v10341691__v10341938">
+        <span class="ph cmd" id="v10341691__v10341939">单击 <span class="ph uicontrol" id="v10341691__v10341940">完成</span>。</span>
+        <div class="itemgroup stepresult" id="v10341691__v10341941">将显示一条消息，表明配置已完成。</div>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v12398236.html">使用 CacheCade Pro 2.0 功能</a></div></div></nav></article></main></body></html>
+

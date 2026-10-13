@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="DC.Relation" scheme="URI" content="../content/v13215545.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_configuring-lsa-on-gateway-servers-for-optimizing-events"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v13215586"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>在网关服务器上配置 LSA 以优化事件</title></head><body id="v13215586"><main role="main"><article role="article" aria-labelledby="v13215586__v13215587">
+  <h1 class="title topictitle1" id="v13215586__v13215587">在网关服务器上配置 LSA 以优化事件</h1>
+  
+  <div class="body taskbody" id="v13215586__v13215599">
+    <section class="section context" id="v13215586__v13215600">
+      <p class="p" id="v13215586__v13215601">执行以下步骤在网关服务器上配置 LSA 客户端以接收最佳事件通知。</p>
+      <div class="note note note_note"><span class="note__title">注意：</span> 网关服务器和访问服务器应具有相同的 LSA 版本。</div>
+    </section>
+    <ol class="ol steps" id="v13215586__v13215602"><li class="li step stepexpand" id="v13215586__v13215603">
+        <span class="ph cmd" id="v13215586__v13215604">浏览至 <span class="ph filepath" id="v13215586__v13215645">LSA_HOME/conf</span> 目录并打开 <code class="ph codeph" id="v13215586__v13215646">LSA.conf</code> 文件。</span>
+      </li><li class="li step stepexpand" id="v13215586__v13215647">
+        <span class="ph cmd" id="v13215586__v13215648">在 <code class="ph codeph" id="v13215586__v13215649">LSA.conf</code> 文件中查找 <code class="ph codeph" id="v13215586__v13215650">events_callback_at_once_vmware</code> 字段。</span>
+      </li><li class="li step stepexpand" id="v13215586__v13215651">
+        <span class="ph cmd" id="v13215586__v13215652">将 <code class="ph codeph" id="v13215586__v13215654">events_callback_at_once_vmware</code> 字段的值设置为 <kbd class="ph userinput" id="v13215586__v13215653">1</kbd>。</span>
+        <div class="itemgroup info" id="v13215586__v13215655">
+          <p class="p" id="v13215586__v13215656">如果要禁用事件优化，请将此值设置为 <kbd class="ph userinput" id="v13215586__v13215657">0</kbd>。默认值为 <kbd class="ph userinput" id="v13215586__v13215658">0</kbd>。</p>
+        </div>
+      </li><li class="li step stepexpand" id="v13215586__v13215659">
+        <span class="ph cmd" id="v13215586__v13215660">保存并关闭 <code class="ph codeph" id="v13215586__v13215661">LSA.conf</code> 文件。</span>
+        <div class="itemgroup info" id="v13215586__v13295244">
+          <div class="p" id="v13215586__v13295245">
+            <div class="note note note_note" id="v13215586__v13295246"><span class="note__title">注意：</span> 还需要更改 CIM 提供程序才能使其生效。</div>
+          </div>
+        </div>
+      </li><li class="li step stepexpand" id="v13215586__v13295248">
+        <span class="ph cmd" id="v13215586__v13295249">重新启动 LSA 服务。</span>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v13215545.html">优化事件通知</a></div></div></nav></article></main></body></html>
+

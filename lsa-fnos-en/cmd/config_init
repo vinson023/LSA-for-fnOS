@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# LSA Pre-Config Script for fnOS
+# This script runs when configuration changes (e.g., port change)
+
+echo "Updating LSA configuration..."
+
+LSA_HOME="/opt/lsi/LSIStorageAuthority"
+LSA_SERVICE="LsiSASH"
+
+# Stop service before config change
+if service $LSA_SERVICE status > /dev/null 2>&1; then
+    service $LSA_SERVICE stop > /dev/null 2>&1
+fi
+
+# Apply new port configuration
+WEB_PORT="${wizard_web_port:-2463}"
+LSA_PORT="${wizard_lsa_port:-9000}"
+
+if [ -d "$LSA_HOME" ]; then
+    cat > "$LSA_HOME/conf/fnos_ports.conf" << EOF
+web=$WEB_PORT
+service=$LSA_PORT
+EOF
+
+    # Update nginx port
+    if [ -f "$LSA_HOME/server/conf/nginx.conf" ]; then
+        sed -i "s/listen [0-9]\+ default_server/listen $WEB_PORT default_server/" "$LSA_HOME/server/conf/nginx.conf"
+        sed -i "s/listen [0-9]\+/listen $WEB_PORT/" "$LSA_HOME/server/conf/nginx.conf"
+    fi
+    
+    # Update LSA port
+    if [ -f "$LSA_HOME/conf/LSA.conf" ]; then
+        sed -i "s/listening_port = [0-9]\+/listening_port = $LSA_PORT/" "$LSA_HOME/conf/LSA.conf"
+        sed -i "s/client_listening_port = [0-9]\+/client_listening_port = $WEB_PORT/" "$LSA_HOME/conf/LSA.conf"
+        sed -i 's/^readOnly = .*/readOnly = 0/' "$LSA_HOME/conf/LSA.conf"
+        sed -i 's/^full_access_groups = .*/full_access_groups = Administrators,fnos-admin/' "$LSA_HOME/conf/LSA.conf"
+        sed -i 's/^readonly_access_groups = .*/readonly_access_groups = /' "$LSA_HOME/conf/LSA.conf"
+    fi
+
+fi
+
+echo "Configuration updated"
+exit 0

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="DC.Relation" scheme="URI" content="../content/v10430547.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v26588395"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>使用 LDAP 身份验证</title></head><body id="v26588395"><main role="main"><article role="article" aria-labelledby="v26588395__v10430548">
+  <h1 class="title topictitle1" id="v26588395__v10430548">使用 LDAP 身份验证</h1>
+  
+  <div class="body taskbody" id="v26588395__v10430561">
+    <section class="section context" id="v26588395__v10430562">要访问 LDAP 服务，LSI 存储管理服务器必须了解有关 LDAP 服务器设置的一些信息。除了 LDAP 身份验证的用户名和密码详细信息之外，LSA 后端还必须知道一些参数才能启用身份验证。执行以下步骤来配置这些参数 <span class="ph filepath" id="v26588395__v10430605">lsa.conf</span> 文件在 <span class="ph filepath" id="v26588395__v10430606">LSIStorageAuthority/conf</span> 目录。</section>
+    <ol class="ol steps" id="v26588395__v10430563"><li class="li step stepexpand" id="v26588395__v10430564">
+        <span class="ph cmd" id="v26588395__v10430565">打开 <span class="ph filepath" id="v26588395__v10430607">lsa.conf</span> 文件在 <span class="ph filepath" id="v26588395__v10430608">LSIStorageAuthority/conf</span> 目录。</span>
+      </li><li class="li step stepexpand" id="v26588395__v10645053">
+        <span class="ph cmd" id="v26588395__v10645054">为 <code class="ph codeph" id="v26588395__v10645055">ldap_mode</code> 字段输入值。设置为 <code class="ph codeph" id="v26588395__v10645056">0</code> 时，将禁用 LSI 存储管理软件的 LDAP 身份验证；设置为 <code class="ph codeph" id="v26588395__v10645057">1</code> 时，将启用 LDAP 身份验证。</span>
+        <div class="itemgroup stepxmp" id="v26588395__v10645058">
+          <p class="p" id="v26588395__v10645059"><strong class="ph b">示例：</strong></p>
+          <div class="p" id="v26588395__v10645060">
+            <pre class="pre codeblock" id="v26588395__v10645061"><code>LDAP Login</code></pre>
+            <pre class="pre codeblock" id="v26588395__v10645062"><code>ldap_mode = 1</code></pre>
+          </div>
+        </div>
+      </li><li class="li step stepexpand" id="v26588395__v10430609">
+        <span class="ph cmd" id="v26588395__v10430610">在 <code class="ph codeph" id="v26588395__v10430611">ldap_server</code> 字段中输入 LDAP 服务器主机名。此值用于连接指定的 LDAP 服务器以进行用户身份验证。</span>
+        <div class="itemgroup stepxmp" id="v26588395__v10430612">
+          <p class="p" id="v26588395__v10430613"><strong class="ph b">示例：</strong></p>
+          <div class="p" id="v26588395__v10430614">
+            <pre class="pre codeblock" id="v26588395__v10430615"><code># LDAP Server</code></pre>
+            <pre class="pre codeblock" id="v26588395__v10436733"><code>ldap_server = <var class="keyword varname" id="v26588395__v10436734">&lt;IP LDAP 服务器地址&gt;</var></code></pre>
+          </div>
+        </div>
+      </li><li class="li step stepexpand" id="v26588395__v10430617">
+        <span class="ph cmd" id="v26588395__v10430618">（可选）在 <code class="ph codeph" id="v26588395__v10430619">ldap_protocol_version</code> 字段中输入 LDAP 协议版本。此值定义用于创建 LDAP 会话的协议。</span>
+        <div class="itemgroup stepxmp" id="v26588395__v10430620">
+          <p class="p" id="v26588395__v10430621"><strong class="ph b">示例：</strong></p>
+          <div class="p" id="v26588395__v10430622">
+            <pre class="pre codeblock" id="v26588395__v10430623"><code># LDAP Protocol version</code></pre>
+            <pre class="pre codeblock" id="v26588395__v10436735"><code>ldap_protocol_version = v3</code></pre>
+          </div>
+        </div>
+        <div class="itemgroup info" id="v26588395__v11483781">默认值为 <code class="ph codeph" id="v26588395__v11483783">v3</code>.</div>
+      </li><li class="li step stepexpand" id="v26588395__v10430625">
+        <span class="ph cmd" id="v26588395__v10430626">在 <code class="ph codeph" id="v26588395__v10430627">ldap_binding</code> 字段中输入 LDAP 身份验证方式。在 LDAP 中，身份验证通过 Bind 操作提供。LDAP 支持以下三种身份验证模式：</span>
+        <div class="itemgroup info" id="v26588395__v10430628">
+          <div class="p" id="v26588395__v10430629">
+            <ul class="ul" id="v26588395__v10430630">
+              <li class="li" id="v26588395__v10430631">匿名 – 当创建 LDAP 会话时，即 LDAP 客户端连接到服务器时，会话的身份验证状态将设置为匿名模式。</li>
+              <li class="li" id="v26588395__v10430633">BASIC（默认） – 最简单的客户端身份验证形式是使用明文密码绑定到服务器。这种机制存在安全问题，因为密码可以从网络上读取。</li>
+              <li class="li" id="v26588395__v10430635">安全 – 更安全的方法是使用简单身份验证和安全层 (SASL) 身份验证机制，例如 DIGEST-MD5[4]。该方法基于客户端和服务器都已知的加密，允许简单的质询-响应方案。 SASL认证机制还能够协商数据加密以保护后续操作。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="itemgroup stepxmp" id="v26588395__v10436736">
+          <p class="p" id="v26588395__v10436737"><strong class="ph b">示例：</strong></p>
+          <div class="p" id="v26588395__v10436738">
+            <pre class="pre codeblock" id="v26588395__v10436739"><code># LDAP_BINDING</code></pre>
+            <pre class="pre codeblock" id="v26588395__v10436773"><code>ldap_binding = BASIC</code></pre>
+          </div>
+        </div>
+      </li><li class="li step stepexpand" id="v26588395__v10436740">
+        <span class="ph cmd" id="v26588395__v10436741">（可选）在 <code class="ph codeph" id="v26588395__v10436742">ldap_port_number</code> 字段中输入 LDAP 服务器端口号。</span>
+        <div class="itemgroup stepxmp" id="v26588395__v10436748">
+          <p class="p" id="v26588395__v10436749"><strong class="ph b">示例：</strong></p>
+          <div class="p" id="v26588395__v10436750">
+            <pre class="pre codeblock" id="v26588395__v10436751"><code># LDAP Port Number = 636</code></pre>
+            <pre class="pre codeblock" id="v26588395__v10436774"><code>ldap_port_number = 389</code></pre>
+          </div>
+        </div>
+      </li><li class="li step stepexpand" id="v26588395__v10436752">
+        <span class="ph cmd" id="v26588395__v10436753">在 <code class="ph codeph" id="v26588395__v10436754">dn_details</code> 字段中输入 DN（专有名称）详细信息，格式如下：</span>
+        <div class="itemgroup stepxmp" id="v26588395__v10436755">
+          <p class="p" id="v26588395__v10436756"><strong class="ph b">示例：</strong></p>
+          <div class="p" id="v26588395__v10436757">
+            <pre class="pre codeblock" id="v26588395__v13065230"><code># LDAP_DN_DETAILS</code></pre>
+            <pre class="pre codeblock" id="v26588395__v13065231"><code>dn_details={"DN":[{"key":"DC","values":["ldapdomain"]},{"key":"DC","values":["com"]},{"key":"ou","values":["TEST"]}]}</code></pre>
+            其中：
+            <ul class="ul" id="v26588395__v10436792">
+              <li class="li" id="v26588395__v10436793"><code class="ph codeph" id="v26588395__v10436795">DC</code> – 此属性包含域组件类型。</li>
+              <li class="li" id="v26588395__v10436796"><code class="ph codeph" id="v26588395__v10436798">ou</code> – 此属性包含组织单位名称。</li>
+            </ul>
+          </div>
+        </div>
+      </li><li class="li step stepexpand" id="v26588395__v10436759">
+        <span class="ph cmd" id="v26588395__v10436760">（可选）在 <code class="ph codeph" id="v26588395__v10436761">readOnly</code> 字段中输入 LDAP 用户访问权限详细信息。可用值如下：</span>
+        <div class="itemgroup info" id="v26588395__v10436762">
+          <div class="p" id="v26588395__v10436763">
+            <ul class="ul" id="v26588395__v10436764">
+              <li class="li" id="v26588395__v10436765"><code class="ph codeph" id="v26588395__v10436767">1</code>（默认）– 只读访问。</li>
+              <li class="li" id="v26588395__v10436768"><code class="ph codeph" id="v26588395__v10436770">0</code> – 完全访问。</li>
+            </ul>
+          </div>
+        </div>
+      </li><li class="li step stepexpand" id="v26588395__v10436771">
+        <span class="ph cmd" id="v26588395__v10436772">重新启动 nginx 服务和 LSI 存储管理服务以使更改生效。</span>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v10430547.html">域身份验证行为</a></div></div></nav></article></main></body></html>
+

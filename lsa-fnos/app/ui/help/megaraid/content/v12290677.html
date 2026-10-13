@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="DC.Relation" scheme="URI" content="../content/v11861640.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v12290677"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>收集 Windows 和 Linux 操作系统日志</title></head><body id="v12290677"><main role="main"><article role="article" aria-labelledby="v12290677__v12290678">
+  <h1 class="title topictitle1" id="v12290677__v12290678">收集 Windows 和 Linux 操作系统日志</h1>
+  
+  <div class="body taskbody" id="v12290677__v12290691">
+    <section class="section context" id="v12290677__v12290692">
+      <p class="p">成功安装 LSA 后，您可以重新创建问题以收集 Windows 和 Linux 所需的日志文件。</p>
+      <p class="p" id="v12290677__v12290697">执行以下步骤：</p>
+    </section>
+    <ol class="ol steps" id="v12290677__v12290693"><li class="li step stepexpand" id="v12290677__v12290694">
+        <span class="ph cmd" id="v12290677__v12290695">停止 <code class="ph codeph" id="v12290677__v12290698">LSAService</code>.</span>
+      </li><li class="li step stepexpand" id="v12290677__v12290699">
+        <span class="ph cmd" id="v12290677__v12290700">浏览至 <span class="ph filepath" id="v12290677__v12290701">LSA_HOME/会议</span> 目录并打开 <span class="ph filepath" id="v12290677__v12290702">LSA.conf</span> 文件。</span>
+        <div class="itemgroup info">
+          <div class="note important note_important"><span class="note__title">重要：</span> 在 Windows 操作系统中， <span class="ph filepath">LSA_HOME</span> 该目录只能由管理员访问。</div>
+        </div>
+      </li><li class="li step stepexpand" id="v12290677__v12290703">
+        <span class="ph cmd" id="v12290677__v12290704">在 <code class="ph codeph" id="v12290677__v12290705">LSA.conf</code> 文件中查找 <code class="ph codeph" id="v12290677__v12290706">log_level</code> 字段。</span>
+      </li><li class="li step stepexpand" id="v12290677__v12290707">
+        <span class="ph cmd" id="v12290677__v12290708">修改现有的或默认值<span class="keyword parmname" id="v12290677__v12831554">日志级别</span> 字段到 <code class="ph codeph" id="v12290677__v12290709">64</code>.</span>
+      </li><li class="li step stepexpand" id="v12290677__v12290710">
+        <span class="ph cmd" id="v12290677__v12290711">在 <code class="ph codeph" id="v12290677__v12290712">LSA.conf</code> 文件中查找 <code class="ph codeph" id="v12290677__v12290713">log_cache_mode</code> 字段。</span>
+      </li><li class="li step stepexpand" id="v12290677__v12290714">
+        <span class="ph cmd" id="v12290677__v12290715">修改现有的或默认值<span class="keyword parmname" id="v12290677__v12831555">日志缓存模式</span> 字段到 <code class="ph codeph" id="v12290677__v12290716">0</code>.</span>
+      </li><li class="li step stepexpand" id="v12290677__v12290717">
+        <span class="ph cmd" id="v12290677__v12290718">浏览至 <span class="ph filepath" id="v12290677__v12290719">LSA_HOME/logs</span> 目录并删除 <code class="ph codeph" id="v12290677__v12290720">logs.txt</code> 文件。</span>
+      </li><li class="li step stepexpand" id="v12290677__v12290721">
+        <span class="ph cmd" id="v12290677__v12290722">重新启动 <code class="ph codeph" id="v12290677__v12290723">LSAService</code>.</span>
+      </li><li class="li step stepexpand" id="v12290677__v12290724">
+        <span class="ph cmd" id="v12290677__v12290725">重现问题后，请提供 <code class="ph codeph" id="v12290677__v12290727">LSA_HOME/logs</code> 目录中的 <code class="ph codeph" id="v12290677__v12290726">logs.txt</code> 文件。</span>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v11861640.html" title="本节概述了在 VMware ESXi 操作系统上运行和管理 LSA 所必需的安装前和安装后要求。">管理 VMware ESXi 操作系统上的 LSA</a></div></div></nav></article></main></body></html>
+

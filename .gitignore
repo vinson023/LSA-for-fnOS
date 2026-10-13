@@ -1,0 +1,13 @@
+# 构建产物：可由 fnpack build 重新生成，不入库
+*.fpk
+
+# 打包工具与真机验证工具的平台二进制：体积大，可按 README 重新获取
+fnpack-*-amd64.exe
+tools/skill/bin/
+
+# 临时与系统文件
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini

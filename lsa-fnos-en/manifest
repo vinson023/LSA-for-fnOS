@@ -1,0 +1,15 @@
+appname=lsaen
+version=8.17.10
+display_name=LSI Storage Authority
+desc=Web-based storage management for Broadcom/LSI SAS RAID controllers. Monitor controllers, physical drives, virtual drives, and drive groups, and perform RAID configuration and maintenance tasks.
+source=thirdparty
+platform=x86
+maintainer=Broadcom Inc
+maintainer_url=https://www.broadcom.com
+os_min_version=1.0.0
+desktop_uidir=ui
+desktop_applaunchname=lsaen.main
+service_port=2463
+ctl_stop=true
+checkport=false
+micro_app=true

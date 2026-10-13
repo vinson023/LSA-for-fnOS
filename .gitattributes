@@ -1,0 +1,10 @@
+# 默认按文本处理并在检出时使用 LF —— cmd/ 与 app/ui/ 下的脚本要部署到 Linux，
+# 若被转成 CRLF 会导致 shebang 失效、脚本无法执行。
+* text=auto eol=lf
+
+# 二进制文件不做任何换行转换
+*.png binary
+*.PNG binary
+*.deb binary
+*.exe binary
+*.fpk binary

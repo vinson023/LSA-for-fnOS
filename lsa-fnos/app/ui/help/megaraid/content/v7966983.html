@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Relation" scheme="URI" content="../content/v8068753.html"><meta name="DC.Relation" scheme="URI" content="../content/v13149687.html"><meta name="DC.Relation" scheme="URI" content="../content/v9374063.html"><meta name="DC.Relation" scheme="URI" content="../content/v8041820.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="version" content="Version 2.16"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_creating_configuration"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v7966983"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>使用高级配置选项创建新的存储配置</title></head><body id="v7966983"><main role="main"><article role="article" aria-labelledby="v7966983__v7966984">
+  <h1 class="title topictitle1" id="v7966983__v7966984">使用高级配置选项创建新的存储配置</h1>
+  
+  <div class="body taskbody" id="v7966983__v7966985">
+    <section class="section context" id="v7966983__v7966986">
+      <div class="p" id="v7966983__v7966993">高级配置过程提供了创建新存储配置的简单方法。与简单配置相比，高级配置为您提供了更大的灵活性，因为您可以在创建虚拟磁盘时选择磁盘和虚拟磁盘参数。此外，您可以使用高级配置过程来创建跨区磁盘组。
+        <div class="note note note_note" id="v7966983__v11480084"><span class="note__title">注意：</span> 当物理磁盘位于 <span class="keyword wintitle">准备移除</span> 状态，您无法使用该物理磁盘创建虚拟磁盘。</div>
+        执行以下步骤来创建高级存储配置。</div>
+    </section>
+    <ol class="ol steps" id="v7966983__v7966994"><li class="li step stepexpand" id="v7966983__v9314499">
+        <span class="ph cmd" id="v7966983__v9314500">在服务器仪表板或控制器仪表板上，选择 <span class="ph menucascade" id="v7966983__v9314501"><span class="ph uicontrol" id="v7966983__v9314502">配置</span><abbr title="然后"> &gt; </abbr><span class="ph uicontrol" id="v7966983__v9314503">高级配置</span></span>。</span>
+        <div class="itemgroup stepresult" id="v7966983__v9314504">将显示 <span class="keyword wintitle" id="v7966983__v9314505">高级配置</span> 窗口。
+          <figure class="fig fignone" id="v7966983__fig_2"><figcaption><span class="fig--title-label">图 1. </span>高级配置窗口</figcaption>
+            
+            <img class="image" height="286" src="lsa-advanced-config-window.png" width="650">
+          </figure>
+        </div>
+      </li><li class="li step stepexpand" id="v7966983__v7967193">
+        <span class="ph cmd" id="v7966983__v7967194">从以下列表中为磁盘组选择 RAID 级别 <span class="ph uicontrol">RAID 级别设置</span> 列表。</span>
+      </li><li class="li step stepexpand" id="v7966983__v11487162">
+        <span class="ph cmd" id="v7966983__v11487163">（可选）单击 <span class="ph uicontrol" id="v7966983__v11487164">比较和选择</span> 查看每个 RAID 级别的详细信息。</span>
+        <div class="itemgroup info" id="v7966983__v24022912">另请参阅 <a class="xref fm:SectionNumText" href="v7250985.html#v7250985" title="随后的部分详细描述了 RAID 级别。">RAID 级别</a> 了解更多信息。</div>
+        <div class="itemgroup info" id="v7966983__v11487165">
+          <p class="p">当您使用高级配置时，RAID 控制器支持以下 RAID 级别。</p>
+          <ul class="ul" id="v7966983__ul_1">
+            <li class="li">单磁盘 RAID 0 (SDR0) </li>
+            <li class="li">RAID 0</li>
+            <li class="li">RAID 1</li>
+            <li class="li">RAID 5</li>
+            <li class="li">RAID 6</li>
+            
+            <li class="li">RAID 10</li>
+            <li class="li">RAID 50</li>
+            <li class="li">RAID 60</li>
+          </ul>
+          <p class="p">窗口文本给出了您选择的 RAID 级别的简要描述。您可以选择的 RAID 级别取决于可用磁盘的数量。</p>
+          <div class="note note note_note"><span class="note__title">注意：</span> 当选择 SDR0 以外的任何 RAID 级别时，仅列出 MDRO 磁盘。添加 SDR0 RAID 级别是为了帮助您使用 SDR0 磁盘创建 SDR0 虚拟磁盘。不支持对单磁盘 RAID 0 虚拟磁盘执行带预读的 UNMAP 和 WSUNMAP。</div>
+        </div>
+      </li><li class="li step stepexpand" id="v7966983__v9314513">
+        <span class="ph cmd" id="v7966983__v9314514">（可选）如果要应用加密逻辑来保护虚拟磁盘中的数据，请选择 <span class="ph uicontrol" id="v7966983__v9314515">安全</span> 复选框。</span>
+        <div class="itemgroup info" id="v7966983__v11487167">
+          <p class="p" id="v7966983__v11487168">您可以将热备盘添加到除 RAID 0 之外的所有 RAID 级别。您还可以仅在存在具有安全功能的磁盘时创建安全虚拟磁盘。当没有受保护的磁盘时，此复选框将被禁用。</p>
+        </div>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">（可选）完成以下步骤之一以回收未使用的存储空间。</span>
+        <div class="itemgroup info">
+          <div class="note note note_note"><span class="note__title">注意：</span> 以下选项仅在支持 UNMAP 和 Write Same UNMAP 的磁盘可用时适用。</div>
+        </div>
+        <ul class="ul choices" id="v7966983__choices_1">
+          <li class="li choice">如果要在创建虚拟磁盘之前在物理磁盘上执行加密擦除操作，请选择 <span class="ph uicontrol" id="v7966983__uicontrol_5">加密擦除</span> 复选框。
+            <div class="note warning note_warning" id="v7966983__note_1"><span class="note__title">警告：</span> 此操作将删除磁盘中的所有数据。</div>
+          </li>
+          <li class="li choice">若要启用 UNMAP/Write Same UNMAP 以回收未使用的存储空间，请选择 <span class="ph uicontrol" id="v7966983__uicontrol_6">启用 UNMAP/Write Same UNMAP</span> 复选框。</li>
+        </ul>
+        <div class="itemgroup info" id="v7966983__info_3">
+          <p class="p" id="v7966983__p_3">您可以将热备盘添加到除 RAID 0 之外的所有 RAID 级别。此外，仅当存在具有安全功能的磁盘时，您才能创建安全虚拟磁盘。当没有受保护的磁盘时，此复选框将被禁用。</p>
+        </div>
+      </li><li class="li step stepexpand" id="v7966983__v7967195">
+        <span class="ph cmd" id="v7966983__v7967196">单击 <span class="ph uicontrol" id="v7966983__v9314518">下一步</span>。</span>
+      </li><li class="li step stepexpand" id="v7966983__v7967197">
+        <span class="ph cmd" id="v7966983__v7967198">单击 <span class="ph uicontrol" id="v7966983__v7968493">添加物理磁盘</span> 将物理磁盘添加到磁盘组。</span>
+        <div class="itemgroup stepresult" id="v7966983__v9314519">
+          
+          <div class="p" id="v7966983__v9374165">请参阅以下部分了解更多信息：
+            <ul class="ul" id="v7966983__v13149767">
+              <li class="li" id="v7966983__v13149768">有关如何添加物理磁盘的信息，请参阅 <a class="xref fm:SectionNumText" href="v13149687.html#v13149687">添加物理磁盘</a>。</li>
+              <li class="li" id="v7966983__v13149771">有关将热备盘添加到磁盘组的信息，请参阅 <a class="xref fm:SectionNumText" href="v9374063.html#v9374063">在配置创建期间添加热备盘</a>。</li>
+            </ul>
+          </div>
+        </div>
+      </li><li class="li step stepexpand" id="v7966983__v10548414">
+        <span class="ph cmd" id="v7966983__v10548415">使用滑块选择跨度深度。</span>
+      </li><li class="li step stepexpand" id="v7966983__v7968486">
+        <span class="ph cmd" id="v7966983__v7968487">单击 <span class="ph uicontrol" id="v7966983__v7968502">添加虚拟磁盘</span> 将虚拟磁盘添加到磁盘组。</span>
+        <div class="itemgroup stepresult" id="v7966983__v9374190">将显示 <span class="keyword wintitle" id="v7966983__v9374191">虚拟磁盘设置</span> 窗口。
+          <figure class="fig fignone" id="v7966983__v9374192"><figcaption><span class="fig--title-label">图 2. </span>虚拟磁盘设置窗口</figcaption>
+            
+            <img class="image" id="v7966983__image_6" height="460" src="LSA8-Virtual-Drive-Settings.png" width="350">
+          </figure>
+          <p class="p" id="v7966983__v9374195">有关配置虚拟磁盘的信息，请参阅 <a class="xref fm:ParaText" href="v8041820.html#v8041820">添加虚拟磁盘</a>。</p>
+        </div>
+      </li><li class="li step stepexpand" id="v7966983__v13149774">
+        <span class="ph cmd" id="v7966983__v13149775">单击 <span class="ph uicontrol" id="v7966983__v13149776">添加虚拟磁盘</span>。</span>
+      </li><li class="li step stepexpand" id="v7966983__v7968489">
+        <span class="ph cmd" id="v7966983__v7968490">单击 <span class="ph uicontrol" id="v7966983__v9314531">完成</span>。</span>
+        <div class="itemgroup stepresult" id="v7966983__v9314532">如果存储配置成功完成，则会出现一条确认消息。</div>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><ul class="ullinks"><li class="link ulchildlink"><strong><a href="../content/v13149687.html">添加物理磁盘</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/v9374063.html">在配置创建期间添加热备盘</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/v8041820.html">添加虚拟磁盘</a></strong><br></li></ul><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v8068753.html" title="本节详细介绍如何使用 LSI 存储管理软件在具有 Broadcom 控制器的系统上创建和修改存储配置。">配置</a></div></div></nav></article></main></body></html>
+

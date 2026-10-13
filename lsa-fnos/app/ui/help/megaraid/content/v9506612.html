@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Relation" scheme="URI" content="../content/v11169464.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="version" content="Version 2.16"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_changing_port_number"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v9506612"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>更改 LSI 存储管理应用程序端口号</title></head><body id="v9506612"><main role="main"><article role="article" aria-labelledby="v9506612__v9506613">
+  <h1 class="title topictitle1" id="v9506612__v9506613">更改 LSI 存储管理应用程序端口号</h1>
+  
+  <div class="body taskbody" id="v9506612__v9506619">
+    <section class="section context" id="v9506612__v9506620">
+      <p class="p" id="v9506612__v9506621">执行以下步骤更改 LSI 存储管理应用程序端口号。</p>
+    </section>
+    <ol class="ol steps" id="v9506612__v9506622"><li class="li step stepexpand" id="v9506612__v9506623">
+        <span class="ph cmd" id="v9506612__v9506624">打开 <span class="ph filepath" id="v9506612__v9506625">lsa.conf</span> 文件在 <span class="ph filepath" id="v9506612__v9506626">LSIStorageAuthority/conf</span> 目录。</span>
+      </li><li class="li step stepexpand" id="v9506612__v9506627">
+        <span class="ph cmd" id="v9506612__v9506628">在 <code class="ph codeph" id="v9506612__v9506629">listening_port</code> 字段中输入新的端口号。</span>
+        <div class="itemgroup info" id="v9506612__v11483796">
+          <p class="p" id="v9506612__v11483797">在分配端口号之前，请确保该端口可供使用。</p>
+        </div>
+      </li><li class="li step stepexpand" id="v9506612__v9506630">
+        <span class="ph cmd" id="v9506612__v9506631">保存 <span class="ph filepath" id="v9506612__v9506632">lsa.conf</span> 文件。</span>
+      </li><li class="li step stepexpand" id="v9506612__v9506633">
+        <span class="ph cmd" id="v9506612__v9506634">打开 <span class="ph filepath" id="v9506612__v9506635">nginx.conf</span> 文件在 <span class="ph filepath" id="v9506612__v9506636">LSIStorageAuthority/服务器/conf</span> 目录。</span>
+      </li><li class="li step stepexpand" id="v9506612__v9506637">
+        <span class="ph cmd" id="v9506612__v9506638">将所有 <code class="ph codeph" id="v9506612__v9506639">fastcgi_pass 127.0.0.1:9000</code> 实例替换为 <code class="ph codeph" id="v9506612__v11186851">fastcgi_pass 127.0.0.1:<var class="keyword varname" id="v9506612__v12831570">&lt;新端口号&gt;</var></code>。</span>
+      </li><li class="li step stepexpand" id="v9506612__v9506641">
+        <span class="ph cmd" id="v9506612__v9506642">保存 <span class="ph filepath" id="v9506612__v9506643">nginx.conf</span> 文件。</span>
+      </li><li class="li step stepexpand" id="v9506612__v9508117">
+        <span class="ph cmd" id="v9506612__v9508118">打开 <span class="ph filepath" id="v9506612__v9508119">端口配置属性</span> 文件在 <span class="ph filepath" id="v9506612__v9508120">LSI存储管理机构</span> 目录。</span>
+      </li><li class="li step stepexpand" id="v9506612__v9508121">
+        <span class="ph cmd" id="v9506612__v9508122">在 <code class="ph codeph" id="v9506612__v9508123">&lt;Client Port&gt; <var class="keyword varname" id="v9506612__v25181398">&lt;新端口号&gt;</var> &lt;/Client Port&gt;</code> 字段中输入新的端口号。</span>
+      </li><li class="li step stepexpand" id="v9506612__v9508124">
+        <span class="ph cmd" id="v9506612__v9508125">保存 <span class="ph filepath" id="v9506612__v9508126">端口配置属性</span> 文件。</span>
+      </li><li class="li step stepexpand" id="v9506612__v9506644">
+        <span class="ph cmd" id="v9506612__v9506645">重新启动 nginx 服务和 LSI 存储管理服务。</span>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v11169464.html" title="成功安装 LSI 存储管理后，您必须设置这些初始配置。">执行初始配置</a></div></div></nav></article></main></body></html>
+

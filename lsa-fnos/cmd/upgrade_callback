@@ -1,0 +1,132 @@
+#!/bin/bash
+
+# LSA Post-Upgrade Script for fnOS
+
+echo "Completing LSA upgrade..."
+
+LSA_HOME="/opt/lsi/LSIStorageAuthority"
+BACKUP_DIR="$TRIM_TEMP_UPGRADE_FOLDER"
+
+# Restore configuration
+if [ -n "$BACKUP_DIR" ] && [ -d "$BACKUP_DIR" ]; then
+    [ -f "$BACKUP_DIR/LSA.conf" ] && cp "$BACKUP_DIR/LSA.conf" "$LSA_HOME/conf/"
+    [ -f "$BACKUP_DIR/nginx.conf" ] && cp "$BACKUP_DIR/nginx.conf" "$LSA_HOME/server/conf/"
+    [ -f "$BACKUP_DIR/smtpServer" ] && cp "$BACKUP_DIR/smtpServer" "$LSA_HOME/bin/"
+    [ -f "$BACKUP_DIR/key.store" ] && cp "$BACKUP_DIR/key.store" "$LSA_HOME/bin/"
+    [ -f "$BACKUP_DIR/value.store" ] && cp "$BACKUP_DIR/value.store" "$LSA_HOME/bin/"
+    [ -d "$BACKUP_DIR/managedservers" ] && cp -r "$BACKUP_DIR/managedservers" "$LSA_HOME/bin/"
+    [ -d "$BACKUP_DIR/monitor" ] && cp -r "$BACKUP_DIR/monitor" "$LSA_HOME/conf/"
+    echo "Configuration restored"
+fi
+
+# Make the local LSA server writable for authenticated fnOS administrators.
+# The vendor package defaults readOnly to 1 and therefore omits destructive
+# controller and element actions even after a successful admin login.
+if [ -f "$LSA_HOME/conf/LSA.conf" ]; then
+    sudo sed -i 's/^readOnly = .*/readOnly = 0/' "$LSA_HOME/conf/LSA.conf"
+    sudo sed -i 's/^full_access_groups = .*/full_access_groups = Administrators,fnos-admin/' "$LSA_HOME/conf/LSA.conf"
+    sudo sed -i 's/^readonly_access_groups = .*/readonly_access_groups = /' "$LSA_HOME/conf/LSA.conf"
+fi
+
+# Restore the Chinese resources after configuration recovery, because an older
+# LSA.conf backup can otherwise switch the health-spec path back to English.
+ZH_SOURCE="$TRIM_APPDEST/ui/message_zh.js"
+ZH_TARGET="$LSA_HOME/server/html/js/message_zh.js"
+if [ -f "$ZH_SOURCE" ] && [ -d "$LSA_HOME/server/html/js" ]; then
+    sudo cp "$ZH_SOURCE" "$ZH_TARGET"
+    for ui_name in core integratedraid server megaraid managedserver remoteserver; do
+        INDEX_FILE="$LSA_HOME/server/html/ui/$ui_name/index.html"
+        if [ -f "$INDEX_FILE" ]; then
+            # Load message data before the GWT module performs its initial render.
+            sudo sed -i '\#message_zh\.js#d; \#\.nocache\.js#d' "$INDEX_FILE"
+            sudo sed -i '/message_en\.js/a\        <script type="text/javascript" src="../../js/message_zh.js"></script>\
+        <script type="text/javascript" src="'"$ui_name"'/'"$ui_name"'.nocache.js"></script>' "$INDEX_FILE"
+        fi
+    done
+fi
+
+HEALTH_SOURCE="$TRIM_APPDEST/ui/languages/zh-CN/healthspec.json"
+HEALTH_TARGET="$LSA_HOME/conf/languages/zh-CN/healthspec.json"
+if [ -f "$HEALTH_SOURCE" ]; then
+    sudo mkdir -p "$(dirname "$HEALTH_TARGET")"
+    sudo cp "$HEALTH_SOURCE" "$HEALTH_TARGET"
+    sudo cp "$HEALTH_SOURCE" "$LSA_HOME/conf/languages/en-US/healthspec.json"
+    sudo sed -i 's#^health_spec = .*#health_spec = ../conf/languages/zh-CN/healthspec.json#' "$LSA_HOME/conf/LSA.conf"
+fi
+
+ERROR_SOURCE="$TRIM_APPDEST/ui/languages/zh-CN/mr_errors_spec.ini"
+if [ -f "$ERROR_SOURCE" ]; then
+    sudo mkdir -p "$LSA_HOME/conf/languages/zh-CN"
+    sudo cp "$ERROR_SOURCE" "$LSA_HOME/conf/languages/zh-CN/mr_errors_spec.ini"
+    sudo cp "$ERROR_SOURCE" "$LSA_HOME/conf/languages/en-US/mr_errors_spec.ini"
+fi
+
+for EVENT_SPEC in mr_events_spec.ini mr8_events_spec.ini; do
+    EVENT_SOURCE="$TRIM_APPDEST/ui/languages/zh-CN/$EVENT_SPEC"
+    if [ -f "$EVENT_SOURCE" ]; then
+        sudo mkdir -p "$LSA_HOME/conf/languages/zh-CN"
+        sudo cp "$EVENT_SOURCE" "$LSA_HOME/conf/languages/zh-CN/$EVENT_SPEC"
+        sudo cp "$EVENT_SOURCE" "$LSA_HOME/conf/languages/en-US/$EVENT_SPEC"
+    fi
+done
+
+for ALERT_RESOURCE in alertparam.ini alertspec.json; do
+    ALERT_SOURCE="$TRIM_APPDEST/ui/languages/zh-CN/$ALERT_RESOURCE"
+    if [ -f "$ALERT_SOURCE" ]; then
+        sudo mkdir -p "$LSA_HOME/conf/languages/zh-CN"
+        sudo cp "$ALERT_SOURCE" "$LSA_HOME/conf/languages/zh-CN/$ALERT_RESOURCE"
+        sudo cp "$ALERT_SOURCE" "$LSA_HOME/conf/languages/en-US/$ALERT_RESOURCE"
+    fi
+done
+
+STATIC_SOURCE="$TRIM_APPDEST/ui/static"
+if [ -d "$STATIC_SOURCE" ]; then
+    for STATIC_FILE in 50x.html ui/core/ServerNotReachable.html files/App_statusCode_description.html files/credits.html; do
+        if [ -f "$STATIC_SOURCE/$STATIC_FILE" ]; then
+            sudo mkdir -p "$(dirname "$LSA_HOME/server/html/$STATIC_FILE")"
+            sudo cp "$STATIC_SOURCE/$STATIC_FILE" "$LSA_HOME/server/html/$STATIC_FILE"
+        fi
+    done
+fi
+
+INTEGRATEDRAID_HELP_SOURCE="$TRIM_APPDEST/ui/help/integratedraid"
+if [ -d "$INTEGRATEDRAID_HELP_SOURCE" ]; then
+    sudo mkdir -p "$LSA_HOME/server/html/help/integratedraid"
+    sudo find "$INTEGRATEDRAID_HELP_SOURCE" -type f \( -name '*.html' -o -name '*.htm' \) -exec sh -c '
+        source_file="$1"
+        relative_file="${source_file#"$2"/}"
+        destination="$3/$relative_file"
+        mkdir -p "$(dirname "$destination")"
+        cp "$source_file" "$destination"
+    ' sh {} "$INTEGRATEDRAID_HELP_SOURCE" "$LSA_HOME/server/html/help/integratedraid" \;
+fi
+
+MEGARAID_HELP_SOURCE="$TRIM_APPDEST/ui/help/megaraid"
+if [ -d "$MEGARAID_HELP_SOURCE" ]; then
+    sudo mkdir -p "$LSA_HOME/server/html/help/megaraid"
+    sudo find "$MEGARAID_HELP_SOURCE" -type f \( -name '*.html' -o -name '*.htm' \) -exec sh -c '
+        source_file="$1"
+        relative_file="${source_file#"$2"/}"
+        destination="$3/$relative_file"
+        mkdir -p "$(dirname "$destination")"
+        cp "$source_file" "$destination"
+    ' sh {} "$MEGARAID_HELP_SOURCE" "$LSA_HOME/server/html/help/megaraid" \;
+fi
+
+# Re-apply port configuration
+if [ -n "$wizard_web_port" ] || [ -n "$wizard_lsa_port" ]; then
+    WEB_PORT="${wizard_web_port:-2463}"
+    LSA_PORT="${wizard_lsa_port:-9000}"
+    
+    if [ -f "$LSA_HOME/server/conf/nginx.conf" ]; then
+        sed -i "s/listen [0-9]\+ default_server/listen $WEB_PORT default_server/" "$LSA_HOME/server/conf/nginx.conf"
+    fi
+    
+    if [ -f "$LSA_HOME/conf/LSA.conf" ]; then
+        sed -i "s/listening_port = [0-9]\+/listening_port = $LSA_PORT/" "$LSA_HOME/conf/LSA.conf"
+        sed -i "s/client_listening_port = [0-9]\+/client_listening_port = $WEB_PORT/" "$LSA_HOME/conf/LSA.conf"
+    fi
+fi
+
+echo "Upgrade completed successfully"
+exit 0

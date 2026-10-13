@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="DC.Relation" scheme="URI" content="../content/v9893820.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_setting_adjustable_task_rates"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v9894102"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>设置任务信息</title></head><body id="v9894102"><main role="main"><article role="article" aria-labelledby="v9894102__v9894103">
+  <h1 class="title topictitle1" id="v9894102__v9894103">设置任务信息</h1>
+  
+  <div class="body taskbody" id="v9894102__v9894116">
+    <section class="section context" id="v9894102__v9894117">
+      <p class="p" id="v9894102__v9895389">执行以下步骤来设置可调整的任务速率。</p>
+    </section>
+    <ol class="ol steps" id="v9894102__v9894118"><li class="li step stepexpand" id="v9894102__v9894119">
+        <span class="ph cmd" id="v9894102__v9895390">在控制器仪表板中，选择 <span class="ph menucascade" id="v9894102__v9895391"><span class="ph uicontrol" id="v9894102__v9895392">更多操作</span><abbr title="然后"> &gt; </abbr><span class="ph uicontrol" id="v9894102__v9895393">设置可调任务率</span></span> 或 <span class="ph uicontrol" id="v9894102__uicontrol_1">设置任务优先级</span>，具体取决于固件版本。</span>
+        <div class="itemgroup stepresult" id="v9894102__v9895394">
+          <figure class="fig fignone" id="v9894102__fig_1"><figcaption><span class="fig--title-label">图 1. </span>设置可调任务速率对话框</figcaption>
+            
+            <img class="image" src="LSA7_set_adjust_task_rate.png">
+          </figure>
+          <figure class="fig fignone" id="v9894102__v9895396"><figcaption><span class="fig--title-label">图 2. </span>设置任务优先级对话框</figcaption>
+            
+            <img class="image" height="251" src="LSA8_set_task_priority1.png" width="550">
+          </figure>
+        </div>
+      </li><li class="li step stepexpand" id="v9894102__v9895398">
+        <span class="ph cmd" id="v9894102__v9895399">根据需要在以下字段中输入更改：</span>
+        <ul class="ul choices" id="v9894102__v9895400">
+          <li class="li choice" id="v9894102__choice_1">
+            <p class="p">根据固件版本，完成以下操作之一：</p>
+            <p class="p" id="v9894102__p_1"><span class="ph uicontrol" id="v9894102__uicontrol_2">重建率</span> – 输入 1 到 100 之间的数字，以控制必要时在物理磁盘上执行重建的速率。</p>
+            <p class="p" id="v9894102__v24022998"><span class="ph uicontrol" id="v9894102__v9895402">重建操作模式优先级</span> – 选择 <span class="ph uicontrol">I/O</span> 或 <span class="ph uicontrol">重建</span>，以确定优先考虑的操作模式。</p>
+          </li>
+          <li class="li choice" id="v9894102__v9895403">
+            <p class="p" id="v9894102__v24023001"><span class="ph uicontrol" id="v9894102__v9895404">巡检读取率 (%)</span> – 输入 1 到 99 之间的数字，以控制执行巡检读取的速率。</p>
+            <p class="p" id="v9894102__v24023003">巡检读取会扫描物理磁盘，以查找并解决可能导致磁盘故障的潜在问题。数字越大，巡检读取速度越快（因此系统 I/O 速率可能会更慢）。</p>
+          </li>
+          <li class="li choice" id="v9894102__v9895405">
+            <p class="p" id="v9894102__v24023004"><span class="ph uicontrol" id="v9894102__v9895406">后台初始化率 (%)</span> – 输入 1 到 99 之间的数字，以控制虚拟磁盘在后台初始化的速率。</p>
+            <p class="p" id="v9894102__v24023006">后台初始化为 RAID 虚拟磁盘建立镜像或奇偶校验，同时允许主机完全访问虚拟磁盘。数字越大，初始化速度越快（因此系统 I/O 速率可能会更慢）。</p>
+          </li>
+          <li class="li choice" id="v9894102__v9895407">
+            <p class="p" id="v9894102__v24023007"><span class="ph uicontrol" id="v9894102__v9895408">一致性检查率 (%)</span> – 输入 1 到 99 之间的数字，以控制执行一致性检查的速率。</p>
+            <p class="p" id="v9894102__v24023009">一致性检查扫描容错虚拟磁盘上的一致性数据，以确定数据是否已损坏。数字越大，执行一致性检查的速度越快（因此系统 I/O 速率可能会更慢）。</p>
+          </li>
+          <li class="li choice" id="v9894102__v9895409">
+            <p class="p" id="v9894102__v24023010"><span class="ph uicontrol" id="v9894102__v9895410">OCE 率 (%)</span> – 输入 1 到 99 之间的数字，以控制在线容量扩展的速率。</p>
+          </li>
+        </ul>
+      </li><li class="li step stepexpand" id="v9894102__v9895411">
+        <span class="ph cmd" id="v9894102__v9895412">单击 <span class="ph uicontrol" id="v9894102__v9895413">保存</span> 以设置新的任务速率。</span>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v9893820.html" title="LSI 存储管理软件使您能够监控系统中所有控制器以及连接到它们的设备的活动。">管理控制器</a></div></div></nav></article></main></body></html>

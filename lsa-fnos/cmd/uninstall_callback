@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# LSA Post-Uninstall Script for fnOS
+echo "LSA cleanup completed"
+exit 0

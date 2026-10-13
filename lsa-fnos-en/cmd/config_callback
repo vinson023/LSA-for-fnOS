@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# LSA Post-Config Script for fnOS
+# This script runs after configuration changes
+
+echo "Restarting LSA service with new configuration..."
+
+LSA_SERVICE="LsiSASH"
+
+# Start service with new config
+if service $LSA_SERVICE start > /dev/null 2>&1; then
+    echo "LSA service restarted with new configuration"
+    exit 0
+else
+    echo "Failed to restart LSA service" > "$TRIM_TEMP_LOGFILE"
+    exit 1
+fi

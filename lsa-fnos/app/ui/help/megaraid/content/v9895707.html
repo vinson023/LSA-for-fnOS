@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience = HPE OLH"><meta name="DC.Coverage" content="platform = Utility"><meta name="DC.Coverage" content="product = LSA"><meta name="DC.Relation" scheme="URI" content="../content/v9893838.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_erasing_virtual_drive"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v9895707"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>擦除虚拟磁盘</title></head><body id="v9895707"><main role="main"><article role="article" aria-labelledby="v9895707__v9895708">
+  <h1 class="title topictitle1" id="v9895707__v9895708">擦除虚拟磁盘</h1>
+  
+  <div class="body taskbody" id="v9895707__v9895721">
+    <section class="section context" id="v9895707__v9895722">
+      <p class="p">虚拟磁盘擦除功能在指定的虚拟磁盘上运行并覆盖所有用户可访问的位置。它支持非零模式和多次传递。虚拟磁盘擦除功能可以选择删除虚拟磁盘并擦除虚拟磁盘的 LBA 范围内的数据。虚拟磁盘擦除功能是后台操作，它会发布事件以通知用户进度。</p>
+      <p class="p" id="v9895707__v9895965">执行以下步骤来擦除虚拟磁盘。</p>
+    </section>
+    <ol class="ol steps" id="v9895707__v9895723"><li class="li step stepexpand" id="v9895707__v9895966">
+        <span class="ph cmd" id="v9895707__v9896059">导航到控制器仪表板，单击磁盘组名称（例如，<span class="ph uicontrol" id="v9895707__v9896060">DG_1</span>）。</span>
+        <div class="itemgroup info" id="v9895707__v9896062">单击 <img class="image" height="12" src="LSA_expand_button_icon.png" width="14"> 与磁盘组对应的图标以显示其内容。</div>
+        <div class="itemgroup stepresult">将显示与所选磁盘组关联的虚拟磁盘和物理磁盘。</div>
+      </li><li class="li step stepexpand" id="v9895707__v9895968">
+        <span class="ph cmd" id="v9895707__v9895969">单击要删除其内容的虚拟磁盘。</span>
+      </li><li class="li step stepexpand" id="v9895707__v9895970">
+        <span class="ph cmd" id="v9895707__v9895971">选择 <span class="ph menucascade" id="v9895707__v9895972"><span class="ph uicontrol" id="v9895707__v9895973">磁盘操作</span><abbr title="然后"> &gt; </abbr><span class="ph uicontrol" id="v9895707__v9895974">擦除</span></span>。</span>
+        <div class="itemgroup stepresult" id="v9895707__v9895975">将显示<span class="keyword wintitle" id="v9895707__v9895992">虚拟磁盘擦除</span>对话框。
+          <figure class="fig fignone" id="v9895707__v9895976"><figcaption><span class="fig--title-label">图 1. </span>虚拟磁盘擦除对话框</figcaption>
+            
+            <img class="image" id="v9895707__image_1" height="469" src="LSA_virtual_drive_erase2.png" width="350">
+          </figure>
+          <div class="p" id="v9895707__v9895978">该对话框显示以下模式：
+            <ul class="ul" id="v9895707__v9895993">
+              <li class="li" id="v9895707__v9895994"><span class="ph uicontrol" id="v9895707__v9895995">简单</span></li>
+              <li class="li" id="v9895707__v9895996"><span class="ph uicontrol" id="v9895707__v9895997">正常</span></li>
+              <li class="li" id="v9895707__v9895998"><span class="ph uicontrol" id="v9895707__v9895999">彻底</span></li>
+            </ul>
+          </div>
+        </div>
+      </li><li class="li step stepexpand" id="v9895707__v24023514">
+        <span class="ph cmd" id="v9895707__v24023515">选择 <span class="ph uicontrol" id="v9895707__v11484405">擦除后删除虚拟磁盘</span> 复选框以在擦除操作完成后删除虚拟磁盘。</span>
+      </li><li class="li step stepexpand" id="v9895707__v9895979">
+        <span class="ph cmd" id="v9895707__v9895980">选择一种模式，然后单击 <span class="ph uicontrol" id="v9895707__v9895981">擦除虚拟磁盘</span>。</span>
+        <div class="itemgroup stepresult" id="v9895707__v9895985">将出现一条警告消息，要求您确认。</div>
+      </li><li class="li step stepexpand" id="v9895707__v9895986">
+        <span class="ph cmd" id="v9895707__v9895987">单击 <span class="ph uicontrol" id="v9895707__v9895988">是，擦除磁盘</span>。</span>
+        <div class="itemgroup stepresult" id="v9895707__v9895989">虚拟磁盘擦除操作开始后，<span class="ph uicontrol" id="v9895707__v9895991">磁盘操作</span> 菜单中的 <span class="ph uicontrol" id="v9895707__v9895990">停止擦除</span> 选项将启用。您可以监控擦除操作的进度。请参阅 <a class="xref fm:ParaText" href="v9895285.html#v9895285" title="本节介绍 LSI 存储管理软件支持的后台操作。">后台操作支持</a>。</div>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v9893838.html" title="LSI 存储管理软件允许您在虚拟磁盘上执行各种操作。">管理虚拟磁盘</a></div></div></nav></article></main></body></html>
+

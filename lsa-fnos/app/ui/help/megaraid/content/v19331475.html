@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="DC.Relation" scheme="URI" content="../content/v9893856.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_sanitizing-a-drive"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v19331475"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>安全擦除磁盘</title></head><body id="v19331475"><main role="main"><article role="article" aria-labelledby="v19331475__v12400573">
+  <h1 class="title topictitle1" id="v19331475__v12400573">安全擦除磁盘</h1>
+  
+  <div class="body taskbody" id="v19331475__v12400586">
+    <section class="section context" id="v19331475__v12400587">
+      <p class="p" id="v19331475__v12400588">您可以使用<span class="ph uicontrol" id="v19331475__v19331532">安全擦除</span>功能擦除磁盘上的数据。<span class="ph uicontrol" id="v19331475__v19331533">安全擦除</span>选项类似于控制器已支持的<cite class="cite" id="v19331475__v19331534">磁盘擦除</cite>功能。不同之处在于，<span class="ph uicontrol" id="v19331475__v19331535">安全擦除</span>选项由磁盘固件执行，而<cite class="cite" id="v19331475__v19331536">磁盘擦除</cite>功能由控制器固件执行。</p>
+      <p class="p" id="v19331475__v19331537">“安全擦除”选项是符合行业标准的 SCSI 功能，并使用行业标准的 SCSI SANITIZE 块命令。控制器固件会持续监控安全擦除操作。磁盘安全擦除进度事件通过后台操作支持功能报告。</p>
+      <p class="p" id="v19331475__v19331538">要安全擦除磁盘，您必须确保：</p>
+      <ul class="ul" id="v19331475__v19331540">
+        <li class="li" id="v19331475__v19331541">所选磁盘处于“未配置的良好”状态。</li>
+        <li class="li" id="v19331475__v19331543">所选磁盘不是 JBOD 磁盘。</li>
+        <li class="li" id="v19331475__v19331545">所选磁盘不属于任何阵列、专用热备盘或全局热备盘。</li>
+      </ul>
+      <p class="p" id="v19331475__v20081866">仅当所选磁盘上没有正在进行其他操作时才会启用安全擦除。</p>
+      <p class="p" id="v19331475__v20081867">当安全擦除操作正在进行时，您无法对正在安全擦除的磁盘执行任何其他操作。</p>
+      <p class="p" id="v19331475__v19331558">执行以下步骤来安全擦除磁盘：</p>
+    </section>
+    <ol class="ol steps" id="v19331475__v19331559"><li class="li step stepexpand" id="v19331475__v19331560">
+        <span class="ph cmd" id="v19331475__v12400592">导航到控制器仪表板并单击 <span class="ph uicontrol" id="v19331475__v12400593">磁盘</span> 选项卡。</span>
+        <div class="itemgroup stepresult" id="v19331475__v12400594">将显示所有关联的磁盘。</div>
+      </li><li class="li step stepexpand" id="v19331475__v19331564">
+        <span class="ph cmd" id="v19331475__v12400596">展开 <span class="ph uicontrol" id="v19331475__v12400597">未配置的磁盘</span>，然后选择一个未配置的良好物理磁盘。</span>
+        <ul class="ul choices" id="v19331475__v20081892">
+          <li class="li choice" id="v19331475__v20081893">
+            <p class="p" id="v19331475__v20075461">可同时对多个未配置的良好物理磁盘执行磁盘安全擦除操作。</p>
+            <p class="p">但是，只有所有选定的物理磁盘均支持同一类安全擦除操作时，才会启用安全擦除选项。例如，固态硬盘 (SSD) 支持<strong class="ph b">块擦除</strong>，硬盘 (HDD) 支持<strong class="ph b">覆盖</strong>。</p>
+          </li>
+          <li class="li choice" id="v19331475__v20081897">
+            <p class="p" id="v19331475__v20081899">您无法在混合磁盘类型上运行安全擦除操作。</p>
+            <p class="p">例如，若选择两个物理磁盘执行安全擦除操作，其中一个为 SSD、另一个为 HDD，则无法执行该操作，因为两者支持的安全擦除方法不同。</p>
+          </li>
+        </ul>
+      </li><li class="li step stepexpand" id="v19331475__v12400598">
+        <span class="ph cmd" id="v19331475__v12400599">选择 <span class="ph menucascade" id="v19331475__v24049455"><span class="ph uicontrol" id="v19331475__v9897624">磁盘操作</span><abbr title="然后"> &gt; </abbr><span class="ph uicontrol" id="v19331475__v19985311">更多操作</span><abbr title="然后"> &gt; </abbr><span class="ph uicontrol" id="v19331475__v19985312">开始安全擦除</span></span>。</span>
+        <div class="itemgroup info" id="v19331475__v20081907">
+          <p class="p" id="v19331475__v19985314">将显示 <span class="ph uicontrol" id="v19331475__v19985315">安全擦除磁盘</span> 对话框。</p>
+          <div class="note note note_note" id="v19331475__v20075456"><span class="note__title">注意：</span> 开始磁盘安全擦除操作后，在完成之前无法停止或暂停该操作。</div>
+          <figure class="fig fignone" id="v19331475__v20006312"><figcaption><span class="fig--title-label">图 1. </span>安全擦除对话框</figcaption>
+            
+            <img class="image" id="v19331475__image_5" height="579" src="HPE_LSA_Drive-Sanitize1.png" width="550">
+          </figure>
+        </div>
+        <div class="itemgroup info" id="v19331475__v20109513">
+          <p class="p" id="v19331475__v20109514">根据您选择进行安全擦除的磁盘（SSD 或 HDD），可以使用以下选项：</p>
+        </div>
+        <ul class="ul choices" id="v19331475__v20109515">
+          <li class="li choice" id="v19331475__v20109516">
+            <p class="p" id="v19331475__v20109517"><span class="ph uicontrol" id="v19331475__v20109518">覆盖</span> – 如果您选择了 HDD，则可以使用覆盖选项安全擦除物理数据。</p>
+            <p class="p">此选项将特定数据模式写入磁盘一次或多次。</p>
+          </li>
+          <li class="li choice" id="v19331475__v20109519">
+            <p class="p" id="v19331475__v20109520"><span class="ph uicontrol" id="v19331475__v20109521">块擦除</span> – 如果您选择了 SSD，则可以使用“块擦除”选项安全擦除磁盘。</p>
+            <p class="p">此选项将磁盘上的物理块设置为供应商特定的值。</p>
+          </li>
+          <li class="li choice" id="v19331475__choice_1">
+            <p class="p" id="v19331475__p_1"><span class="ph uicontrol" id="v19331475__uicontrol_1">加密擦除</span> – 加密擦除会使设备更改安全密钥，从而无法解密先前存储的信息；这可能导致保护信息变为不确定状态。</p>
+            <p class="p" id="v19331475__p_2">该操作不通过覆盖数据来安全擦除磁盘。</p>
+          </li>
+          <li class="li choice" id="v19331475__choice_2">
+            <p class="p" id="v19331475__p_3"><span class="ph uicontrol" id="v19331475__uicontrol_2">反转</span> – 如果选中此复选框，则用户数据和保护信息将在每次连续覆盖时反转。</p>
+          </li>
+          <li class="li choice" id="v19331475__v20109522">
+            <p class="p" id="v19331475__v20109523"><span class="ph uicontrol" id="v19331475__v20109524">允许无限制的安全擦除退出</span> – 如果由于某种原因安全擦除操作失败，系统会尝试使磁盘脱离故障模式，无论您是否选中此复选框。</p>
+            <p class="p">但是，如果选中此复选框且系统成功使物理磁盘退出故障模式，该物理磁盘将恢复为未配置的良好状态；如果未选中此复选框且安全擦除操作失败，系统会将该物理磁盘置于“未配置的坏”状态。</p>
+          </li>
+        </ul>
+      </li><li class="li step stepexpand" id="v19331475__v20109525">
+        <span class="ph cmd" id="v19331475__v20109526">单击 <span class="ph uicontrol" id="v19331475__v20109527">安全擦除磁盘</span>。</span>
+        <div class="itemgroup stepresult" id="v19331475__v20109528">
+          <p class="p" id="v19331475__v20109529">将显示一条确认消息。</p>
+        </div>
+      </li><li class="li step stepexpand" id="v19331475__v20109530">
+        <span class="ph cmd" id="v19331475__v20109531">单击 <span class="ph uicontrol" id="v19331475__v20109532">是，安全擦除磁盘</span> 开始安全擦除选定的磁盘。</span>
+        <div class="itemgroup info" id="v19331475__v20109533">
+          <p class="p" id="v19331475__v20109534">您可以在后台操作部分监控安全擦除操作的进度。磁盘状态会显示为<span class="ph uicontrol" id="v19331475__v20109535">安全擦除</span>，直到安全擦除操作完成。</p>
+          <p class="p" id="v19331475__v20109536">下图显示正在进行安全擦除操作的后台操作部分。</p>
+          <figure class="fig fignone" id="v19331475__fig_1"><figcaption><span class="fig--title-label">图 2. </span>后台操作和磁盘安全擦除对话框</figcaption>
+            
+            <img class="image" id="v19331475__image_7" src="sanitize_drive1.png">
+          </figure>
+        </div>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v9893856.html" title="LSI 存储管理软件可让您管理连接到控制器的物理磁盘。">管理物理磁盘</a></div></div></nav></article></main></body></html>
+

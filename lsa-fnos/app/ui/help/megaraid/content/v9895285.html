@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="concept"><meta name="description" content="This section describes the background operations that are supported by the LSI Storage Authority software."><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_background_operations_support"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v9895285"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>后台操作支持</title></head><body id="v9895285"><main role="main"><article role="article" aria-labelledby="v9895285__v9895286">
+  <h1 class="title topictitle1" id="v9895285__v9895286">后台操作支持</h1>
+  
+  
+  <div class="body conbody" id="v9895285__v9895299"><p class="shortdesc">本节介绍 LSI 存储管理软件支持的后台操作。</p>
+    <p class="p" id="v9895285__v9895302">LSI 存储管理软件提供后台挂起、恢复、停止、全部挂起、全部恢复和全部停止功能，这些功能增强了在物理磁盘或虚拟磁盘上运行的后台操作可以暂停一段时间并稍后恢复的功能。</p>
+    <p class="p" id="v9895285__v11484026">后台操作包括 <strong class="ph b">一致性检查</strong>、<strong class="ph b">重建</strong>、<strong class="ph b">回拷</strong> 和 <strong class="ph b">初始化</strong>，这些操作均支持 <strong class="ph b">停止</strong>。如果任何操作在完成之前停止，则视为中止。中止的操作无法从停止的位置恢复。</p>
+    <div class="p" id="v9895285__v9895309">要执行 <strong class="ph b">暂停</strong>、<strong class="ph b">恢复</strong> 或 <strong class="ph b">停止</strong> 操作，请转到服务器仪表板或控制器仪表板中的 <span class="keyword wintitle" id="v9895285__v9895310">后台进程正在进行中</span> 窗口，然后执行以下步骤。<span class="keyword wintitle" id="v9895285__v9895311">后台进程正在进行中</span> 窗口如下图所示。
+      <figure class="fig fignone" id="v9895285__bckgrnd_process_window"><figcaption><span class="fig--title-label">图 1. </span>后台进程进行中窗口</figcaption>
+        
+        <img class="image" id="v9895285__image_1" height="176" src="LSA8_background_operations.png" width="550">
+      </figure>
+    </div>
+    <div class="p" id="v9895285__v9895315">
+      <ul class="ul" id="v9895285__v9895316">
+        <li class="li" id="v9895285__v9895317">
+          <p class="p" id="v9895285__v24022946"><span class="ph uicontrol" id="v9895285__v9895318">暂停</span> – 单击 <span class="ph uicontrol" id="v9895285__v9895319">暂停</span> 暂停在该特定时间点发生的后台操作。</p>
+          <p class="p" id="v9895285__v24022949">当操作暂停时，将显示 <span class="ph uicontrol" id="v9895285__v9895335">恢复</span> 选项，而不是 <span class="ph uicontrol" id="v9895285__v9895336">暂停</span> 选项。</p>
+        </li>
+        <li class="li" id="v9895285__v9895320"><span class="ph uicontrol" id="v9895285__v9895321">恢复</span> – 单击 <span class="ph uicontrol" id="v9895285__v9895322">恢复</span> 从上次暂停的位置恢复操作。</li>
+        <li class="li" id="v9895285__v9895323"><span class="ph uicontrol" id="v9895285__v9895324">停止</span> – 单击 <span class="ph uicontrol" id="v9895285__v9895325">停止</span> 停止正在进行的活动操作。</li>
+        <li class="li" id="v9895285__v9895326">
+          <p class="p" id="v9895285__v24022923"><span class="ph uicontrol" id="v9895285__v9895327">全部暂停</span> – 单击 <span class="ph uicontrol" id="v9895285__v9895328">全部暂停</span> 暂停所有活动操作。</p>
+          <p class="p" id="v9895285__v24022926">仅当一个或多个后台操作处于活动状态时才启用此选项。</p>
+        </li>
+        <li class="li" id="v9895285__v9895329">
+          <p class="p" id="v9895285__v24022927"><span class="ph uicontrol" id="v9895285__v9895330">恢复全部</span> – 单击 <span class="ph uicontrol" id="v9895285__v9895331">恢复全部</span> 从暂停点恢复所有暂停的操作。</p>
+          <p class="p" id="v9895285__v24022930">如果没有暂停任何操作，则禁用此选项。</p>
+        </li>
+        <li class="li" id="v9895285__v9895332"><span class="ph uicontrol" id="v9895285__v9895333">全部停止</span> – 单击 <span class="ph uicontrol" id="v9895285__v9895334">全部停止</span> 停止所有活动操作。</li>
+      </ul>
+    </div>
+    <p class="p" id="v9895285__v24022952">刷新 LSA 客户端或 LSA GUI 时，如果出现延迟，例如重建操作的进度条不显示进度，或小型虚拟磁盘的重建进度条不显示，请将 <code class="ph codeph" id="v9895285__v13215271">LSA.conf</code> 文件中的最大事件分组时间间隔设置为 <code class="ph codeph" id="v9895285__v13215270">0</code>，以查看实时事件。有关为 LSA 设置实时事件检索的详细信息，请参阅相关说明。</p>
+    <p class="p" id="v9895285__v13215272">请注意，设置实时事件会对 LSA 的性能产生影响。</p>
+  </div>
+</article></main></body></html>
+

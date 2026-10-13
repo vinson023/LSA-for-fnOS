@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Relation" scheme="URI" content="../content/v7966983.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="version" content="Version 2.16"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_virtualdrive_settings"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v8041820"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>添加虚拟磁盘</title></head><body id="v8041820"><main role="main"><article role="article" aria-labelledby="v8041820__v8041821">
+  <h1 class="title topictitle1" id="v8041820__v8041821">添加虚拟磁盘</h1>
+  
+  <div class="body taskbody" id="v8041820__v8041822">
+    <section class="section context" id="v8041820__v8041823">
+      <p class="p" id="v8041820__v8041864"><span class="keyword wintitle" id="v8041820__v8041865">虚拟磁盘设置</span> 窗口允许您配置虚拟磁盘并将其添加到磁盘组。所有参数的详细描述都在 <span class="keyword wintitle" id="v8041820__v11483932">虚拟磁盘设置</span> 窗口。</p>
+      <p class="p" id="v8041820__v11483933">某些控制器的虚拟磁盘设置有所不同或可能不受支持。有关更多信息，请参阅 <a class="xref fm:ParaText" href="v11038993.html#v11038993" title="下表概述了 MegaRAID 控制器的 LSA 功能（与软件功能和固件功能相关）。">LSI 存储管理功能</a>。</p>
+      <p class="p" id="v8041820__v8041825">执行以下步骤来配置和添加虚拟磁盘：</p>
+    </section>
+    <ol class="ol steps" id="v8041820__v8041826"><li class="li step stepexpand" id="v8041820__v8041827">
+        <span class="ph cmd" id="v8041820__v8041828">指定要创建的虚拟磁盘的数量。</span>
+      </li><li class="li step stepexpand" id="v8041820__v9486790">
+        <span class="ph cmd" id="v8041820__v9486791">指定要创建的虚拟磁盘的大小。</span>
+        <div class="itemgroup info" id="v8041820__v11483935">每个虚拟磁盘具有相同的容量。如果先指定容量，然后指定虚拟磁盘数量，则虚拟磁盘容量将根据可用容量进行调整。</div>
+      </li><li class="li step stepexpand" id="v8041820__v8041834">
+        <span class="ph cmd" id="v8041820__v8041835">在 <span class="ph uicontrol" id="v8041820__v8041869">虚拟磁盘名称</span> 字段中输入虚拟磁盘名称。</span>
+        <div class="itemgroup info" id="v8041820__v11483937">虚拟磁盘名称最多可以有 15 个字符。</div>
+      </li><li class="li step stepexpand" id="v8041820__v8041836">
+        <span class="ph cmd" id="v8041820__v8041837">从以下选项中选择条带尺寸 <span class="ph uicontrol" id="v8041820__v8068741">条带大小</span> 下拉列表。</span>
+        
+      </li><li class="li step stepexpand" id="v8041820__v8041838">
+        <span class="ph cmd" id="v8041820__v8041839">指定虚拟磁盘的初始化策略。选项如下：</span>
+        <ul class="ul choices" id="v8041820__v8041871">
+          <li class="li choice" id="v8041820__v8041874"><span class="ph uicontrol" id="v8041820__v13149782">无初始化</span></li>
+          <li class="li choice" id="v8041820__v8041876"><span class="ph uicontrol" id="v8041820__v13149783">快速初始化</span></li>
+          <li class="li choice" id="v8041820__v8041872"><span class="ph uicontrol" id="v8041820__v13149784">完全初始化</span></li>
+        </ul>
+      </li><li class="li step stepexpand" id="v8041820__step_1">
+        <span class="ph cmd" id="v8041820__cmd_1">指定虚拟磁盘的读取策略为 <span class="ph uicontrol" id="v8041820__uicontrol_9">无预读</span>。</span>
+      </li><li class="li step stepexpand" id="v8041820__v8041847">
+        <span class="ph cmd" id="v8041820__v8041848">指定虚拟磁盘的写入策略。选项如下：</span>
+        <ul class="ul choices" id="v8041820__v8041883">
+          <li class="li choice" id="v8041820__v9314571"><span class="ph uicontrol" id="v8041820__v9314572">直写</span></li>
+          <li class="li choice" id="v8041820__v8041886"><span class="ph uicontrol" id="v8041820__v8041887">回写</span></li>
+          <li class="li choice" id="v8041820__v8041884"><span class="ph uicontrol" id="v8041820__v9314570">始终回写</span></li>
+        </ul>
+        <div class="itemgroup info" id="v8041820__v11483944">
+          <p class="p" id="v8041820__v11483945">写入策略取决于 阵列卡电池/超级电容 的状态。如果未安装 阵列卡电池/超级电容、电量不足、发生故障或正在充电，则当前写入策略将切换为直写。</p>
+        </div>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd" id="v8041820__v8041856">指定虚拟磁盘缓存设置。选项如下：</span>
+        <ul class="ul choices" id="v8041820__v8041894">
+          <li class="li choice" id="v8041820__v9314576"><span class="ph uicontrol" id="v8041820__v9314577">默认</span></li>
+          <li class="li choice" id="v8041820__v8041897"><span class="ph uicontrol" id="v8041820__v13149787">启用</span></li>
+          <li class="li choice" id="v8041820__v8041895"><span class="ph uicontrol" id="v8041820__v13149788">已禁用</span></li>
+        </ul>
+      </li><li class="li step stepexpand" id="v8041820__v8041859">
+        <span class="ph cmd" id="v8041820__v8041860">单击 <span class="ph uicontrol" id="v8041820__v8068742">添加虚拟磁盘</span>。</span>
+        <div class="itemgroup info" id="v8041820__v8041862">新创建的虚拟磁盘出现在 <span class="keyword wintitle" id="v8041820__v8068743">高级配置</span> 窗口正下方 <span class="ph uicontrol" id="v8041820__v9374688">虚拟磁盘</span> 部分。
+          <div class="note note note_note" id="v8041820__v11186856"><span class="note__title">注意：</span> 如果您在创建虚拟磁盘时选择容量不均匀且容量较大的磁盘，则会损失一些磁盘容量。</div>
+        </div>
+        <div class="itemgroup info" id="v8041820__v9486796">
+          <p class="p" id="v8041820__v10017163">如果您想在完成配置之前修改虚拟磁盘设置，请单击 <img class="image" height="15" src="LSA_modify_vd_icon.png" width="15"> 图标。</p>
+        </div>
+        <div class="itemgroup info" id="v8041820__v10017166">
+          <p class="p" id="v8041820__v10017167">将显示 <span class="keyword wintitle" id="v8041820__v10017168">虚拟磁盘设置</span> 窗口。</p>
+        </div>
+        <div class="itemgroup info" id="v8041820__v10017169">您可以通过单击修改设置 <span class="ph uicontrol" id="v8041820__v10017170">修改虚拟磁盘</span>。</div>
+      </li><li class="li step stepexpand" id="v8041820__v13149789">
+        <span class="ph cmd" id="v8041820__v13149790">单击 <span class="ph uicontrol" id="v8041820__v24022919">完成</span> 即可成功将虚拟磁盘添加到磁盘组中。</span>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v7966983.html">使用高级配置选项创建新的存储配置</a></div></div></nav></article></main></body></html>
+

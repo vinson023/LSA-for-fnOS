@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2020"><meta name="DC.rights.owner" content="(C) Copyright 2020"><meta name="DC.Type" content="reference"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="reference.dita_d87eea2a-009e-458d-9b4f-aabf990efa02"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>已知问题和解决方法</title></head><body id="reference.dita_d87eea2a-009e-458d-9b4f-aabf990efa02"><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+  <h1 class="title topictitle1" id="ariaid-title1">已知问题和解决方法</h1>
+  <div class="body refbody">
+    <section class="section">以下是已知问题和解决方法的列表。
+      <ul class="ul" id="reference.dita_d87eea2a-009e-458d-9b4f-aabf990efa02__ul_1">
+        <li class="li"><strong class="ph b">问题</strong>：由于底层的限制，不支持从一个阶段到另一阶段的 IR/IT 固件降级。
+          <p class="p"><strong class="ph b">解决方法</strong>：没有。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>: 启用或禁用控制器直通功能时，<span class="ph">LSA</span> 无法检测到 Hyper-V 环境中的所有控制器。
+          <p class="p"><strong class="ph b">解决方法</strong>: 重新启动 <span class="ph">LSA</span> 服务，以重新加载并更新库。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>: 固件更新成功后，如果 I/O 正在进行，<span class="ph">LSA</span> 可能无法访问。
+          <p class="p"><strong class="ph b">解决方法</strong>: 重新启动 <span class="ph">LSA</span> 服务。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>: <span class="ph">LSA</span> 在多个客户端上下载支持日志时可能会挂起。
+          <div class="p"><strong class="ph b">解决方法</strong>: 重新启动 <span class="ph">LSA</span> 服务。 在 I/O 或磁盘/背板操作负载较低时，每次仅从一个客户端收集日志。
+            <div class="note note note_note"><span class="note__title">注意：</span> 下载支持日志仅适用于管理员用户。</div>
+          </div>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：允许 <em class="ph i">嘉宾</em> 用户登录时 <em class="ph i">嘉宾</em> 用户被禁用通过 <span class="ph uicontrol">用户帐户</span>。
+          <div class="p"><strong class="ph b">解决方法</strong>:
+            <ol class="ol" id="reference.dita_d87eea2a-009e-458d-9b4f-aabf990efa02__ol_1">
+              <li class="li">打开命令提示符。</li>
+              <li class="li">输入 <kbd class="ph userinput">lusrmgr.msc</kbd>.</li>
+              <li class="li">选择 <span class="ph uicontrol">用户</span>，那么 <span class="ph uicontrol">嘉宾</span>。</li>
+              <li class="li">右键单击 <span class="ph uicontrol">访客用户</span>，然后选择属性选项。</li>
+              <li class="li">如果尚未选择，请选中 <span class="ph uicontrol">帐户已被禁用</span> 复选框。</li>
+            </ol>
+          </div>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：在存在多 NIC 卡的情况下，IPv4 和 IPv6 地址组的服务器响应会混合。
+          <p class="p"><strong class="ph b">解决方法</strong>：没有。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：启用自动重建后，多次单击物理磁盘操作时，界面无法正确更新。
+          <p class="p"><strong class="ph b">解决方法</strong>：手动刷新页面。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：不建议从 004.003.000.00 及更高版本降级，因为以前版本的卸载可能不稳定。
+          <p class="p"><strong class="ph b">解决方法</strong>：卸载最新版本并重新安装早期版本。</p>
+          <p class="p"><strong class="ph b">版本</strong>：004.003.000.00 及更高版本</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：Google Chrome 可能无法正确定位弹出窗口。
+          <p class="p"><strong class="ph b">解决方法</strong>：没有。</p>
+          <p class="p"><strong class="ph b">版本</strong>：61.0.3163.100 及更高版本</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：使用Mozilla FireFox 时，不要保存用户名和密码，或者单击用户名文本框启用保存。
+          <p class="p"><strong class="ph b">解决方法</strong>：没有。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：使用 LSA 以外的任何实用程序更新或擦除 UEFI 或 BIOS，都会导致 LSA 显示旧的 UEFI 和 BIOS 信息。
+          <p class="p"><strong class="ph b">解决方法</strong>：重新启动系统后，LSA 将显示正确的 BIOS 详细信息。</p>
+          <p class="p"><strong class="ph b">版本</strong>：仅限 IT 控制器。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：用户无法禁用或修改安全性，无法删除虚拟磁盘或清除配置。
+          <p class="p"><strong class="ph b">解决方法</strong>：从磁盘组中清除 TR，然后执行相应操作。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：无论控制器或虚拟磁盘的实际状态如何，状态均显示为“最佳”。此外，对 TR 磁盘组/虚拟磁盘执行某些操作可能会失败；此问题不在 LSA 的控制范围内。
+          <p class="p"><strong class="ph b">解决方法</strong>：从磁盘组中清除 TR，然后执行相应操作。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：在线控制器重置期间执行的操作失败。
+          <p class="p"><strong class="ph b">解决方法</strong>：在 <span class="ph">LSA</span> 执行在线控制器重置期间，请勿执行任何操作。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：在远程和管理发现页面中的服务器节点之间单击会导致服务器或服务器图标间歇性消失。
+          <p class="p"><strong class="ph b">解决方法</strong>：在服务器节点之间单击后，等待几秒钟，以便屏幕刷新并查看所有服务器节点和图标。</p>
+          <p class="p"><strong class="ph b">版本</strong>：Mozilla 和 Windows Server 2012</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：缩放操作。
+          <p class="p"><strong class="ph b">解决方法</strong>：在显示器分辨率较低之前，请勿在浏览器上进行缩放操作。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：从服务器摘要页面执行任何操作（例如配置），然后手动刷新页面将导致用户重定向到最初选择的操作页面。
+          <p class="p"><strong class="ph b">解决方法</strong>：不要执行手动刷新。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：将处于 JBOD 状态的物理磁盘转换为 UG（未配置的良好）后，应用程序可能显示不同的操作菜单名称。<span class="ph">LSA</span> 将其显示为 <span class="ph uicontrol">使未配置的良好</span>。</li>
+        <li class="li"><strong class="ph b">问题</strong>：如果将同一个专用热备盘分配给多个磁盘组，您可能会在“控制器”页面上的“元素计数”和“DHSP 元素选择”复选框中看到不一致的情况。</li>
+        <li class="li"><strong class="ph b">问题</strong>：通过手动发现选项发现服务器具有以下限制。
+          <ul class="ul" id="reference.dita_d87eea2a-009e-458d-9b4f-aabf990efa02__ul_5">
+            <li class="li">发现服务器端口应为 2463。</li>
+            <li class="li">发现服务器协议应为 HTTP。</li>
+          </ul>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：在 MegaRAID 中，当在物理磁盘级别运行巡检读取时，该操作实际在控制器级别执行。单个物理磁盘的巡检读取进度条达到 100% 后不会立即消失。
+          <p class="p"><strong class="ph b">解决方法</strong>：等待所有物理磁盘的进度条完成；当所有进度条均达到 100% 后，它们会消失。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>：在安装或卸载过程中，发布者可能会在 <span class="ph uicontrol">用户帐户控制</span> 消息框。</li>
+        <li class="li"><strong class="ph b">问题</strong>：如果您从磁盘组的现有可用空间中选择 <span class="ph uicontrol">添加虚拟磁盘</span>，或从现有磁盘组中选择 <span class="ph uicontrol">删除虚拟磁盘</span>，<span class="ph">LSA</span> 将刷新整个控制器页面以更新配置信息。由于页面刷新会丢失鼠标焦点，使用鼠标滚轮时页面无法上下滚动。
+          <p class="p"><strong class="ph b">解决方法</strong>：单击页面上的任意位置一次，页面即可滚动。或者，您可以使用滚动条。</p>
+        </li>
+        <li class="li"><strong class="ph b">问题</strong>: <span class="ph">LSA</span> 不允许从非跨区或跨区虚拟磁盘中选择物理磁盘。</li>
+        <li class="li"><strong class="ph b">问题</strong>: <span class="ph uicontrol">修改</span> 现有的选项 <span class="ph filepath">安装程序</span> 不会起作用。
+          <p class="p"><strong class="ph b">解决方法</strong>：卸载并重新安装构建，而不是使用 <span class="ph uicontrol">修改</span> 选项。</p>
+        </li>
+      </ul>
+    </section>
+  </div>
+</article></main></body></html>
+

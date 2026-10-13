@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="DC.Relation" scheme="URI" content="../content/v11169464.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v11161344"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>通过网络地址转换访问 LSA</title></head><body id="v11161344"><main role="main"><article role="article" aria-labelledby="v11161344__v11161345">
+  <h1 class="title topictitle1" id="v11161344__v11161345">通过网络地址转换访问 LSA</h1>
+  
+  <div class="body taskbody" id="v11161344__v11161358">
+    <section class="section context" id="v11161344__v11161359">
+      <p class="p">网络地址转换 (NAT) 允许使用未注册 IP 地址的私有 IP 网络连接到 Internet。 NAT 运行在路由器上，通常将两个网络连接在一起，并将内部网络中的私有地址转换为合法地址。</p>
+      <p class="p" id="v11161344__v11161364">要通过 NAT 环境访问 LSI 存储管理应用程序，LSA 服务器必须了解有关 NAT 服务器设置的一些信息。</p>
+      <p class="p" id="v11161344__v11161365">执行以下步骤配置参数 <span class="keyword parmname" id="v11161344__v11161366">lsa.conf</span> 文件在 <span class="keyword parmname" id="v11161344__v11161367">会议</span> 目录。</p>
+    </section>
+    <ol class="ol steps" id="v11161344__v11161360"><li class="li step stepexpand" id="v11161344__v11161361">
+        <span class="ph cmd" id="v11161344__v11161362">打开 <span class="keyword parmname" id="v11161344__v11161368">lsa.conf</span> 文件在 <span class="ph filepath" id="v11161344__v11161369">LSIStorageAuthority/conf</span> 目录。</span>
+      </li><li class="li step stepexpand" id="v11161344__v11161370">
+        <span class="ph cmd" id="v11161344__v11161371">指定公共 IP <code class="ph codeph" id="v11161344__v11161372">nat_ipv4_ipv6</code>.</span>
+        <div class="itemgroup stepxmp" id="v11161344__v11161373">
+          <p class="p" id="v11161344__v11161374">例如，如果配置的公共 NAT IP 地址为 <code class="ph codeph" id="v11161344__v11161375">135.24.227.198</code>，则必须指定 <span class="keyword parmname" id="v11161344__v11161376">nat_ipv4_ipv6 = 135.24.227.198</span>。</p>
+        </div>
+      </li><li class="li step stepexpand" id="v11161344__v11161385">
+        <span class="ph cmd" id="v11161344__v11161386">重新启动 nginx 服务和 LSA 服务以使更改生效。</span>
+        <div class="itemgroup info" id="v11161344__v11483788">
+          <p class="p" id="v11161344__v11161378">如果您有多个公共 NAT（例如，<code class="ph codeph" id="v11161344__v11483790">135.24.227.198</code>、<code class="ph codeph" id="v11161344__v11483791">135.24.227.199</code>、<code class="ph codeph" id="v11161344__v11483792">fe80::dc8d:e156:41e1:b06</code>），则必须将它们指定为 <span class="keyword parmname" id="v11161344__v11483793">nat_ipv4_ipv6 = 135.24.227.198</span>、<span class="keyword parmname" id="v11161344__v11483794">135.24.227.199</span>、<span class="keyword parmname" id="v11161344__v11483795">fe80::dc8d:e156:41e1:b06</span>。</p>
+        </div>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v11169464.html" title="成功安装 LSI 存储管理后，您必须设置这些初始配置。">执行初始配置</a></div></div></nav></article></main></body></html>
+

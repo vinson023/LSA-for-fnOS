@@ -1,0 +1,52 @@
+[
+  {
+    "stepTitle": "Port Configuration",
+    "items": [
+      {
+        "type": "text",
+        "field": "wizard_web_port",
+        "label": "Web Management Port",
+        "initValue": "2463",
+        "rules": [
+          { "required": true, "message": "Enter the web management port" },
+          { "pattern": "^[0-9]+$", "message": "The port must be numeric" }
+        ]
+      },
+      {
+        "type": "text",
+        "field": "wizard_lsa_port",
+        "label": "LSA Service Port",
+        "initValue": "9000",
+        "rules": [
+          { "required": true, "message": "Enter the LSA service port" },
+          { "pattern": "^[0-9]+$", "message": "The port must be numeric" }
+        ]
+      },
+      {
+        "type": "tips",
+        "helpText": "The web management port is used to access the LSA interface in a browser. The LSA service port is used for backend communication. The two ports cannot be the same."
+      }
+    ]
+  },
+  {
+    "stepTitle": "Installation Mode",
+    "items": [
+      {
+        "type": "radio",
+        "field": "wizard_install_mode",
+        "label": "Select an Installation Mode",
+        "initValue": "gateway",
+        "options": [
+          { "label": "Gateway Mode (Recommended) - Full web management", "value": "gateway" },
+          { "label": "Standalone Mode - Local server management only", "value": "standalone" },
+          { "label": "Remote Agent Mode - Remote server management only", "value": "directagent" },
+          { "label": "Lightweight Monitoring Mode - Minimal resource usage", "value": "lightweight" }
+        ]
+      },
+      {
+        "type": "tips",
+        "helpText": "Gateway Mode provides the full web management experience and is appropriate for most users. The other modes support specific deployment scenarios."
+      }
+    ]
+  }
+]

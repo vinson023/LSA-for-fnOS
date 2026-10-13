@@ -1,0 +1,246 @@
+#!/bin/bash
+
+# LSA Post-Install Script for fnOS
+
+echo "Installing LSI Storage Authority..."
+
+WEB_PORT="${wizard_web_port:-2463}"
+LSA_PORT="${wizard_lsa_port:-9000}"
+
+echo "Web port: $WEB_PORT, LSA port: $LSA_PORT"
+
+# Older revisions wrote a custom include into fnOS nginx. Remove those stale
+# files during installation, but leave nginx lifecycle ownership to fnOS.
+sudo rm -f /usr/trim/nginx/conf/conf.d/lsa_proxy.conf \
+    /usr/trim/nginx/conf.d/lsa_proxy.conf 2>/dev/null || true
+
+# Install deb packages
+sudo dpkg -i "$TRIM_APPDEST/debs/LSA_lib_utils2-9.00-1_amd64.deb" 2>&1 || true
+sudo dpkg -i "$TRIM_APPDEST/debs/LSA_lib_utils-1.18-1_amd64.deb" 2>&1 || true
+sudo dpkg -i "$TRIM_APPDEST/debs/LSIStorageAuthority-008.017.010.000-1_amd64.deb" 2>&1 || {
+    echo "LSA installation failed" > "$TRIM_TEMP_LOGFILE"
+    exit 1
+}
+
+LSA_HOME="/opt/lsi/LSIStorageAuthority"
+
+# Persist the same ports used by nginx, LSA and the fnOS CGI proxy.
+sudo tee "$LSA_HOME/conf/fnos_ports.conf" > /dev/null << EOF
+web=$WEB_PORT
+service=$LSA_PORT
+EOF
+
+# Install the maintainable Chinese UI overlay and load it after vendor messages.
+ZH_SOURCE="$TRIM_APPDEST/ui/message_zh.js"
+ZH_TARGET="$LSA_HOME/server/html/js/message_zh.js"
+if [ -f "$ZH_SOURCE" ] && [ -d "$LSA_HOME/server/html/js" ]; then
+    sudo cp "$ZH_SOURCE" "$ZH_TARGET"
+    for ui_name in core integratedraid server megaraid managedserver remoteserver; do
+        INDEX_FILE="$LSA_HOME/server/html/ui/$ui_name/index.html"
+        if [ -f "$INDEX_FILE" ]; then
+            # The GWT bootstrap must run after the Chinese overlay, otherwise it can
+            # cache the vendor English messages during its initial render.
+            sudo sed -i '\#message_zh\.js#d; \#\.nocache\.js#d' "$INDEX_FILE"
+            sudo sed -i '/message_en\.js/a\        <script type="text/javascript" src="../../js/message_zh.js"></script>\
+        <script type="text/javascript" src="'"$ui_name"'/'"$ui_name"'.nocache.js"></script>' "$INDEX_FILE"
+        fi
+    done
+fi
+
+# Create compatibility links for WebViews resolving GWT assets one level up.
+for ui_name in core integratedraid server megaraid managedserver remoteserver; do
+    if [ -f "$LSA_HOME/server/html/ui/$ui_name/$ui_name/$ui_name.nocache.js" ]; then
+        sudo ln -sf "$ui_name/$ui_name.nocache.js" "$LSA_HOME/server/html/ui/$ui_name/$ui_name.nocache.js"
+    fi
+done
+sudo ln -sfn ../js "$LSA_HOME/server/html/ui/js" 2>/dev/null || true
+
+# Create lib directory and copy libraries
+sudo mkdir -p "$LSA_HOME/lib"
+sudo cp "$LSA_HOME/bin/"*.so* "$LSA_HOME/lib/" 2>/dev/null || true
+
+# Create symlinks for compatibility
+sudo ln -sf /lib/x86_64-linux-gnu/libcrypt.so.1 /lib/x86_64-linux-gnu/libcrypt.so.2 2>/dev/null || true
+sudo ln -sf /lib/x86_64-linux-gnu/libldap-2.5.so.0 /lib/x86_64-linux-gnu/libldap-2.4.so.2 2>/dev/null || true
+sudo ln -sf /lib/x86_64-linux-gnu/liblber-2.5.so.0 /lib/x86_64-linux-gnu/liblber-2.4.so.2 2>/dev/null || true
+sudo ln -sf "$LSA_HOME/server" /usr/local/nginx-hardened 2>/dev/null || true
+
+# Fix Windows paths in LSA.conf
+sudo python3 -c "
+import re
+with open('$LSA_HOME/conf/LSA.conf', 'r') as f:
+    content = f.read()
+content = re.sub(r'[cC]:\\\\[pP]rogram [fF]iles\\\\[lL][sS][iI]\\\\[lL][sS][iI][sS]torage[aA]uthority/', '$LSA_HOME/', content)
+with open('$LSA_HOME/conf/LSA.conf', 'w') as f:
+    f.write(content)
+" 2>/dev/null || true
+
+# Configure ports
+sudo sed -i "s/nginx_default/$WEB_PORT/g" "$LSA_HOME/server/conf/nginx.conf" 2>/dev/null || true
+sudo sed -i "s/LSA_Default/$LSA_PORT/g" "$LSA_HOME/server/conf/nginx.conf" 2>/dev/null || true
+sudo sed -i "s/listening_port = .*/listening_port = $LSA_PORT/" "$LSA_HOME/conf/LSA.conf" 2>/dev/null || true
+sudo sed -i "s/client_listening_port = .*/client_listening_port = $WEB_PORT/" "$LSA_HOME/conf/LSA.conf" 2>/dev/null || true
+# LSA defaults to read-only mode on Linux. fnOS installs this package only for
+# administrators, so keep the LSA session writable and recognize fnOS's common
+# local administrator groups.
+sudo sed -i 's/^readOnly = .*/readOnly = 0/' "$LSA_HOME/conf/LSA.conf" 2>/dev/null || true
+sudo sed -i 's/^full_access_groups = .*/full_access_groups = Administrators,fnos-admin/' "$LSA_HOME/conf/LSA.conf" 2>/dev/null || true
+sudo sed -i 's/^readonly_access_groups = .*/readonly_access_groups = /' "$LSA_HOME/conf/LSA.conf" 2>/dev/null || true
+echo "gateway" | sudo tee "$LSA_HOME/installtype" > /dev/null
+sudo sed -i "s/installation_type = .*/installation_type = 0/" "$LSA_HOME/conf/LSA.conf" 2>/dev/null || true
+
+# Fix security headers for iframe embedding
+sudo sed -i 's/X-Frame-Options "SAMEORIGIN"/X-Frame-Options "ALLOWALL"/g' "$LSA_HOME/server/conf/nginx.conf" 2>/dev/null || true
+
+# Set CGI script permissions
+# Install an idempotent boot wrapper. The vendor init script returns failure
+# when nginx or LSA is already present, which is common after fnOS boot races.
+sudo tee /usr/local/sbin/lsa-fnos-start > /dev/null << 'WRAPPER'
+#!/bin/bash
+set +e
+HOME_DIR=/opt/lsi/LSIStorageAuthority
+WEB_PORT=2463
+BACKEND_PORT=9000
+export LD_LIBRARY_PATH="/opt/lsi/LSA/libs:/opt/lsi/LSA/libs2:$HOME_DIR/libs:$HOME_DIR/libs2:$HOME_DIR/lib:$HOME_DIR/bin:$HOME_DIR/plugins"
+port_open() { ss -ltn 2>/dev/null | grep -q ":$1 "; }
+lsa_running() { for _pid in $(pgrep -x LSA 2>/dev/null); do case "$(ps -o stat= -p "$_pid" 2>/dev/null)" in Z*) ;; *) return 0;; esac; done; return 1; }
+SLPD_READY=/run/lsa-fnos-slpd-ready
+LSA_BOOT_READY=/run/lsa-fnos-boot-ready
+LSA_BEFORE_SLPD=0
+if lsa_running && ! pgrep -x slpd >/dev/null 2>&1; then LSA_BEFORE_SLPD=1; fi
+slpd_socket_ready() { ss -lun 2>/dev/null | grep -Eq '[:.]427[[:space:]]'; }
+for _ in 1 2 3 4 5 6 7 8 9 10; do
+  pgrep -x slpd >/dev/null 2>&1 && slpd_socket_ready && break
+  sleep 1
+done
+if [ -x /opt/lsi/LSA/libs2/slpd ] && ! pgrep -x slpd >/dev/null 2>&1; then
+  mkdir -p /usr/local/var/log 2>/dev/null || true
+  (export LD_LIBRARY_PATH=/opt/lsi/LSA/libs2; nohup /opt/lsi/LSA/libs2/slpd >/usr/local/var/log/slpd.log 2>&1 &) || true
+  for _ in 1 2 3 4 5 6 7 8 9 10; do slpd_socket_ready && break; sleep 1; done
+fi
+if pgrep -x slpd >/dev/null 2>&1 && slpd_socket_ready; then touch "$SLPD_READY"; fi
+if [ -x "$HOME_DIR/server/nginx" ] && ! port_open "$WEB_PORT"; then
+  cd "$HOME_DIR/server" && ./nginx -p . >/dev/null 2>&1 || true
+fi
+if [ ! -f "$LSA_BOOT_READY" ]; then
+  pkill -TERM -x LSA 2>/dev/null || true
+  sleep 3
+  pkill -KILL -x LSA 2>/dev/null || true
+fi
+if ! lsa_running; then
+  cd "$HOME_DIR/bin" && nohup ./LSA -start >> "$HOME_DIR/logs/fnos-start.log" 2>&1 &
+fi
+touch "$LSA_BOOT_READY"
+exit 0
+WRAPPER
+sudo chmod 755 /usr/local/sbin/lsa-fnos-start
+# Write the final unit directly. Keeping this as one heredoc avoids quoting
+# failures that could leave the vendor init script in place.
+sudo tee /etc/systemd/system/lsistorageauthority.service > /dev/null << 'EOF'
+[Unit]
+Description=LSI Storage Authority Service
+After=network-online.target
+Wants=network-online.target
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+Environment=LSA_START_TIMEOUT=120
+ExecStart=/usr/local/sbin/lsa-fnos-start
+ExecStop=/usr/bin/bash -c 'pkill -TERM -x LSA 2>/dev/null || true; /opt/lsi/LSIStorageAuthority/server/nginx -s stop -p .'
+TimeoutStartSec=180
+TimeoutStopSec=60
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo systemctl daemon-reload 2>/dev/null || true
+sudo systemctl enable lsistorageauthority.service 2>/dev/null || true
+
+UI_DIR="$TRIM_APPDEST/ui"
+if [ -d "$UI_DIR" ]; then
+    chmod 755 "$UI_DIR/index.cgi" 2>/dev/null || true
+    chmod 755 "$UI_DIR/cgi_proxy.py" 2>/dev/null || true
+fi
+
+# The package installation and compatibility configuration above can rewrite
+# LSA.conf, so set the Chinese health specification last.
+HEALTH_SOURCE="$TRIM_APPDEST/ui/languages/zh-CN/healthspec.json"
+HEALTH_TARGET="$LSA_HOME/conf/languages/zh-CN/healthspec.json"
+if [ -f "$HEALTH_SOURCE" ]; then
+    sudo mkdir -p "$(dirname "$HEALTH_TARGET")"
+    sudo cp "$HEALTH_SOURCE" "$HEALTH_TARGET"
+    # LSA's vendor service can reset health_spec to en-US after installation.
+    # Keep the default lookup Chinese as well, without depending on that path.
+    sudo cp "$HEALTH_SOURCE" "$LSA_HOME/conf/languages/en-US/healthspec.json"
+    sudo sed -i 's#^health_spec = .*#health_spec = ../conf/languages/zh-CN/healthspec.json#' "$LSA_HOME/conf/LSA.conf"
+fi
+
+# The error specification is looked up from en-US by the vendor service even
+# when the health-spec path is configured for zh-CN. Keep a Chinese copy at
+# both locations so runtime error details remain localized after restarts.
+ERROR_SOURCE="$TRIM_APPDEST/ui/languages/zh-CN/mr_errors_spec.ini"
+if [ -f "$ERROR_SOURCE" ]; then
+    sudo mkdir -p "$LSA_HOME/conf/languages/zh-CN"
+    sudo cp "$ERROR_SOURCE" "$LSA_HOME/conf/languages/zh-CN/mr_errors_spec.ini"
+    sudo cp "$ERROR_SOURCE" "$LSA_HOME/conf/languages/en-US/mr_errors_spec.ini"
+fi
+
+# Event logs are also resolved from the vendor's en-US paths at runtime.
+for EVENT_SPEC in mr_events_spec.ini mr8_events_spec.ini; do
+    EVENT_SOURCE="$TRIM_APPDEST/ui/languages/zh-CN/$EVENT_SPEC"
+    if [ -f "$EVENT_SOURCE" ]; then
+        sudo mkdir -p "$LSA_HOME/conf/languages/zh-CN"
+        sudo cp "$EVENT_SOURCE" "$LSA_HOME/conf/languages/zh-CN/$EVENT_SPEC"
+        sudo cp "$EVENT_SOURCE" "$LSA_HOME/conf/languages/en-US/$EVENT_SPEC"
+    fi
+done
+
+# Alert details use the same vendor default language directory at runtime.
+for ALERT_RESOURCE in alertparam.ini alertspec.json; do
+    ALERT_SOURCE="$TRIM_APPDEST/ui/languages/zh-CN/$ALERT_RESOURCE"
+    if [ -f "$ALERT_SOURCE" ]; then
+        sudo mkdir -p "$LSA_HOME/conf/languages/zh-CN"
+        sudo cp "$ALERT_SOURCE" "$LSA_HOME/conf/languages/zh-CN/$ALERT_RESOURCE"
+        sudo cp "$ALERT_SOURCE" "$LSA_HOME/conf/languages/en-US/$ALERT_RESOURCE"
+    fi
+done
+
+# Static error pages are independent of the compiled GWT modules and can be
+# localized without changing UI code or API-facing values.
+STATIC_SOURCE="$TRIM_APPDEST/ui/static"
+if [ -d "$STATIC_SOURCE" ]; then
+    for STATIC_FILE in 50x.html ui/core/ServerNotReachable.html files/App_statusCode_description.html files/credits.html; do
+        if [ -f "$STATIC_SOURCE/$STATIC_FILE" ]; then
+            sudo mkdir -p "$(dirname "$LSA_HOME/server/html/$STATIC_FILE")"
+            sudo cp "$STATIC_SOURCE/$STATIC_FILE" "$LSA_HOME/server/html/$STATIC_FILE"
+        fi
+    done
+fi
+
+# Help pages are static documentation. Copy only the translated HTML files so
+# the vendor's image and stylesheet assets remain untouched.
+INTEGRATEDRAID_HELP_SOURCE="$TRIM_APPDEST/ui/help/integratedraid"
+if [ -d "$INTEGRATEDRAID_HELP_SOURCE" ]; then
+    sudo mkdir -p "$LSA_HOME/server/html/help/integratedraid"
+    sudo find "$INTEGRATEDRAID_HELP_SOURCE" -type f \( -name '*.html' -o -name '*.htm' \) -exec sh -c '
+        source_file="$1"
+        relative_file="${source_file#"$2"/}"
+        destination="$3/$relative_file"
+        mkdir -p "$(dirname "$destination")"
+        cp "$source_file" "$destination"
+    ' sh {} "$INTEGRATEDRAID_HELP_SOURCE" "$LSA_HOME/server/html/help/integratedraid" \;
+fi
+
+MEGARAID_HELP_SOURCE="$TRIM_APPDEST/ui/help/megaraid"
+if [ -d "$MEGARAID_HELP_SOURCE" ]; then
+    sudo mkdir -p "$LSA_HOME/server/html/help/megaraid"
+    sudo find "$MEGARAID_HELP_SOURCE" -type f \( -name '*.html' -o -name '*.htm' \) -exec sh -c '
+        source_file="$1"
+        relative_file="${source_file#"$2"/}"
+        destination="$3/$relative_file"
+        mkdir -p "$(dirname "$destination")"
+        cp "$source_file" "$destination"
+    ' sh {} "$MEGARAID_HELP_SOURCE" "$LSA_HOME/server/html/help/megaraid" \;
+fi
+
+echo "LSA installation completed"
+exit 0

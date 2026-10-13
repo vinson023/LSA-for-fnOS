@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# LSA Pre-Uninstall Script for fnOS
+
+echo "Uninstalling LSI Storage Authority..."
+
+sudo systemctl disable --now lsistorageauthority.service 2>/dev/null || true
+
+LSA_HOME="/opt/lsi/LSIStorageAuthority"
+
+# Stop services
+pkill -f "$LSA_HOME/bin/LSA" 2>/dev/null || true
+cd "$LSA_HOME/server" 2>/dev/null && ./nginx -s stop -p . 2>/dev/null || true
+
+# Remove a legacy proxy include if an older package created one. Do not reload
+# fnOS's main nginx from the application lifecycle; App Center may be running
+# its own nginx transaction and a reload here can briefly take the NAS UI down.
+sudo rm -f /usr/trim/nginx/conf/conf.d/lsa_proxy.conf 2>/dev/null || true
+sudo rm -f /usr/trim/nginx/conf.d/lsa_proxy.conf 2>/dev/null || true
+
+# Remove only compatibility symlinks created by this application. Do not
+# remove another package's same-named system symlink.
+remove_owned_symlink() {
+    path="$1"
+    target="$2"
+    if [ -L "$path" ] && [ "$(readlink "$path")" = "$target" ]; then
+        sudo rm -f "$path"
+    fi
+}
+
+remove_owned_symlink /usr/local/nginx-hardened "$LSA_HOME/server"
+remove_owned_symlink /lib/x86_64-linux-gnu/libcrypt.so.2 /lib/x86_64-linux-gnu/libcrypt.so.1
+remove_owned_symlink /lib/x86_64-linux-gnu/libldap-2.4.so.2 /lib/x86_64-linux-gnu/libldap-2.5.so.0
+remove_owned_symlink /lib/x86_64-linux-gnu/liblber-2.4.so.2 /lib/x86_64-linux-gnu/liblber-2.5.so.0
+
+# Purge rather than remove so dpkg does not leave rc configuration records.
+purge_package() {
+    package="$1"
+    status="$(dpkg-query -W -f='${db:Status-Status}' "$package" 2>/dev/null || true)"
+    if [ "$status" = "installed" ] || [ "$status" = "config-files" ]; then
+        sudo dpkg --purge "$package" || exit 1
+    fi
+}
+
+purge_package lsistorageauthority
+purge_package lsa-lib-utils
+purge_package lsa-lib-utils2
+
+# Cleanup
+sudo rm -rf "$LSA_HOME" 2>/dev/null || true
+sudo rm -rf /opt/lsi/LSA 2>/dev/null || true
+
+# Remove the vendor base directory when it is empty so no trace remains.
+sudo rmdir /opt/lsi 2>/dev/null || true
+sudo rm -f /etc/systemd/system/lsistorageauthority.service 2>/dev/null || true
+sudo systemctl daemon-reload 2>/dev/null || true
+
+echo "LSA uninstalled"
+exit 0

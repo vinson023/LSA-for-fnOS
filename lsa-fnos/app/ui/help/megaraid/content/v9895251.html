@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience = HPE OLH"><meta name="DC.Coverage" content="platform = Utility"><meta name="DC.Coverage" content="product = LSA"><meta name="DC.Relation" scheme="URI" content="../content/v9893838.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_expanding_VD"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v9895251"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>扩展虚拟磁盘的在线容量</title></head><body id="v9895251"><main role="main"><article role="article" aria-labelledby="v9895251__v9895252">
+  <h1 class="title topictitle1" id="v9895251__v9895252">扩展虚拟磁盘的在线容量</h1>
+  
+  <div class="body taskbody" id="v9895251__v9895265">
+    <section class="section context" id="v9895251__v9895266">
+      <div class="p" id="v9895251__v9895276">在线扩容 (OCE) 功能可让您通过添加新的物理磁盘，或使用现有物理磁盘上未使用的空间来扩展虚拟磁盘容量，而无需重新启动系统。执行以下步骤以扩展虚拟磁盘容量。
+        <div class="note attention note_attention" id="v9895251__v9995464"><span class="note__title">注意：</span> 在继续执行 OCE 之前，请确保备份虚拟磁盘上的数据。</div>
+        <div class="note note note_note" id="v9895251__note_1"><span class="note__title">注意：</span> 此功能仅适用于 SAS41xx 控制器。对于前几代产品，当使用现有阵列大小时，无法扩展虚拟磁盘的在线容量。有关通过执行 RAID 级别迁移来扩展容量的信息，请参阅 <a class="xref" href="v9895210.html">RAID 级别迁移</a>。</div>
+      </div>
+    </section>
+    <ol class="ol steps" id="v9895251__v9895267"><li class="li step stepexpand" id="v9895251__v9982254">
+        <span class="ph cmd" id="v9895251__v9982255">导航到控制器仪表板，选择磁盘组名称（例如 <span class="ph uicontrol" id="v9895251__v9982256">DG_1</span>），然后单击 <img class="image" height="12" src="LSA_expand_button_icon.png" width="14"> 与磁盘组对应的图标以显示其内容。</span>
+        <div class="itemgroup info" id="v9895251__v9982258">将显示与所选磁盘组关联的虚拟磁盘和物理磁盘。</div>
+      </li><li class="li step stepexpand" id="v9895251__v9982259">
+        <span class="ph cmd" id="v9895251__v9982260">选择需要扩容的虚拟磁盘。</span>
+      </li><li class="li step stepexpand" id="v9895251__v9982261">
+        <span class="ph cmd" id="v9895251__v9982262">选择 <span class="ph menucascade" id="v9895251__v9982263"><span class="ph uicontrol" id="v9895251__v9982264">磁盘操作</span><abbr title="然后"> &gt; </abbr><span class="ph uicontrol" id="v9895251__v9982265">展开</span></span>。</span>
+        <div class="itemgroup stepresult" id="v9895251__v9982266"><span class="keyword wintitle" id="v9895251__v10006485">扩展虚拟磁盘</span> 对话框出现。
+          <figure class="fig fignone" id="v9895251__v9982267"><figcaption><span class="fig--title-label">图 1. </span>扩展虚拟磁盘对话框 1</figcaption>
+            
+            <img class="image" id="v9895251__image_1" height="246" src="LSA_ExpandVirtual-Drive1.png" width="650">
+          </figure>
+        </div>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">选择 <span class="ph uicontrol">建议在继续之前备份数据。您确定要继续吗？</span> 复选框并单击 <span class="ph uicontrol">下一步</span>。</span>
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">单击 <span class="ph uicontrol">添加物理磁盘</span>，然后选择一个未配置的物理磁盘。</span>
+        
+      </li><li class="li step stepexpand">
+        <span class="ph cmd">单击 <span class="ph uicontrol">完成</span>。</span>
+        <div class="itemgroup info" id="v9895251__info_1">
+          <figure class="fig fignone" id="v9895251__fig_3"><figcaption><span class="fig--title-label">图 2. </span>扩展虚拟磁盘对话框 2</figcaption>
+            
+            <img class="image" id="v9895251__image_6" height="290" src="LSA_ExpandVirtual-Drive-Finish.png" width="650">
+          </figure>
+        </div>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v9893838.html" title="LSI 存储管理软件允许您在虚拟磁盘上执行各种操作。">管理虚拟磁盘</a></div></div></nav></article></main></body></html>
+

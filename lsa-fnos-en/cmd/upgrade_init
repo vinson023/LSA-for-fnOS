@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# LSA Pre-Upgrade Script for fnOS
+# This script runs before upgrading LSA
+
+echo "Preparing for LSA upgrade..."
+
+LSA_HOME="/opt/lsi/LSIStorageAuthority"
+LSA_SERVICE="LsiSASH"
+
+# Stop service if running
+if service $LSA_SERVICE status > /dev/null 2>&1; then
+    echo "Stopping LSA service..."
+    service $LSA_SERVICE stop > /dev/null 2>&1
+fi
+
+# Backup configuration
+BACKUP_DIR="$TRIM_TEMP_UPGRADE_FOLDER"
+if [ -n "$BACKUP_DIR" ] && [ -d "$LSA_HOME" ]; then
+    mkdir -p "$BACKUP_DIR"
+    
+    # Backup important config files
+    [ -f "$LSA_HOME/conf/LSA.conf" ] && cp "$LSA_HOME/conf/LSA.conf" "$BACKUP_DIR/"
+    [ -f "$LSA_HOME/server/conf/nginx.conf" ] && cp "$LSA_HOME/server/conf/nginx.conf" "$BACKUP_DIR/"
+    [ -f "$LSA_HOME/bin/smtpServer" ] && cp "$LSA_HOME/bin/smtpServer" "$BACKUP_DIR/"
+    [ -f "$LSA_HOME/bin/key.store" ] && cp "$LSA_HOME/bin/key.store" "$BACKUP_DIR/"
+    [ -f "$LSA_HOME/bin/value.store" ] && cp "$LSA_HOME/bin/value.store" "$BACKUP_DIR/"
+    [ -d "$LSA_HOME/bin/managedservers" ] && cp -r "$LSA_HOME/bin/managedservers" "$BACKUP_DIR/"
+    [ -d "$LSA_HOME/conf/monitor" ] && cp -r "$LSA_HOME/conf/monitor" "$BACKUP_DIR/"
+    
+    echo "Configuration backed up"
+fi
+
+echo "Upgrade preparation completed"
+exit 0

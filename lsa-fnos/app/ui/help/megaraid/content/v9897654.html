@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience = HPE OLH"><meta name="DC.Coverage" content="platform = Utility"><meta name="DC.Coverage" content="product = LSA"><meta name="DC.Relation" scheme="URI" content="../content/v9893874.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_set_learn_cycle_properties"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v9897654"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>设置学习周期属性</title></head><body id="v9897654"><main role="main"><article role="article" aria-labelledby="v9897654__v9897655">
+  <h1 class="title topictitle1" id="v9897654__v9897655">设置学习周期属性</h1>
+  
+  <div class="body taskbody" id="v9897654__v9897668">
+    <section class="section context" id="v9897654__v9897669">
+      <p class="p" id="v9897654__v9897706">执行以下步骤设置自动学习周期属性。</p>
+    </section>
+    <ol class="ol steps" id="v9897654__v9897708"><li class="li step stepexpand" id="v9897654__v9897709">
+        <span class="ph cmd" id="v9897654__v9897710">导航到控制器仪表板，然后单击 <span class="ph uicontrol" id="v9897654__v9897711">其他硬件</span> 选项卡。</span>
+        <div class="itemgroup stepresult" id="v9897654__v9897712">所有连接到控制器的相关硬件都会出现。</div>
+      </li><li class="li step stepexpand" id="v9897654__v9897713">
+        <span class="ph cmd" id="v9897654__v9897714">展开 <span class="ph uicontrol" id="v9897654__v9897715">阵列卡电池/超级电容</span>，然后选择 阵列卡电池/超级电容。</span>
+      </li><li class="li step stepexpand" id="v9897654__v9897716">
+        <span class="ph cmd" id="v9897654__v9897717">选择 <span class="ph menucascade" id="v9897654__v9897718"><span class="ph uicontrol" id="v9897654__v9897719">操作</span><abbr title="然后"> &gt; </abbr><span class="ph uicontrol" id="v9897654__v9897720">设置学习周期属性</span></span>。</span>
+        <div class="itemgroup info" id="v9897654__v9897721">
+          <p class="p" id="v9897654__v9897722">将显示<span class="keyword wintitle" id="v9897654__v9897723">设置学习周期属性</span>对话框。</p>
+        </div>
+      </li><li class="li step stepexpand" id="v9897654__v9897726">
+        <span class="ph cmd" id="v9897654__v9897727">在 <span class="ph uicontrol" id="v9897654__v10047356">学习周期</span> 下拉列表中，选择 <span class="ph uicontrol" id="v9897654__v9897728">启用</span> 选项。</span>
+        <div class="itemgroup info" id="v9897654__v24023785">另外两个选项是 <span class="ph uicontrol" id="v9897654__v9897730">禁用</span> 和 <span class="ph uicontrol" id="v9897654__v9897731">通过事件发出警告</span>。</div>
+        <div class="itemgroup info" id="v9897654__v9933777">
+          <ul class="ul" id="v9897654__v9933778">
+            <li class="li" id="v9897654__v9933779">如果您选择 <span class="ph uicontrol" id="v9897654__v9933780">禁用</span>，自动学习周期被禁用。
+              <p class="p" id="v9897654__v24023788"><span class="ph uicontrol" id="v9897654__v9933781">开始于</span> 和 <span class="ph uicontrol" id="v9897654__v9933782">将下一个学习周期延迟</span> 字段也被禁用。</p>
+            </li>
+            <li class="li" id="v9897654__v9933783">如果您选择 <span class="ph uicontrol" id="v9897654__v9933784">通过事件发出警告</span>，会生成一个事件，通知您何时手动启动学习周期。</li>
+            <li class="li" id="v9897654__v9933785">如果学习周期被禁用或未安排，<span class="ph uicontrol" id="v9897654__v9933786">无</span> 将显示在 <span class="ph uicontrol" id="v9897654__v9933787">下一个学习周期时间</span> 字段中。</li>
+            <li class="li" id="v9897654__v9933788">如果已安排学习周期，下一个学习周期的星期几、日期和时间将显示在 <span class="ph uicontrol" id="v9897654__v9933789">下一个学习周期时间</span> 字段中。</li>
+          </ul>
+          <div class="note note note_note" id="v9897654__v9933790"><span class="note__title">注意：</span> 选择 <span class="ph uicontrol" id="v9897654__v9933791">禁用</span> 后，如果选择 <span class="ph uicontrol" id="v9897654__v9933792">启用</span>，控制器固件会重置 阵列卡电池/超级电容 模块属性并立即启动学习周期。只有在 阵列卡电池/超级电容 完成重新学习后，<span class="ph uicontrol" id="v9897654__v9933793">下一个学习周期</span> 字段才会更新。重新学习周期完成后，<span class="ph uicontrol" id="v9897654__v9933794">下一个学习周期</span> 字段会显示新的日期和时间。</div>
+        </div>
+      </li><li class="li step stepexpand" id="v9897654__v9897748">
+        <span class="ph cmd" id="v9897654__v9897749">在 <span class="ph uicontrol" id="v9897654__v9897750">开始于</span> 字段中指定自动学习周期的开始日期和时间。</span>
+      </li><li class="li step stepexpand" id="v9897654__v9897751">
+        <span class="ph cmd" id="v9897654__v9897752">（可选）在 <span class="ph uicontrol" id="v9897654__v9897753">将下一个学习周期延迟</span> 字段中指定日期和时间，将下一个学习周期的开始时间最多延迟 7 天（168 小时）。</span>
+      </li><li class="li step stepexpand" id="v9897654__v9897754">
+        <span class="ph cmd" id="v9897654__v9897755">单击 <span class="ph uicontrol" id="v9897654__v9897756">保存</span>。</span>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v9893874.html">监控 阵列卡电池/超级电容</a></div></div></nav></article></main></body></html>
+

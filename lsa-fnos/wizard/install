@@ -1,0 +1,52 @@
+[
+  {
+    "stepTitle": "端口配置",
+    "items": [
+      {
+        "type": "text",
+        "field": "wizard_web_port",
+        "label": "Web 管理端口",
+        "initValue": "2463",
+        "rules": [
+          { "required": true, "message": "请输入 Web 管理端口" },
+          { "pattern": "^[0-9]+$", "message": "端口必须是数字" }
+        ]
+      },
+      {
+        "type": "text",
+        "field": "wizard_lsa_port",
+        "label": "LSA 服务端口",
+        "initValue": "9000",
+        "rules": [
+          { "required": true, "message": "请输入 LSA 服务端口" },
+          { "pattern": "^[0-9]+$", "message": "端口必须是数字" }
+        ]
+      },
+      {
+        "type": "tips",
+        "helpText": "Web 管理端口用于浏览器访问 LSA 管理界面，LSA 服务端口用于后端通信。两个端口不能相同。"
+      }
+    ]
+  },
+  {
+    "stepTitle": "安装模式",
+    "items": [
+      {
+        "type": "radio",
+        "field": "wizard_install_mode",
+        "label": "选择安装模式",
+        "initValue": "gateway",
+        "options": [
+          { "label": "网关模式 (推荐) - 完整功能，Web 管理", "value": "gateway" },
+          { "label": "独立模式 - 仅本地服务器管理", "value": "standalone" },
+          { "label": "远程代理模式 - 仅远程服务器管理", "value": "directagent" },
+          { "label": "轻量监控模式 - 最小资源占用", "value": "lightweight" }
+        ]
+      },
+      {
+        "type": "tips",
+        "helpText": "网关模式提供完整的 Web 管理功能，适合大多数用户。其他模式适用于特定的部署场景。"
+      }
+    ]
+  }
+]

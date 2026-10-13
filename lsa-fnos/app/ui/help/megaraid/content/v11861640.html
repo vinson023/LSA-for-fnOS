@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="concept"><meta name="description" content="This section outlines the preinstallation and postinstallation requirements that are essential to run and manage LSA on the VMware ESXi operating systems."><meta name="DC.Coverage" content="Broadcom"><meta name="DC.subject" content="MegaRAID SAS SW UG"><meta name="keywords" content="MegaRAID SAS SW UG"><meta name="DC.Relation" scheme="URI" content="../content/v13215344.html"><meta name="DC.Relation" scheme="URI" content="../content/v13215545.html"><meta name="DC.Relation" scheme="URI" content="../content/v12239357.html"><meta name="DC.Relation" scheme="URI" content="../content/v12290729.html"><meta name="DC.Relation" scheme="URI" content="../content/v12290677.html"><meta name="DC.Relation" scheme="URI" content="../content/v12290774.html"><meta name="DC.Relation" scheme="URI" content="../content/v12290802.html"><meta name="DC.Relation" scheme="URI" content="../content/v12290856.html"><meta name="DC.Relation" scheme="URI" content="../content/v11861671.html"><meta name="DC.Relation" scheme="URI" content="../content/v12239302.html"><meta name="DC.Relation" scheme="URI" content="../content/v11861686.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="version" content="Version 2.16"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="MSM_MR_help-2-27"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v11861640"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>管理 VMware ESXi 操作系统上的 LSA</title></head><body id="v11861640"><main role="main"><article role="article" aria-labelledby="v11861640__v11861641">
+  <h1 class="title topictitle1" id="v11861640__v11861641">管理 VMware ESXi 操作系统上的 LSA</h1>
+  
+  
+  <div class="body conbody" id="v11861640__v11861647"><p class="shortdesc">本节概述了在 VMware ESXi 操作系统上运行和管理 LSA 所必需的安装前和安装后要求。</p>
+    <p class="p">从 VMware ESXi 7.x 及更高版本开始，可以通过直接安装 LWA 来管理 VMware ESXi 。</p>
+    <div class="note note note_note"><span class="note__title">注意：</span> 对于 ESXi 7.x 之前的版本，LSA 无法直接安装在 VMware ESXi 操作系统上。安装在 VMware ESXi 7.x 及更低版本上的 LSA 通过安装在同一子网中 Linux 或 Windows 计算机上的 LSA 客户端进行管理。</div>
+    <ol class="ol" id="v11861640__v11874132">
+      
+      
+      <li class="li" id="v11861640__v11874493">
+        <p class="p" id="v11861640__v11874494"><strong class="ph b">提供商服务</strong></p>
+        <p class="p" id="v11861640__v11874495">在从 LSA 客户端（Windows 和 Linux）执行 VMware ESXi 发现之前，请确保提供商服务已启动并正在运行。</p>
+        <p class="p" id="v11861640__v11874496">执行以下命令以确保提供程序服务已在 VMware ESXi 上启动并运行：</p>
+        <p class="p" id="v11861640__v11874497"><span class="keyword cmdname" id="v11861640__v11874498">/etc/init.d/slpd status</span></p>
+        <p class="p" id="v11861640__v11874499"><span class="keyword cmdname" id="v11861640__v11874500">/etc/init.d/sfcbd-watchdog status</span></p>
+      </li>
+      <li class="li" id="v11861640__v11874501">
+        <p class="p" id="v11861640__v11874502"><strong class="ph b">配置变更详情</strong></p>
+        <p class="p" id="v11861640__v11874503">如果有任何配置更改，请确保执行以下操作：</p>
+        <ul class="ul" id="v11861640__v11874504">
+          <li class="li" id="v11861640__v11874505"><span class="keyword cmdname" id="v11861640__v11874507">/etc/init.d/sfcb-watchdog stop</span></li>
+          <li class="li" id="v11861640__v11874508"><span class="keyword cmdname" id="v11861640__v11874510">/etc/init.d/slpd stop</span></li>
+          <li class="li" id="v11861640__v11874511"><span class="keyword cmdname" id="v11861640__v11874513">/etc/init.d/slpd start</span></li>
+          <li class="li" id="v11861640__v11874514"><span class="keyword cmdname" id="v11861640__v11874516">/etc/init.d/sfcb-watchdog start</span></li>
+        </ul>
+      </li>
+      <li class="li" id="v11861640__v11874517">
+        <p class="p" id="v11861640__v11874518"><strong class="ph b">存储控制器</strong></p>
+        <p class="p" id="v11861640__v11874519">确保 VMware ESXi 上的存储控制器具有正确的配置（固件和驱动程序）并且存储控制器在通过 LSA 连接之前按预期工作。以下命令有助于验证是否检测到控制器：</p>
+        <p class="p" id="v11861640__v11874520"><span class="keyword cmdname" id="v11861640__v11874521">枚举实例 cim_system lsi/lsimr13</span></p>
+      </li>
+      <li class="li" id="v11861640__v11874522">
+        <p class="p" id="v11861640__v11874523"><strong class="ph b">网络通讯详情</strong></p>
+        <p class="p" id="v11861640__v11874524">网络通信是 VMware ESXi CIM 提供程序和 Broadcom 管理软件之间正确通信的关键要素。通过进行以下更改来确保网络设置正确：</p>
+        <ul class="ul" id="v11861640__v11874525">
+          <li class="li" id="v11861640__v11874526">在对 VMware ESXi 主机执行初始配置时，提供正确的主机名和 IP 地址。参考 <a class="xref" href="http://www.unixarena.com/2015/05/how-to-configure-the-network-on-vmware-esxi-6-0.html" target="_blank">如何在 VMware ESXi 上配置网络？</a> 了解更多信息。</li>
+          <li class="li" id="v11861640__v11874528">对于未配置 DNS 的网络，必须按如下方式编辑安装 LSA 系统上的 <code class="ph codeph">hosts</code> 文件：</li>
+        </ul>
+        <ol class="ol" type="a" id="v11861640__v11874529">
+          <li class="li" id="v11861640__v11874530">
+            <p class="p" id="v11861640__v11874531">添加一个条目以将 VMware 主机的 IP 地址与主机名进行映射，以便发现过程正确进行。如果没有此条目，VMware 主机将被发现为 <var class="keyword varname" id="v11861640__v13215692">0.0.0.0</var>.</p>
+          </li>
+          <li class="li" id="v11861640__v11874532">
+            <div class="p" id="v11861640__v11874533">添加一个条目以将本地主机的实际 IP 地址与其主机名进行映射。默认情况下，环回地址的条目会出现在主机文件中，并且不应将其删除，以确保正确传送异步事件通知 (AEN)。例如，如果 <var class="keyword varname" id="v11861640__v13215693">135.24.228.136</var> 是 VMware 主机的 IP 地址， <var class="keyword varname" id="v11861640__v13215694">135.24.228.137</var> 是 Linux 主机的 IP 地址，必须在 <span class="ph filepath" id="v11861640__v12828770">主机</span> 文件：
+              <pre class="pre codeblock" id="v11861640__v11874534"><code>135.24.228.136 dhcp-135-24-228-136.lsi.com dhcp-135-24-228-136 #VMware</code></pre>
+              <pre class="pre codeblock" id="v11861640__v11874535"><code>135.24.228.137 dhcp-135-24-228-137.lsi.com dhcp-135-24-228-137 #Linux</code></pre>
+            </div>
+            <div class="note note note_note"><span class="note__title">注意：</span> 确保端口 2463 未被防火墙阻止。</div>
+          </li>
+        </ol>
+      </li>
+    </ol>
+    <p class="p" id="v11861640__v11861651">仅在以下操作系统上的 LSA 网关安装中支持 VMware ESXi 的远程管理：</p>
+    <ul class="ul" id="v11861640__v11861652">
+      <li class="li" id="v11861640__v11861653">微软 Windows 服务器</li>
+      <li class="li" id="v11861640__v11861654">RHEL</li>
+      <li class="li" id="v11861640__v11861655">SUSE Linux</li>
+    </ul>
+    <p class="p" id="v11861640__v11874540"><strong class="ph b">Windows 和 Linux 步骤</strong></p>
+    <p class="p" id="v11861640__v11874541">需要在 Windows/Linux 客户端上执行以下步骤：</p>
+    <div class="note note note_note" id="v11861640__v11874542"><span class="note__title">注意：</span> 客户端和服务器应该在同一子网中。</div>
+    <ol class="ol" id="v11861640__v11874544">
+      <li class="li" id="v11861640__v11874545">确保端口 2463 未被防火墙阻止。</li>
+      <li class="li" id="v11861640__v11874547">在网关安装模式下安装最新的 LSA 客户端。</li>
+      <li class="li" id="v11861640__v11874549">启动 LSA。</li>
+      <li class="li" id="v11861640__v11874551">确保 LSA 服务已启动并正在运行。</li>
+      <li class="li" id="v11861640__v11874553">确保发现网络中的其他 LSA 服务器。</li>
+      <li class="li" id="v11861640__v11874555">确保 VMware IP 被发现作为 <span class="keyword wintitle" id="v11861640__v12828771">远程服务器发现</span> 页。</li>
+      <li class="li" id="v11861640__v11874557">使用 VMware 凭据登录，通过 LSA 客户端监控和管理存储控制器。</li>
+    </ol>
+    <p class="p" id="v11861640__v11874559"><strong class="ph b">在 VMware ESXi 环境上配置网络</strong></p>
+    <ul class="ul" id="v11861640__v11874560">
+      <li class="li" id="v11861640__v11874561">默认情况下，在 VMware ESXi 操作系统安装过程中，应适当配置 IP 和主机名。</li>
+      <li class="li" id="v11861640__v11874563">
+        <p class="p" id="v11861640__v11874564">如果已安装的 VMware ESXi 操作系统从一个网络移至另一个网络，并且主机名映射不正确，请按照以下链接中提到的步骤配置网络和主机名：</p>
+        <a class="xref" href="http://www.unixarena.com/2015/05/how-to-configure-the-network-on-vmware-esxi-6-0.html" target="_blank">如何在 VMware ESXi 上配置网络？</a></li>
+    </ul>
+    <p class="p" id="v11861640__v12153236"><strong class="ph b">多子网配置</strong></p>
+    <ul class="ul" id="v11861640__v12153239">
+      <li class="li" id="v11861640__v12153244">CIMOM 服务器中的 CURL 错误导致上层 (CIMProvider--&gt;LSA) 受阻。如果服务器位于不同的子网中或者存在任何不正确或不完整的 AEN 订阅，则会发生此错误。为了避免此错误，客户端和服务器必须位于同一子网中。必须使用 CIMClient 删除任何不完整的 AEN 订阅。
+        <p class="p" id="v11861640__v12153245">要查看现有订阅，请输入：</p>
+        <p class="p" id="v11861640__v12153246"><span class="keyword cmdname" id="v11861640__v12153247">主机索引-s</span></p>
+        <p class="p" id="v11861640__v12153248">要删除现有订阅，请输入：</p>
+        <p class="p" id="v11861640__v12153249"><span class="keyword cmdname" id="v11861640__v12153250">主机索引-d -k</span> &lt;<var class="keyword varname" id="v11861640__v12153251">处理程序名称</var>&gt;</p>
+        <p class="p" id="v11861640__v12153252">例如， <span class="keyword cmdname" id="v11861640__v12153253">主机-ind -d -k dhcp-x.y.z.k.dhcp.company.net_LSA_127.0.0.1</span></p>
+        <div class="p">如果上一个命令在最新版本的 VMware ESXi 中失败，请使用以下命令 <span class="keyword cmdname">索引配置文件</span>。
+          <ul class="ul" id="v11861640__ul_1">
+            <li class="li">查看现有订阅： <span class="keyword cmdname">indcfg-|</span></li>
+            <li class="li">清除订阅： <span class="keyword cmdname">indcfg-c</span></li>
+          </ul>
+        </div>
+        <div class="p">在 VMware 服务器中进行任何更改后，重新启动或重新引导 sfcb 服务。
+          <ul class="ul" id="v11861640__ul_2">
+            <li class="li">要重新启动服务器，请使用：
+              <pre class="pre codeblock"><code>esxcli system wbem set -e 0
+esxcli system wbem set -e 1</code></pre>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <p class="p" id="v11861640__v12239335">进行任何更改后，请重新启动 <code class="ph codeph">sfcb</code> 服务或重启 VMware 服务器。</p>
+  </div>
+<nav role="navigation" class="related-links"><ul class="ullinks"><li class="link ulchildlink"><strong><a href="../content/v13215344.html">管理主机硬件 RAID 控制器</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/v13215545.html">优化事件通知</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/v12239357.html">在各种 LSA 安装程序上配置防火墙</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/v12290729.html">使用基于 InDirectAgent SMIS 的管理收集日志</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/v12290677.html">收集 Windows 和 Linux 操作系统日志</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/v12290774.html">VMware 操作系统上的注销和重新启动要求</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/v12290802.html">事件历史记录的行为</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/v12290856.html">事件监控行为</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/v11861671.html">安装和配置的限制</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/v12239302.html">升级和降级 IT 控制器上的固件 (VMware)</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/v11861686.html">LSA 与 VMware ESXi 的差异</a></strong><br></li></ul></nav></article></main></body></html>
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="DC.Relation" scheme="URI" content="../content/v9893820.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_managing_link_speed"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v9894079"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>管理 SAS 存储链路速率</title></head><body id="v9894079"><main role="main"><article role="article" aria-labelledby="v9894079__v9894080">
+  <h1 class="title topictitle1" id="v9894079__v9894080">管理 SAS 存储链路速率</h1>
+  
+  <div class="body taskbody" id="v9894079__v9894093">
+    <section class="section context" id="v9894079__v9894094">
+      <p class="p" id="v9894079__v9895356">通过管理 SAS 存储链路速率功能，您可以更改控制器与扩展器之间，或控制器与直连物理磁盘之间的链路速率。一个 SAS 端口中的各 PHY 可以使用相同或不同的链路速率。您可以选择所需的链路速率；但是，如果同一 SAS 端口中的 PHY 使用不同的链路速率，且这些 PHY 连接到物理磁盘或扩展器，固件会覆盖所选设置，并采用所有 PHY 均支持的最高链路速率。</p>
+      <p class="p" id="v9894079__v9895357">执行以下步骤来更改链路速率。</p>
+    </section>
+    <ol class="ol steps" id="v9894079__v9894095"><li class="li step stepexpand" id="v9894079__v9894096">
+        <span class="ph cmd" id="v9894079__v9895358">在控制器仪表板中，选择 <span class="ph menucascade" id="v9894079__v9895359"><span class="ph uicontrol" id="v9894079__v9895360">更多操作</span><abbr title="然后"> &gt; </abbr><span class="ph uicontrol" id="v9894079__v12028776">管理 SAS 存储链路速率</span></span>。</span>
+        <div class="itemgroup stepresult" id="v9894079__v9895362">
+<p class="p">将显示 <span class="keyword wintitle" id="v9894079__v12028777">管理 SAS 存储链路速率</span> 对话框。</p>
+          
+          <ul class="ul" id="v9894079__v9895370">
+            <li class="li" id="v9894079__v9895373"><span class="ph uicontrol" id="v9894079__v9895374">PHY</span> 列显示系统支持的 PHY 及其链路速率。</li>
+            <li class="li" id="v9894079__v12028778"><span class="ph uicontrol" id="v9894079__v12028780">状态</span> 列显示链路速率的状态。</li>
+            <li class="li" id="v9894079__v12028781"><span class="ph uicontrol" id="v9894079__v12028783">端口号</span>列显示端口号。</li>
+            <li class="li" id="v9894079__v9895375"><span class="ph uicontrol" id="v9894079__v9895376">选择链路速率</span> 列用于为 PHY 选择链路速率。</li>
+            <li class="li" id="v9894079__li_1"><span class="ph uicontrol" id="v9894079__uicontrol_1">协商链路速率</span> 列显示 PHY 当前协商的链路速率。</li>
+            <li class="li" id="v9894079__li_2"><span class="ph uicontrol">连接设备</span> 列显示连接到 PHY 的设备。</li>
+          </ul>
+        </div>
+      </li><li class="li step stepexpand" id="v9894079__v9895366">
+        <span class="ph cmd" id="v9894079__v9895367">在 <span class="ph uicontrol" id="v9894079__v9895377">选择链路速率</span> 字段的下拉列表中选择所需的链路速率。可选值为 <span class="ph uicontrol" id="v9894079__v9895383">最大</span>、 <span class="ph uicontrol" id="v9894079__v9895386">6.0Gb/秒</span>, <span class="ph uicontrol" id="v9894079__uicontrol_2">12.0Gb/秒</span>，或 <span class="ph uicontrol" id="v9894079__uicontrol_3">22.5Gb/秒</span>。</span>
+        <div class="itemgroup info" id="v9894079__v11484372">
+          <p class="p" id="v9894079__v11484373">默认情况下，控制器的链路速率设为 <span class="ph uicontrol" id="v9894079__v11484374">最大</span>，或使用您上次保存的值。部分 SAS-3 扩展器支持 <span class="ph uicontrol" id="v9894079__v12844982">12.0Gb/秒</span> 链路速率。</p>
+        </div>
+      </li><li class="li step stepexpand" id="v9894079__v9895368">
+        <span class="ph cmd" id="v9894079__v9895369">单击 <span class="ph uicontrol" id="v9894079__v9895380">保存</span>。</span>
+        <div class="itemgroup stepresult" id="v9894079__v9895381">链路速率值已重置。更改将在重新启动系统后生效。</div>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v9893820.html" title="LSI 存储管理软件使您能够监控系统中所有控制器以及连接到它们的设备的活动。">管理控制器</a></div></div></nav></article></main></body></html>
+

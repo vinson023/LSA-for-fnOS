@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Relation" scheme="URI" content="../content/v11169464.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="version" content="Version 2.16"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_changing_port_number"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v12782832"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>隐藏空背板</title></head><body id="v12782832"><main role="main"><article role="article" aria-labelledby="v12782832__v12782833">
+  <h1 class="title topictitle1" id="v12782832__v12782833">隐藏空背板</h1>
+  
+  <div class="body taskbody" id="v12782832__v12782839">
+    <section class="section context" id="v12782832__v12782840">
+      <p class="p" id="v12782832__v12782841">默认情况下，LSA 会在 <span class="ph uicontrol" id="v12782832__v12782880">其他硬件</span> 选项卡中显示连接到控制器的所有空背板。如果需要隐藏空背板，使其不显示在 <span class="ph uicontrol" id="v12782832__v12782881">其他硬件</span> 选项卡中，请执行以下步骤：</p>
+    </section>
+    <ol class="ol steps" id="v12782832__v12782842"><li class="li step stepexpand" id="v12782832__v12782882">
+        <span class="ph cmd" id="v12782832__v12782883">停止 <code class="ph codeph" id="v12782832__v12782884">LSAService</code>。</span>
+      </li><li class="li step stepexpand" id="v12782832__v12782843">
+        <span class="ph cmd" id="v12782832__v12782844">在 <span class="ph filepath" id="v12782832__v12782846">LSIStorageAuthority/conf</span> 目录中打开 <span class="ph filepath" id="v12782832__v12782845">lsa.conf</span> 文件。</span>
+      </li><li class="li step stepexpand" id="v12782832__v12782847">
+        <span class="ph cmd" id="v12782832__v12782848">在 <code class="ph codeph" id="v12782832__v12782885">LSA.conf</code> 文件中查找 <code class="ph codeph" id="v12782832__v12782886">empty_SGPIO_display</code> 字段。</span>
+        <div class="itemgroup info" id="v12782832__v12782850">
+          <p class="p" id="v12782832__v12782851">将现有或默认的 <code class="ph codeph" id="v12782832__v12782887">empty_SGPIO_display</code> 字段改为 <code class="ph codeph" id="v12782832__v12782888">0</code>。</p>
+        </div>
+        <div class="itemgroup info" id="v12782832__v12782889">
+          <div class="p" id="v12782832__v12782890">
+            <ul class="ul" id="v12782832__v12782891">
+              <li class="li" id="v12782832__v12782892">
+                <p class="p" id="v12782832__v12782893"><code class="ph codeph" id="v12782832__v12782894">0</code> – 禁止在 <span class="ph uicontrol" id="v12782832__v12782895">其他硬件</span> 选项卡中显示空背板。</p>
+              </li>
+              <li class="li" id="v12782832__v12782896">
+                <p class="p" id="v12782832__v12782897"><code class="ph codeph" id="v12782832__v12782898">1</code> – 允许在 <span class="ph uicontrol" id="v12782832__v12782899">其他硬件</span> 选项卡中显示空背板。</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="itemgroup info" id="v12782832__v12782900">
+          <p class="p" id="v12782832__v12782901">默认情况下，<code class="ph codeph" id="v12782832__v12782902">empty_SGPIO_display</code> 字段设置为 <code class="ph codeph" id="v12782832__v12782903">1</code>。</p>
+        </div>
+      </li><li class="li step stepexpand" id="v12782832__v12782852">
+        <span class="ph cmd" id="v12782832__v12782853">重新启动 <code class="ph codeph" id="v12782832__v12782904">LSAService</code>。</span>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v11169464.html" title="成功安装 LSI 存储管理后，您必须设置这些初始配置。">执行初始配置</a></div></div></nav></article></main></body></html>
+

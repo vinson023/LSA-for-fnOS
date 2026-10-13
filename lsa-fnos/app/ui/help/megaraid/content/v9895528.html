@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="DC.Relation" scheme="URI" content="../content/v9895548.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_changing_security_settings"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v9895528"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>更改安全设置</title></head><body id="v9895528"><main role="main"><article role="article" aria-labelledby="v9895528__v9895529">
+  <h1 class="title topictitle1" id="v9895528__v9895529">更改安全设置</h1>
+  
+  <div class="body taskbody" id="v9895528__v9895542">
+    <section class="section context" id="v9895528__v9895543">
+      <div class="note note note_note"><span class="note__title">注意：</span> 
+        <p class="p">启用 EKM 后，无法更改磁盘安全设置。尝试通过 LSA 更改由 EKM 管理的磁盘安全设置将会失败。</p>
+        <div class="p">当从另一个应用程序启用 EKMS 时，LSA：
+          <ul class="ul" id="v9895528__ul_1">
+            <li class="li">不允许禁用或更改安全设置。</li>
+            <li class="li">不支持对 EKM 或 ESKM 的更改。</li>
+            <li class="li">允许用户创建安全的虚拟磁盘。</li>
+            <li class="li">允许用户保护物理磁盘。</li>
+          </ul>
+        </div>
+      </div>执行以下步骤更改安全密钥标识符、安全密钥和密码的加密设置。</section>
+    <ol class="ol steps" id="v9895528__v9895544"><li class="li step stepexpand" id="v9895528__v10321923">
+        <span class="ph cmd" id="v9895528__v10321924">在控制器仪表板中，选择 <span class="ph menucascade" id="v9895528__v10321925"><span class="ph uicontrol" id="v9895528__v10321926">更多操作</span><abbr title="然后"> &gt; </abbr><span class="ph uicontrol" id="v9895528__v10321927">更改安全性</span></span>。</span>
+        <div class="itemgroup info" id="v9895528__v10321928">将显示<span class="keyword wintitle" id="v9895528__v10321929">更改安全性</span>对话框。
+          <figure class="fig fignone" id="v9895528__v10321930"><figcaption><span class="fig--title-label">图 1. </span>更改安全对话框</figcaption>
+            
+            <img class="image" id="v9895528__image_1" height="385" src="LSA8_ChangeDrive-Security.png" width="650">
+          </figure>
+        </div>
+      </li><li class="li step stepexpand" id="v9895528__v10321932">
+        <span class="ph cmd" id="v9895528__v10321933">在 <span class="ph uicontrol" id="v9895528__v10321935">当前磁盘安全模式为 FW</span> 字段中，选择 <span class="ph uicontrol" id="v9895528__v10321934">更改当前安全设置</span> 单选按钮。</span>
+        <div class="itemgroup info" id="v9895528__v10321936">启用 LKMS 后，LSA 会将当前磁盘安全模式显示为 FW，而不是 LKM。 </div>
+      </li><li class="li step stepexpand" id="v9895528__v11482578">
+        <span class="ph cmd" id="v9895528__v11482579">您可以使用控制器分配的现有安全密钥标识符，也可以指定新的安全密钥标识符。</span>
+        <div class="itemgroup info" id="v9895528__v11482580">如果更改安全密钥，则需要更改安全密钥标识符。否则，您无法区分安全密钥。</div>
+      </li><li class="li step stepexpand" id="v9895528__v11482582">
+        <span class="ph cmd" id="v9895528__v11482583">选择 <span class="ph uicontrol" id="v9895528__v11482584">使用现有的安全密钥</span>，或者选择 <span class="ph uicontrol" id="v9895528__v11482585">输入新的磁盘安全密钥</span>，然后指定并再次确认新的安全密钥。</span>
+      </li><li class="li step stepexpand" id="v9895528__v11482586">
+        <span class="ph cmd" id="v9895528__v11482587">单击 <span class="ph uicontrol" id="v9895528__v11482588">建议安全密钥</span> 让系统创建安全密钥，或者在 <span class="ph uicontrol" id="v9895528__v11482589">安全密钥</span> 文本字段中输入安全密钥。</span>
+      </li><li class="li step stepexpand" id="v9895528__v11482590">
+        <span class="ph cmd" id="v9895528__v11482591">（可选）选择 <span class="ph uicontrol" id="v9895528__v11482592">显示密钥</span>复选框。</span>
+        <div class="itemgroup info" id="v9895528__v24023087">
+          <div class="note note note_note" id="v9895528__v10321953"><span class="note__title">注意：</span> 安全密钥区分大小写。它必须介于 8 到 32 个字符之间，并且至少包含 1 个数字、1 个小写字母、1 个大写字母和 1 个非字母数字字符（例如，&lt; &gt; @ +）。</div>
+        </div>
+      </li><li class="li step stepexpand" id="v9895528__v10321954">
+        <span class="ph cmd" id="v9895528__v10321955">（可选）选择 <span class="ph uicontrol" id="v9895528__v11482593">暂停输入密码</span> 在启动时复选框。</span>
+        <div class="itemgroup info" id="v9895528__v11482594">如果您选择此选项，则每次重新启动服务器时都会提示您提供密码。</div>
+      </li><li class="li step stepexpand" id="v9895528__v11482596">
+        <span class="ph cmd" id="v9895528__v11482597">（可选）选择 <span class="ph uicontrol" id="v9895528__v11482598">实施强大的密码安全</span>复选框。</span>
+        <div class="itemgroup info" id="v9895528__v11482599">如果选择此选项，请确保密码介于 8 到 32 个字符之间，并且至少包含 1 个数字、1 个小写字母、1 个大写字母和 1 个非字母数字字符（例如，&lt; &gt; @ +）。不允许使用空格字符。密码区分大小写。</div>
+      </li><li class="li step stepexpand" id="v9895528__v11482601">
+        <span class="ph cmd" id="v9895528__v11482602">如果您选择使用密码，请输入现有密码或输入新密码，然后再次确认。</span>
+      </li><li class="li step stepexpand" id="v9895528__v11482603">
+        <span class="ph cmd" id="v9895528__v11482604">（可选）选择 <span class="ph uicontrol" id="v9895528__v11482605">显示密码</span>复选框。</span>
+        <div class="itemgroup info" id="v9895528__v11482606">如果您选择此选项，您将看到您指定的密码。如果您不选择此选项，您将看不到密码。</div>
+      </li><li class="li step stepexpand" id="v9895528__v10321960">
+        <span class="ph cmd" id="v9895528__v10321961">选择 <span class="ph uicontrol" id="v9895528__v10321962">确认</span> 复选框并单击 <span class="ph uicontrol" id="v9895528__v10321963">更改安全性</span> 更改安全设置。</span>
+        <div class="itemgroup stepresult" id="v9895528__v10321964">将显示<span class="keyword wintitle" id="v9895528__v11482608">验证磁盘安全设置</span>对话框。必须完成身份验证才能使更改生效。请输入刚才在 <span class="ph uicontrol" id="v9895528__v12844986">安全密钥</span> 字段中指定的新安全密钥。</div>
+      </li><li class="li step stepexpand" id="v9895528__v10321966">
+        <span class="ph cmd" id="v9895528__v10321967">输入您刚刚指定的新安全密钥，然后单击 <span class="ph uicontrol" id="v9895528__v10321970">认证</span> 以验证更改。</span>
+        <div class="itemgroup info" id="v9895528__v10321968">控制器上的现有配置已更新以使用新的安全设置。</div>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v9895548.html">SafeStore 加密服务</a></div></div></nav></article></main></body></html>
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2020"><meta name="DC.rights.owner" content="(C) Copyright 2020"><meta name="DC.Type" content="task"><meta name="DC.Relation" scheme="URI" content="../content/v11136571.html"><meta name="olh" content="LSA_help_upgrade_firmware"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v12046058"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>更新控制器固件</title></head><body id="v12046058"><main role="main"><article role="article" aria-labelledby="v12046058__v12046059">
+  <h1 class="title topictitle1" id="v12046058__v12046059">更新控制器固件</h1>
+  
+  <div class="body taskbody" id="v12046058__v12046063">
+    <section class="section context" id="v12046058__v12046064">
+      <p class="p" id="v12046058__v12046065">LSI 存储管理软件使您能够更新控制器固件。</p>
+      <div class="note note note_note" id="v12046058__v12051689"><span class="note__title">注意：</span> 
+        <p class="p" id="v12046058__v12051690">LSA 不支持在 IT/IR 控制器上将固件从一个阶段降级到另一阶段。但是，LSA 支持在同一阶段内降级固件。</p>
+        <p class="p" id="v12046058__v12051691">欲了解更多信息，请参阅 <cite class="cite" id="v12046058__v12051692">LSA 自述文件</cite> 该信息已随您的包裹一起提供。</p>
+      </div>
+      <div class="note note note_note" id="v12046058__v12046107"><span class="note__title">注意：</span> 在 VMware ESXi 5.5、VMware ESXi 6.0 和 VMware ESXi 6.5 平台上，由于以下限制，您无法通过 LSI 存储管理更新 IT/IR 控制器的固件。
+        <p class="p" id="v12046058__v12054002">要解决此问题：</p>
+        <ol class="ol" id="v12046058__ol_1">
+          <li class="li" id="v12046058__li_1">编辑 <code class="ph codeph" id="v12046058__codeph_1">/etc/sfcb/sfcb.cfg</code></li>
+          <li class="li" id="v12046058__li_2">添加 <code class="ph codeph" id="v12046058__codeph_2">httpMaxContentLength: 4194304</code></li>
+          <li class="li" id="v12046058__li_3">重新启动 LSA 服务 <code class="ph codeph" id="v12046058__codeph_3">/etc/init.d/sfcbd-watchdog restart</code></li>
+          <li class="li" id="v12046058__li_4">现在刷新固件。</li>
+        </ol>
+        <p class="p" id="v12046058__v12054017">另请参阅 <cite class="cite" id="v12046058__v12054018">LSA 自述文件</cite> 随软件包一起提供，以获取更详细的信息。</p>
+      </div>
+      <p class="p" id="v12046058__v12046066">执行以下步骤来更新控制器固件。</p>
+    </section>
+    <ol class="ol steps" id="v12046058__v12046067"><li class="li step stepexpand" id="v12046058__v12046068">
+        <span class="ph cmd" id="v12046058__v12046069">导航到控制器仪表板。</span>
+      </li><li class="li step stepexpand" id="v12046058__v12046070">
+        <span class="ph cmd" id="v12046058__v12046071">单击 <span class="ph uicontrol" id="v12046058__v12046072">更新固件</span>。</span>
+        <div class="itemgroup stepresult" id="v12046058__v12046073">将显示 <span class="keyword wintitle" id="v12046058__v12046074">更新固件</span> 窗口。它显示当前控制器固件版本。</div>
+      </li><li class="li step stepexpand" id="v12046058__v12787573">
+        <span class="ph cmd" id="v12046058__v12787574">单击 <span class="ph uicontrol" id="v12046058__v12787575">浏览</span> 找到并打开：</span>
+        <ul class="ul choices" id="v12046058__v12787576">
+          <li class="li choice" id="v12046058__v12787577">
+            <p class="p" id="v12046058__v12787578"><span class="ph filepath" id="v12046058__v12787579">.bin</span> IR3/IT 控制器的更新文件。</p>
+          </li>
+        </ul>
+      </li><li class="li step stepexpand" id="v12046058__v12787580">
+        <span class="ph cmd" id="v12046058__v12787581">单击 <span class="ph uicontrol" id="v12046058__v12787582">更新</span>。</span>
+        <div class="itemgroup info" id="v12046058__v12787583">
+          <p class="p" id="v12046058__v12787584"><span class="keyword wintitle" id="v12046058__v12787585">更新固件</span>窗口显示当前控制器固件版本以及可供选择的控制器固件版本。</p>
+          
+        </div>
+      </li><li class="li step stepexpand" id="v12046058__v12787589">
+        <span class="ph cmd" id="v12046058__v12787590">选择 <span class="ph uicontrol" id="v12046058__v12787591">确认</span> 复选框并单击 <span class="ph uicontrol" id="v12046058__v12787592">闪存固件</span>。</span>
+        <div class="itemgroup stepresult" id="v12046058__v12787593">
+          <p class="p" id="v12046058__v12787594">更新完成后，将显示一条消息，确认更新成功并显示控制器的新版本固件。</p>
+          <div class="note note note_note"><span class="note__title">注意：</span> 
+            <p class="p">用户对固件的更新可能会导致闪存错误事件。忽略错误消息。</p>
+            <p class="p">当刷新 IT 固件、BIOS 或 UFI 时，LSA 会显示一条消息以重新启动服务器，无论固件版本如何。</p>
+          </div>
+        </div>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v11136571.html">管理控制器</a></div></div></nav></article></main></body></html>
+

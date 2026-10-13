@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Relation" scheme="URI" content="../content/v9893820.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="version" content="Version 2.16"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_upgrade_firmware"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v8144001"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>更新控制器固件</title></head><body id="v8144001"><main role="main"><article role="article" aria-labelledby="v8144001__v8144002">
+  <h1 class="title topictitle1" id="v8144001__v8144002">更新控制器固件</h1>
+  
+  <div class="body taskbody" id="v8144001__v8144003">
+    <section class="section context" id="v8144001__v8144004">
+      <p class="p" id="v8144001__v8144005">LSI 存储管理软件使您能够更新控制器固件。</p>
+      <p class="p" id="v8144001__v8144006">执行以下步骤来更新控制器固件。</p>
+    </section>
+    <ol class="ol steps" id="v8144001__v8144007"><li class="li step stepexpand" id="v8144001__v8144008">
+        <span class="ph cmd" id="v8144001__v8144009">导航到控制器仪表板。</span>
+      </li><li class="li step stepexpand" id="v8144001__v8144010">
+        <span class="ph cmd" id="v8144001__v8144011">单击 <span class="ph uicontrol" id="v8144001__v8144013">更新固件</span>。</span>
+        <div class="itemgroup stepresult" id="v8144001__v9342935">
+          <p class="p" id="v8144001__p_2">将显示 <span class="keyword wintitle" id="v8144001__wintitle_2">更新固件</span> 对话框，其中显示组件、当前版本、所选版本、当前安全版本和所选安全版本（如果适用）。</p>
+          <figure class="fig fignone" id="v8144001__fig_1"><figcaption><span class="fig--title-label">图 1. </span>更新固件 对话框</figcaption>
+            
+            <img class="image" id="v8144001__image_5" height="542" src="LSA_UpdateFW_2.png" width="650">
+          </figure>
+        </div>
+      </li><li class="li step stepexpand" id="v8144001__v11191204">
+        <span class="ph cmd" id="v8144001__v11191205">单击 <span class="ph uicontrol" id="v8144001__v11191206">浏览</span> 找到并打开 <span class="ph filepath">.rom</span> 文件。</span>
+        <div class="itemgroup info" id="v8144001__info_1">
+          <p class="p">在 PSOC 固件升级（或降级）期间，如果控制器上存在相同的固件版本或者所选版本低于当前版本，则会显示一条消息。单击确认复选框（强制选项）重新确认该过程。</p>
+        </div>
+      </li><li class="li step stepexpand" id="v8144001__v8144023">
+        <span class="ph cmd" id="v8144001__v8144024">单击 <span class="ph uicontrol" id="v8144001__v8144025">更新</span>。</span>
+      </li><li class="li step stepexpand" id="v8144001__v12781879">
+        <span class="ph cmd">选择 <span class="ph uicontrol">在线激活</span> 或 <span class="ph uicontrol">离线激活</span>。</span>
+        <div class="itemgroup info">
+          <p class="p">默认情况下， <span class="ph uicontrol">在线激活</span> 被选中。</p>
+          <div class="note note note_note"><span class="note__title">注意：</span> <span class="ph uicontrol">在线激活</span> 和 <span class="ph uicontrol">离线激活</span> 单选按钮仅适用于 SAS4xxx 控制器。 SAS3xxx 控制器依赖于在线固件更新位，该位通常设置为 <span class="ph uicontrol">在线激活</span>。</div>
+          <p class="p"><span class="ph uicontrol">离线激活</span> 需要重新启动系统。</p>
+        </div>
+      </li><li class="li step stepexpand" id="v8144001__step_1">
+        <span class="ph cmd" id="v8144001__v12781880">选择 <span class="ph uicontrol" id="v8144001__v12781881">确认</span> 复选框并单击 <span class="ph uicontrol" id="v8144001__v12781882">闪存固件</span>。</span>
+        <div class="itemgroup stepresult" id="v8144001__v12781883">
+          <p class="p">更新完成后，会出现一条消息，确认更新成功。该消息还显示控制器的新版本固件。</p>
+          <div class="note note note_note" id="v8144001__note_1"><span class="note__title">注意：</span> 对于 SAS3xxx 控制器，您可以使用任何 BIOS 或 EFI 单选按钮刷新 BIOS 和 EFI。 单独的 BIOS 和 EFI 闪存只能在 IR/IT 控制器上执行。</div>
+        </div>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v9893820.html" title="LSI 存储管理软件使您能够监控系统中所有控制器以及连接到它们的设备的活动。">管理控制器</a></div></div></nav></article></main></body></html>
+

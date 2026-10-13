@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="DC.Relation" scheme="URI" content="../content/v13215344.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_increasing-polling-interval-of-hhrc"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v13215362"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>增加主机硬件 RAID 控制器的轮询间隔</title></head><body id="v13215362"><main role="main"><article role="article" aria-labelledby="v13215362__v13215363">
+  <h1 class="title topictitle1" id="v13215362__v13215363">增加主机硬件 RAID 控制器的轮询间隔</h1>
+  
+  <div class="body taskbody" id="v13215362__v13215375">
+    <section class="section context" id="v13215362__v13215376">要增加 HHRC 的轮询间隔，请执行以下步骤：</section>
+    <ol class="ol steps" id="v13215362__v13215377"><li class="li step stepexpand" id="v13215362__v13215378">
+        <span class="ph cmd" id="v13215362__v13215379">连接到 <span class="ph uicontrol" id="v13215362__v13215392">vCenter服务器</span> 使用 <span class="ph uicontrol" id="v13215362__v13215393">vSphere Web 客户端</span>。</span>
+      </li><li class="li step stepexpand" id="v13215362__v13215394">
+        <span class="ph cmd" id="v13215362__v13215395">在清单中选择 ESXi 主机。</span>
+      </li><li class="li step stepexpand" id="v13215362__v13215396">
+        <span class="ph cmd" id="v13215362__v13215397">单击 <span class="ph uicontrol" id="v13215362__v13215398">管理</span> 选项卡。</span>
+      </li><li class="li step stepexpand" id="v13215362__v13215399">
+        <span class="ph cmd" id="v13215362__v13215400">单击 <span class="ph uicontrol" id="v13215362__v13215401">设置</span> 子选项卡。</span>
+      </li><li class="li step stepexpand" id="v13215362__v13215402">
+        <span class="ph cmd" id="v13215362__v13215403">单击 <span class="ph uicontrol" id="v13215362__v13215404">高级系统设置</span> 下的 <span class="ph uicontrol" id="v13215362__v13215405">系统</span>。</span>
+        <div class="itemgroup info" id="v13215362__v13215406">
+          <p class="p" id="v13215362__v13215407">设置按名称字母顺序列出，类似于 <var class="keyword varname" id="v13215362__v13215408">部分名称</var>.<var class="keyword varname" id="v13215362__v13215409">选项名称</var>.</p>
+        </div>
+      </li><li class="li step stepexpand" id="v13215362__v13215410">
+        <span class="ph cmd" id="v13215362__v13215411">单击 <span class="ph uicontrol" id="v13215362__v13215412">过滤盒</span> 搜索合适的设置名称。</span>
+      </li><li class="li step stepexpand" id="v13215362__v13215413">
+        <span class="ph cmd" id="v13215362__v13215414">从列表中按名称选择设置。选项有：</span>
+        <ul class="ul choices" id="v13215362__v13215415">
+          <li class="li choice" id="v13215362__v13215416">
+            <p class="p" id="v13215362__v13215417"><code class="ph codeph" id="v13215362__v13215418">UserVars.CIMvmw_hhrcwrapperProviderPollingInterval</code>.</p>
+          </li>
+          <li class="li choice" id="v13215362__v13215419">
+            <p class="p" id="v13215362__v13215420"><code class="ph codeph" id="v13215362__v13215421">UserVar/CIMvmw_hhrcwrapperProviderEnabled</code>.</p>
+          </li>
+        </ul>
+      </li><li class="li step stepexpand" id="v13215362__v13215422">
+        <span class="ph cmd" id="v13215362__v13215423">单击编辑（铅笔）图标以修改以下值。</span>
+        <ol type="a" class="ol substeps" id="v13215362__substeps_1">
+          <li class="li substep">
+            <span class="ph cmd">更改中的值 <code class="ph codeph" id="v13215362__codeph_1">UserVars.CIMvmw_hhrcwrapperProviderPollingInterval</code>到 <span class="keyword parmname" id="v13215362__parmname_1">3600</span>。</span>
+          </li>
+          <li class="li substep">
+            <span class="ph cmd">更改中的值 <code class="ph codeph" id="v13215362__codeph_2">UserVar/CIMvmw_hhrcwrapperProviderEnabled</code>到 <span class="keyword parmname" id="v13215362__parmname_2">0</span>。</span>
+          </li>
+        </ol>
+      </li><li class="li step stepexpand" id="v13215362__v13215435">
+        <span class="ph cmd" id="v13215362__v13215436">单击 <span class="ph uicontrol" id="v13215362__v13215437">确定</span> 接受更改。</span>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v13215344.html">管理主机硬件 RAID 控制器</a></div></div></nav></article></main></body></html>
+

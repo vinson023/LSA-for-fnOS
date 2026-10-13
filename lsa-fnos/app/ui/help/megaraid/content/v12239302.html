@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="task"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="DC.Relation" scheme="URI" content="../content/v11861640.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v12239302"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>升级和降级 IT 控制器上的固件 (VMware)</title></head><body id="v12239302"><main role="main"><article role="article" aria-labelledby="v12239302__v12239303">
+  <h1 class="title topictitle1" id="v12239302__v12239303">升级和降级 IT 控制器上的固件 (VMware)</h1>
+  
+  <div class="body taskbody" id="v12239302__v12239316">
+    <section class="section context" id="v12239302__v12239317">由于 VMware ESXi 6.7 和 VMware ESXi 7.0 存在一些问题，您无法按照通常的固件刷新程序通过 LSA 升级或降级 IT 固件。您必须遵循以下程序：</section>
+    <ol class="ol steps" id="v12239302__v12239318"><li class="li step stepexpand" id="v12239302__v12239319">
+        <span class="ph cmd" id="v12239302__v12239320">编辑 <span class="ph filepath" id="v12239302__v12239324">/etc/sfcb/sfcb.cfg</span> 文件。</span>
+      </li><li class="li step stepexpand" id="v12239302__v12239325">
+        <span class="ph cmd" id="v12239302__v12239326">添加 <span class="keyword parmname" id="v12239302__v12239327">http最大内容长度：4194304</span> 参数。</span>
+      </li><li class="li step stepexpand" id="v12239302__v12239328">
+        <span class="ph cmd" id="v12239302__v12239329">重新启动 LSA 服务：</span>
+        <div class="itemgroup info" id="v12239302__v12842756"><span class="keyword cmdname" id="v12239302__v12842758">/etc/init.d/sfcbd-watchdog restart</span></div>
+      </li><li class="li step stepexpand" id="v12239302__v12239331">
+        <span class="ph cmd" id="v12239302__v12239332">刷新固件。</span>
+      </li></ol>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v11861640.html" title="本节概述了在 VMware ESXi 操作系统上运行和管理 LSA 所必需的安装前和安装后要求。">管理 VMware ESXi 操作系统上的 LSA</a></div></div></nav></article></main></body></html>
+

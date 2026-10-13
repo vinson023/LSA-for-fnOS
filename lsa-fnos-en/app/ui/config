@@ -1,0 +1,13 @@
+{
+  ".url": {
+    "lsaen.main": {
+      "title": "LSI Storage Authority",
+      "icon": "images/icon_{0}.png",
+      "type": "iframe",
+      "protocol": "",
+      "port": "${wizard_web_port}",
+      "url": "/ui/remoteserver/index.html",
+      "allUsers": true
+    }
+  }
+}

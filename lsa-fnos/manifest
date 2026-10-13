@@ -1,0 +1,15 @@
+appname=lsa
+version=8.17.10
+display_name=LSI 存储管理
+desc=LSI Storage Authority 是适用于 Broadcom/LSI SAS RAID 控制器的 Web 存储管理工具。可查看控制器、物理磁盘、虚拟磁盘和磁盘组状态，并执行 RAID 配置、监控及维护操作。
+source=thirdparty
+platform=x86
+maintainer=Broadcom Inc
+maintainer_url=https://www.broadcom.com
+os_min_version=1.0.0
+desktop_uidir=ui
+desktop_applaunchname=lsa.main
+service_port=2463
+ctl_stop=true
+checkport=false
+micro_app=true

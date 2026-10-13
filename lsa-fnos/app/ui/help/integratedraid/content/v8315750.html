@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2020"><meta name="DC.rights.owner" content="(C) Copyright 2020"><meta name="DC.Type" content="reference"><meta name="DC.Relation" scheme="URI" content="../content/v11108204.html"><meta name="olh" content="LSA_help_alert_settings"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v8315750"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>警报设置</title></head><body id="v8315750"><main role="main"><article role="article" aria-labelledby="v8315750__v8315751">
+  <h1 class="title topictitle1" id="v8315750__v8315751">警报设置</h1>
+  
+  <div class="body refbody" id="v8315750__v8315758">
+    <section class="section" id="v8315750__v8315759">
+      <p class="p" id="v8315750__v9149236"><span class="ph uicontrol" id="v8315750__v9149237">警报设置</span> 选项卡允许您执行以下操作：</p>
+      <ul class="ul" id="v8315750__v9149238">
+        <li class="li" id="v8315750__v9149239">更改不同严重级别的警报传递方法。</li>
+        <li class="li" id="v8315750__v9149242">为应用程序内部和外部指定不同的警报传递方法。</li>
+        <li class="li" id="v8315750__v9149243">恢复为默认警报传送方法和单个事件的默认严重性级别。</li>
+        <li class="li" id="v8315750__v9149244">将警报设置保存在服务器上。</li>
+      </ul>
+      <p class="p" id="v8315750__v8315760">根据严重性级别（信息、警告、严重和致命），默认警报传送方法会发生变化。默认情况下，每个严重性级别都为其配置了一种或多种警报传递方法。不同的警报发送方法如下：</p>
+      <ul class="ul" id="v8315750__v8315762">
+        <li class="li" id="v8315750__v8315763">
+          <p class="p" id="v8315750__v24022876"><span class="ph uicontrol" id="v8315750__v9374241">系统日志</span> – 默认情况下，所有严重性事件都记录在本地系统日志 (syslog) 中。</p>
+          <p class="p" id="v8315750__v24022878">在Windows操作系统中，登录系统日志 <span class="ph menucascade" id="v8315750__v9149158"><span class="ph uicontrol" id="v8315750__v9149159">事件查看器</span><abbr title="然后"> &gt; </abbr><span class="ph uicontrol" id="v8315750__v9506606">应用</span></span>。在Linux操作系统中，登录系统日志 <span class="ph filepath" id="v8315750__v12844971">var/日志/消息</span>。</p>
+        </li>
+        <li class="li" id="v8315750__v8315764">
+          <p class="p" id="v8315750__v24022883"><span class="ph uicontrol" id="v8315750__v9374242">事件日志</span> – 默认情况下，所有严重性事件都会显示在事件日志中。</p>
+          <p class="p" id="v8315750__v24022885">单击 <span class="ph uicontrol" id="v8315750__v9149175">查看事件日志</span> 查看事件日志。此日志中显示的每条消息都具有指示事件重要性（严重性）的严重性级别、事件 ID、简要说明以及日期和时间戳（发生时间）。</p>
+        </li>
+        <li class="li" id="v8315750__v8315765">
+          <p class="p" id="v8315750__v24022887"><span class="ph uicontrol" id="v8315750__v9374243">系统消息</span> – 默认情况下，致命和严重事件显示为系统消息。</p>
+          <p class="p" id="v8315750__v24022889">系统消息显示在服务器仪表板和控制器仪表板顶部的黄色栏中。系统消息使您可以在一个位置查看多个事件。</p>
+        </li>
+        <li class="li" id="v8315750__v8315766">
+          <p class="p" id="v8315750__v24022890"><span class="ph uicontrol" id="v8315750__v9374244">电子邮件</span> – 默认情况下，致命事件显示为电子邮件通知。</p>
+          <p class="p" id="v8315750__v24022892">根据您的配置，电子邮件通知将发送到您的收件箱。在电子邮件通知中，除了事件描述之外，电子邮件还包含系统信息和控制器的图像详细信息。使用此附加信息，您可以确定发生致命错误的系统和控制器。</p>
+        </li>
+      </ul>
+      <p class="p" id="v8315750__v9149176">要更改每个严重级别的警报传递方法，请执行以下步骤：</p>
+      <ol class="ol" id="v8315750__v9149177">
+        <li class="li" id="v8315750__v9149178">选择 <span class="ph menucascade" id="v8315750__v24022893"><span class="ph uicontrol" id="v8315750__v9149179">用户名</span><abbr title="然后"> &gt; </abbr><span class="ph uicontrol" id="v8315750__v24022895">设置</span></span> 在服务器仪表板中。
+          <p class="p" id="v8315750__v9149180">将显示 <span class="ph uicontrol" id="v8315750__v9149181">警报设置</span> 窗口，其中显示每个严重级别的默认警报传送方法。</p>
+          <figure class="fig fignone" id="v8315750__v9214176"><figcaption><span class="fig--title-label">图 1. </span>警报设置窗口</figcaption>
+            
+            <br><div class="imagecenter"><img class="image imagecenter" height="259" width="529" src="LSA_Figure11-AlertSettingsWindow.png"></div><br>
+          </figure>
+        </li>
+        <li class="li" id="v8315750__v9149183">通过选中所需的复选框，为每个严重级别选择所需的警报传送方法。</li>
+        <li class="li" id="v8315750__v12385551">单击 <span class="keyword wintitle" id="v8315750__v12385552">保存警报设置</span> 将设置保存到服务器上。
+          <p class="p" id="v8315750__v12385553">单击 <span class="ph uicontrol" id="v8315750__v12385554">恢复默认警报设置</span> 恢复为默认警报传送设置。</p>
+          <div class="note note note_note" id="v8315750__v26889717"><span class="note__title">注意：</span> 
+            <p class="p" id="v8315750__v26889718"><span class="ph uicontrol" id="v8315750__v12385554">恢复默认警报设置</span> 默认情况下不会保存更改。要恢复默认警报设置，请单击 <span class="ph uicontrol" id="v8315750__v12385554">保存设置</span>。</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+  </div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v11108204.html">执行初始设置</a></div></div></nav></article></main></body></html>

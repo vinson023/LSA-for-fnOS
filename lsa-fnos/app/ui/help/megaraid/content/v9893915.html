@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2025"><meta name="DC.rights.owner" content="(C) Copyright 2025"><meta name="DC.Type" content="concept"><meta name="DC.Coverage" content="Broadcom"><meta name="DC.Coverage" content="audience = HPE OLH"><meta name="DC.Coverage" content="platform = Utility"><meta name="DC.Coverage" content="product = LSA"><meta name="DC.Relation" scheme="URI" content="../content/v9893856.html"><meta name="DC.Relation" scheme="URI" content="../content/v9893951.html"><meta name="DC.Relation" scheme="URI" content="../content/LSA8-make-good.html"><meta name="DC.Relation" scheme="URI" content="../content/v9893974.html"><meta name="prodname" content="LSI® Storage Authority Software"><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="Version 2.16"><meta name="version" content="version attribute"><meta name="release" content="August 18, 2025"><meta name="component" content="User Guide"><meta name="prognum" content=""><meta name="olh" content="LSA_help_make_unconfigured_good_make_jbod"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v9893915"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>设置磁盘状态</title></head><body id="v9893915"><main role="main"><article role="article" aria-labelledby="v9893915__v9893916">
+  <h1 class="title topictitle1" id="v9893915__v9893916">设置磁盘状态</h1>
+  
+  <div class="body conbody" id="v9893915__v9893929">
+    <p class="p" id="v9893915__v9894005">当您关闭控制器电源并插入新的物理磁盘时，如果插入的磁盘不包含有效的 DDF 元数据，则在系统重新上电时，磁盘状态将列为 <span class="ph uicontrol" id="v9893915__v12834881">JBOD</span>（只是一堆磁盘）。如果磁盘包含有效的 DDF 元数据，则其磁盘状态为 <span class="ph uicontrol" id="v9893915__v12834882">未配置的良好</span>。处于 JBOD 状态的新物理磁盘会作为独立磁盘呈现给主机操作系统。您无法使用 JBOD 磁盘创建 RAID 配置，因为它们没有有效的 DDF 记录。</p>
+    <p class="p" id="v9893915__v9894006">如果控制器支持 JBOD 物理磁盘，LSI 存储管理提供将 JBOD 物理磁盘转换为未配置的良好物理磁盘及进行反向转换的选项。</p>
+    <div class="p">您可以将磁盘设置为以下状态：
+      <ul class="ul" id="v9893915__ul_1">
+        <li class="li">未配置</li>
+        <li class="li">良好</li>
+        <li class="li">JBOD</li>
+        
+        
+      </ul>
+    </div>
+  </div>
+<nav role="navigation" class="related-links"><ul class="ullinks"><li class="link ulchildlink"><strong><a href="../content/v9893951.html">将磁盘设为未配置</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/LSA8-make-good.html">将磁盘设为良好</a></strong><br></li><li class="link ulchildlink"><strong><a href="../content/v9893974.html">将磁盘设为 JBOD</a></strong><br></li></ul><div class="familylinks"><div class="parentlink"><strong>父主题：</strong> <a class="link" href="../content/v9893856.html" title="LSI 存储管理软件可让您管理连接到控制器的物理磁盘。">管理物理磁盘</a></div></div></nav></article></main></body></html>
+

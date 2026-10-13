@@ -1,0 +1,4161 @@
+{
+	"alertSpec": {
+		"0": {
+			"ctrlId": "控制器 ID： ",
+			"description": "固件初始化开始： ",
+			"parameters": [
+				"( PCI ID ",
+				"/",
+				"/",
+				"/",
+				" ）"
+			]
+		},
+		"1": {
+			"ctrlId": "控制器 ID： ",
+			"description": "映像版本",
+			"parameters": [
+				": "
+			]
+		},
+		"2": {
+			"ctrlId": "控制器 ID： ",
+			"description": "无法从 阵列卡电池/超级电容 恢复缓存数据。",
+			"parameters": []
+		},
+		"3": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已成功从 阵列卡电池/超级电容 恢复缓存数据。",
+			"parameters": []
+		},
+		"4": {
+			"ctrlId": "控制器 ID： ",
+			"description": "配置已清除。",
+			"parameters": []
+		},
+		"5": {
+			"ctrlId": "控制器 ID： ",
+			"description": "群集已停机；与对等控制器失去联系。",
+			"parameters": []
+		},
+		"6": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘所有权已更改： ",
+			"parameters": [
+				"虚拟磁盘 = ",
+				"先前值 = ",
+				"当前值 = "
+			]
+		},
+		"7": {
+			"ctrlId": "控制器 ID： ",
+			"description": "警报已被用户禁用。",
+			"parameters": []
+		},
+		"8": {
+			"ctrlId": "控制器 ID： ",
+			"description": "警报由用户启用。",
+			"parameters": []
+		},
+		"9": {
+			"ctrlId": "控制器 ID： ",
+			"description": "后台初始化率已更改",
+			"parameters": [
+				": ",
+				"%"
+			]
+		},
+		"10": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于内存/阵列卡电池/超级电容 问题，控制器缓存被丢弃。",
+			"parameters": []
+		},
+		"11": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于配置不匹配，无法恢复缓存数据。",
+			"parameters": []
+		},
+		"12": {
+			"ctrlId": "控制器 ID： ",
+			"description": "缓存数据恢复成功。",
+			"parameters": []
+		},
+		"13": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于固件版本不兼容，控制器缓存被丢弃。",
+			"parameters": []
+		},
+		"14": {
+			"ctrlId": "控制器 ID： ",
+			"description": "一致性检查率已更改",
+			"parameters": [
+				": ",
+				"%"
+			]
+		},
+		"15": {
+			"ctrlId": "控制器 ID： ",
+			"description": "致命固件错误",
+			"parameters": [
+				": "
+			]
+		},
+		"16": {
+			"ctrlId": "控制器 ID： ",
+			"description": "恢复出厂默认设置。",
+			"parameters": []
+		},
+		"17": {
+			"ctrlId": "控制器 ID： ",
+			"description": "下载的闪存映像已损坏。",
+			"parameters": []
+		},
+		"18": {
+			"ctrlId": "控制器 ID： ",
+			"description": "闪存擦除错误。",
+			"parameters": []
+		},
+		"19": {
+			"ctrlId": "控制器 ID： ",
+			"description": "擦除期间闪存超时。",
+			"parameters": []
+		},
+		"20": {
+			"ctrlId": "控制器 ID： ",
+			"description": "刷写失败。",
+			"parameters": []
+		},
+		"21": {
+			"ctrlId": "控制器 ID： ",
+			"description": "闪存映像",
+			"parameters": [
+				": "
+			]
+		},
+		"22": {
+			"ctrlId": "控制器 ID： ",
+			"description": "新固件映像刷写完成。",
+			"parameters": []
+		},
+		"23": {
+			"ctrlId": "控制器 ID： ",
+			"description": "闪存编程错误。",
+			"parameters": []
+		},
+		"24": {
+			"ctrlId": "控制器 ID： ",
+			"description": "闪存编程超时。",
+			"parameters": []
+		},
+		"25": {
+			"ctrlId": "控制器 ID： ",
+			"description": "闪存芯片类型未知。",
+			"parameters": []
+		},
+		"26": {
+			"ctrlId": "控制器 ID： ",
+			"description": "闪存命令集未知。",
+			"parameters": []
+		},
+		"27": {
+			"ctrlId": "控制器 ID： ",
+			"description": "闪存验证失败。",
+			"parameters": []
+		},
+		"28": {
+			"ctrlId": "控制器 ID： ",
+			"description": "刷新率已更改",
+			"parameters": [
+				": ",
+				"秒"
+			]
+		},
+		"29": {
+			"ctrlId": "控制器 ID： ",
+			"description": "从主机接收到休眠命令。",
+			"parameters": []
+		},
+		"30": {
+			"ctrlId": "控制器 ID： ",
+			"description": "事件日志已清除。",
+			"parameters": []
+		},
+		"31": {
+			"ctrlId": "控制器 ID： ",
+			"description": "事件日志已回绕。",
+			"parameters": []
+		},
+		"32": {
+			"ctrlId": "控制器 ID： ",
+			"description": "多位 ECC 错误： ",
+			"parameters": [
+				"ECh = ",
+				"ELog = ",
+				"(",
+				")"
+			]
+		},
+		"33": {
+			"ctrlId": "控制器 ID： ",
+			"description": "单比特 ECC 错误： ",
+			"parameters": [
+				"ECh = ",
+				"ELog = ",
+				"(",
+				")"
+			]
+		},
+		"34": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器内存不足。",
+			"parameters": []
+		},
+		"35": {
+			"ctrlId": "控制器 ID： ",
+			"description": "巡检读取完成。",
+			"parameters": []
+		},
+		"36": {
+			"ctrlId": "控制器 ID： ",
+			"description": "巡检读取暂停。",
+			"parameters": []
+		},
+		"37": {
+			"ctrlId": "控制器 ID： ",
+			"description": "巡检读取率已更改",
+			"parameters": [
+				": ",
+				"%"
+			]
+		},
+		"38": {
+			"ctrlId": "控制器 ID： ",
+			"description": "巡检读取恢复。",
+			"parameters": []
+		},
+		"39": {
+			"ctrlId": "控制器 ID： ",
+			"description": "巡检读取开始。",
+			"parameters": []
+		},
+		"40": {
+			"ctrlId": "控制器 ID： ",
+			"description": "重建速率已更改",
+			"parameters": [
+				": ",
+				"%"
+			]
+		},
+		"41": {
+			"ctrlId": "控制器 ID： ",
+			"description": "重建率已更改",
+			"parameters": [
+				": ",
+				"%"
+			]
+		},
+		"42": {
+			"ctrlId": "控制器 ID： ",
+			"description": "从主机收到关闭命令。",
+			"parameters": []
+		},
+		"43": {
+			"ctrlId": "控制器 ID： ",
+			"description": "测试活动",
+			"parameters": [
+				": "
+			]
+		},
+		"44": {
+			"ctrlId": "控制器 ID： ",
+			"description": "上电后建立的时间： ",
+			"parameters": [
+				"时间： ",
+				" ",
+				"秒"
+			]
+		},
+		"45": {
+			"ctrlId": "控制器 ID： ",
+			"description": "用户进入固件调试器。",
+			"parameters": []
+		},
+		"46": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的后台初始化已中止",
+			"parameters": [
+				": "
+			]
+		},
+		"47": {
+			"ctrlId": "控制器 ID： ",
+			"description": "后台初始化已修正介质错误",
+			"parameters": [
+				"(虚拟磁盘 ",
+				"位置 ",
+				"物理磁盘",
+				"位置 ",
+				")"
+			]
+		},
+		"48": {
+			"ctrlId": "控制器 ID： ",
+			"description": "后台初始化已在虚拟磁盘上完成",
+			"parameters": [
+				": "
+			]
+		},
+		"49": {
+			"ctrlId": "控制器 ID： ",
+			"description": "后台初始化已完成，虚拟磁盘上出现不可纠正的错误",
+			"parameters": [
+				": "
+			]
+		},
+		"50": {
+			"ctrlId": "控制器 ID： ",
+			"description": "后台初始化检测到多个不可纠正的介质错误",
+			"parameters": [
+				"(物理磁盘 ",
+				"位置 ",
+				", 虚拟磁盘",
+				")"
+			]
+		},
+		"51": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的后台初始化失败",
+			"parameters": [
+				": "
+			]
+		},
+		"52": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘后台初始化进度",
+			"parameters": [
+				": ",
+				"百分比： ",
+				"剩余秒数： "
+			]
+		},
+		"53": {
+			"ctrlId": "控制器 ID： ",
+			"description": "后台初始化在虚拟磁盘上开始",
+			"parameters": [
+				": "
+			]
+		},
+		"54": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘的策略已更改",
+			"parameters": [
+				": ",
+				"先前值 = ",
+				"现在= "
+			]
+		},
+		"55": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已过时",
+			"parameters": []
+		},
+		"56": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的一致性检查已中止",
+			"parameters": [
+				": "
+			]
+		},
+		"57": {
+			"ctrlId": "控制器 ID： ",
+			"description": "一致性检查纠正了介质错误： ",
+			"parameters": [
+				"(虚拟磁盘 ",
+				"位置 ",
+				", 物理磁盘 ",
+				"位置 ",
+				")"
+			]
+		},
+		"58": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘的一致性检查已完成",
+			"parameters": [
+				": "
+			]
+		},
+		"59": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘的一致性检查已完成并修复错误",
+			"parameters": [
+				": ",
+				",（更正= ",
+				")"
+			]
+		},
+		"60": {
+			"ctrlId": "控制器 ID： ",
+			"description": "一致性检查检测到多个不可纠正的介质错误",
+			"parameters": [
+				"(物理磁盘 ",
+				"位置 ",
+				", 虚拟磁盘 ",
+				")"
+			]
+		},
+		"61": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘一致性检查失败",
+			"parameters": [
+				": "
+			]
+		},
+		"62": {
+			"ctrlId": "控制器 ID： ",
+			"description": "一致性检查已完成，但虚拟磁盘上存在不可纠正的错误",
+			"parameters": [
+				": "
+			]
+		},
+		"63": {
+			"ctrlId": "控制器 ID： ",
+			"description": "一致性检查发现虚拟磁盘条带上的奇偶校验不一致： ",
+			"parameters": [
+				"(虚拟磁盘 ",
+				", 条带 = ",
+				")"
+			]
+		},
+		"64": {
+			"ctrlId": "控制器 ID： ",
+			"description": "一致性检查不一致日志记录已禁用，虚拟磁盘上存在太多不一致",
+			"parameters": [
+				": "
+			]
+		},
+		"65": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘的一致性检查进度",
+			"parameters": [
+				": ",
+				"百分比： ",
+				"剩余秒数： "
+			]
+		},
+		"66": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘的一致性检查已启动",
+			"parameters": [
+				": "
+			]
+		},
+		"67": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的初始化已中止",
+			"parameters": [
+				": "
+			]
+		},
+		"68": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘初始化失败",
+			"parameters": [
+				": "
+			]
+		},
+		"69": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘初始化进度",
+			"parameters": [
+				": ",
+				"百分比： ",
+				"剩余秒数： "
+			]
+		},
+		"70": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘快速初始化已启动",
+			"parameters": [
+				": "
+			]
+		},
+		"71": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘完全初始化已启动",
+			"parameters": [
+				": "
+			]
+		},
+		"72": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘初始化已完成",
+			"parameters": [
+				": "
+			]
+		},
+		"73": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘属性已更新",
+			"parameters": [
+				": ",
+				"先前值 = ",
+				"现在= "
+			]
+		},
+		"74": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的重建完成",
+			"parameters": [
+				": "
+			]
+		},
+		"75": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于虚拟磁盘上出现不可恢复的错误，重建停止",
+			"parameters": [
+				": "
+			]
+		},
+		"76": {
+			"ctrlId": "控制器 ID： ",
+			"description": "重建检测到的不可纠正的多种介质错误",
+			"parameters": [
+				"(虚拟磁盘 ",
+				"位置 ",
+				", 物理磁盘 ",
+				"位置 ",
+				")"
+			]
+		},
+		"77": {
+			"ctrlId": "控制器 ID： ",
+			"description": "重建进度",
+			"parameters": [
+				"虚拟磁盘： ",
+				"百分比： ",
+				"剩余秒数： "
+			]
+		},
+		"78": {
+			"ctrlId": "控制器 ID： ",
+			"description": "重建工作已恢复",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"79": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于配置不匹配，重建恢复操作失败",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"80": {
+			"ctrlId": "控制器 ID： ",
+			"description": "重建工作开始",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"81": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘状态已更改",
+			"parameters": [
+				": ",
+				"先前值 = ",
+				"当前值 = "
+			]
+		},
+		"82": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的清除操作已中止",
+			"parameters": [
+				": "
+			]
+		},
+		"83": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘清除失败",
+			"parameters": [
+				": ",
+				"错误（",
+				")"
+			]
+		},
+		"84": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘清除进度",
+			"parameters": [
+				": ",
+				"百分比： ",
+				"剩余秒数： "
+			]
+		},
+		"85": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘清除开始",
+			"parameters": [
+				": "
+			]
+		},
+		"86": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘清除完成",
+			"parameters": [
+				": "
+			]
+		},
+		"87": {
+			"ctrlId": "控制器 ID： ",
+			"description": "错误",
+			"parameters": [
+				": ",
+				"（错误： ",
+				")"
+			]
+		},
+		"88": {
+			"ctrlId": "控制器 ID： ",
+			"description": "格式完成",
+			"parameters": [
+				": "
+			]
+		},
+		"89": {
+			"ctrlId": "控制器 ID： ",
+			"description": "格式化开始",
+			"parameters": [
+				": "
+			]
+		},
+		"90": {
+			"ctrlId": "控制器 ID： ",
+			"description": "热备盘 SMART 轮询失败",
+			"parameters": [
+				": ",
+				"（错误 ",
+				")"
+			]
+		},
+		"91": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已插入物理磁盘",
+			"parameters": [
+				": "
+			]
+		},
+		"92": {
+			"ctrlId": "控制器 ID： ",
+			"description": "不支持物理磁盘",
+			"parameters": [
+				": "
+			]
+		},
+		"93": {
+			"ctrlId": "控制器 ID： ",
+			"description": "巡检读取已纠正介质错误",
+			"parameters": [
+				"物理磁盘：",
+				"地点： "
+			]
+		},
+		"94": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘的巡检读取进度",
+			"parameters": [
+				": ",
+				"百分比： ",
+				"剩余秒数： "
+			]
+		},
+		"95": {
+			"ctrlId": "控制器 ID： ",
+			"description": "巡检读取发现不可纠正的介质错误",
+			"parameters": [
+				"物理磁盘：",
+				"地点： "
+			]
+		},
+		"96": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘预测性故障",
+			"parameters": [
+				": "
+			]
+		},
+		"97": {
+			"ctrlId": "控制器 ID： ",
+			"description": "击穿坏块",
+			"parameters": [
+				"物理磁盘：",
+				"地点： "
+			]
+		},
+		"98": {
+			"ctrlId": "控制器 ID： ",
+			"description": "重建已由用户中止",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"99": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的重建已完成",
+			"parameters": [
+				": "
+			]
+		},
+		"100": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的重建已完成",
+			"parameters": [
+				": "
+			]
+		},
+		"101": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于源磁盘错误，重建失败",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"102": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于目标磁盘错误，重建失败",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"103": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘的重建进度",
+			"parameters": [
+				": ",
+				"百分比： ",
+				"剩余秒数： "
+			]
+		},
+		"104": {
+			"ctrlId": "控制器 ID： ",
+			"description": "重建已恢复",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"105": {
+			"ctrlId": "控制器 ID： ",
+			"description": "重建已开始",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"106": {
+			"ctrlId": "控制器 ID： ",
+			"description": "重建已自动启动",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"107": {
+			"ctrlId": "控制器 ID： ",
+			"description": "重建因失去集群所有权而停止",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"108": {
+			"ctrlId": "控制器 ID： ",
+			"description": "重新分配写操作失败",
+			"parameters": [
+				"物理磁盘：",
+				"地点： "
+			]
+		},
+		"109": {
+			"ctrlId": "控制器 ID： ",
+			"description": "重建期间出现不可恢复的介质错误",
+			"parameters": [
+				"物理磁盘：",
+				"地点： "
+			]
+		},
+		"110": {
+			"ctrlId": "控制器 ID： ",
+			"description": "更正了恢复期间的介质错误",
+			"parameters": [
+				"物理磁盘：",
+				"地点： "
+			]
+		},
+		"111": {
+			"ctrlId": "控制器 ID： ",
+			"description": "恢复期间出现不可恢复的介质错误",
+			"parameters": [
+				"物理磁盘：",
+				"地点： "
+			]
+		},
+		"112": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘已移除",
+			"parameters": [
+				": "
+			]
+		},
+		"113": {
+			"ctrlId": "控制器 ID： ",
+			"description": "检测到意外状态",
+			"parameters": [
+				"物理磁盘 = ",
+				"国开行= ",
+				", 感 = "
+			]
+		},
+		"114": {
+			"ctrlId": "控制器 ID： ",
+			"description": "状态变化",
+			"parameters": [
+				"物理磁盘：",
+				"先前值 = ",
+				"当前值 = "
+			]
+		},
+		"115": {
+			"ctrlId": "控制器 ID： ",
+			"description": "用户状态改变",
+			"parameters": [
+				"物理磁盘：",
+				"先前值 = ",
+				"当前值 = "
+			]
+		},
+		"116": {
+			"ctrlId": "控制器 ID： ",
+			"description": "冗余路径损坏",
+			"parameters": [
+				": "
+			]
+		},
+		"117": {
+			"ctrlId": "控制器 ID： ",
+			"description": "冗余路径已恢复",
+			"parameters": [
+				": "
+			]
+		},
+		"118": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于阵列已删除，专用热备盘不再适用。",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"119": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 拓扑错误：检测到环路。",
+			"parameters": [
+				": "
+			]
+		},
+		"120": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 拓扑错误：设备不可寻址",
+			"parameters": [
+				": "
+			]
+		},
+		"121": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 拓扑错误：多个端口连接到同一 SAS 地址。",
+			"parameters": [
+				": "
+			]
+		},
+		"122": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 拓扑错误：扩展器错误",
+			"parameters": [
+				": "
+			]
+		},
+		"123": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 拓扑错误：SMP 超时",
+			"parameters": [
+				": "
+			]
+		},
+		"124": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 拓扑错误：路由条目耗尽。",
+			"parameters": [
+				": "
+			]
+		},
+		"125": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 拓扑错误：找不到索引",
+			"parameters": [
+				": "
+			]
+		},
+		"126": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 拓扑错误：SMP 函数失败",
+			"parameters": [
+				": "
+			]
+		},
+		"127": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 拓扑错误：SMP CRC 错误",
+			"parameters": [
+				": "
+			]
+		},
+		"128": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 拓扑错误：存在多个减法路由。",
+			"parameters": [
+				": "
+			]
+		},
+		"129": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 拓扑错误：路由表间连接。",
+			"parameters": [
+				": "
+			]
+		},
+		"130": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 拓扑错误：多条路径",
+			"parameters": []
+		},
+		"131": {
+			"ctrlId": "控制器 ID： ",
+			"description": "无法访问物理磁盘设备",
+			"parameters": [
+				": "
+			]
+		},
+		"132": {
+			"ctrlId": "控制器 ID： ",
+			"description": "创建专用热备盘",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"133": {
+			"ctrlId": "控制器 ID： ",
+			"description": "专用热备盘已禁用",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"134": {
+			"ctrlId": "控制器 ID： ",
+			"description": "专用热备盘不再适用于所有阵列。",
+			"parameters": [
+				": "
+			]
+		},
+		"135": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已创建全局热备盘",
+			"parameters": [
+				": "
+			]
+		},
+		"136": {
+			"ctrlId": "控制器 ID： ",
+			"description": "全局热备盘已禁用",
+			"parameters": [
+				": "
+			]
+		},
+		"137": {
+			"ctrlId": "控制器 ID： ",
+			"description": "全局热备盘未覆盖所有阵列。",
+			"parameters": [
+				": "
+			]
+		},
+		"138": {
+			"ctrlId": "控制器 ID： ",
+			"description": "创建虚拟磁盘",
+			"parameters": [
+				": "
+			]
+		},
+		"139": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已删除虚拟磁盘",
+			"parameters": [
+				": "
+			]
+		},
+		"140": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘由于关闭时的活动写入而标记为不一致",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"141": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 已安装",
+			"parameters": []
+		},
+		"142": {
+			"ctrlId": "控制器 ID： ",
+			"description": "未安装 阵列卡电池/超级电容",
+			"parameters": []
+		},
+		"143": {
+			"ctrlId": "控制器 ID： ",
+			"description": "检测到新的 阵列卡电池/超级电容",
+			"parameters": []
+		},
+		"144": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 已更换",
+			"parameters": []
+		},
+		"145": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 温度过高",
+			"parameters": []
+		},
+		"146": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 电压低",
+			"parameters": []
+		},
+		"147": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 开始充电",
+			"parameters": []
+		},
+		"148": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 正在放电",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"149": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 温度正常",
+			"parameters": []
+		},
+		"150": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 需要更换，SOH 不良",
+			"parameters": []
+		},
+		"151": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 学习周期已开始。",
+			"parameters": []
+		},
+		"152": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 学习周期正在进行中。",
+			"parameters": []
+		},
+		"153": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 学习周期已完成。",
+			"parameters": []
+		},
+		"154": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 学习周期超时。",
+			"parameters": []
+		},
+		"155": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 学习周期待执行：阵列卡电池/超级电容 正在充电。",
+			"parameters": []
+		},
+		"156": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 学习周期已推迟。",
+			"parameters": []
+		},
+		"157": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 学习周期将在 4 天后开始。",
+			"parameters": []
+		},
+		"158": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 学习周期将在 2 天后开始。",
+			"parameters": []
+		},
+		"159": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 学习周期将在 1 天后开始。",
+			"parameters": []
+		},
+		"160": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 学习周期将在 5 小时后开始。",
+			"parameters": []
+		},
+		"161": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 已移除",
+			"parameters": []
+		},
+		"162": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 的当前容量低于阈值",
+			"parameters": []
+		},
+		"163": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 的当前容量高于阈值",
+			"parameters": []
+		},
+		"164": {
+			"ctrlId": "控制器 ID： ",
+			"description": "发现 SES 磁盘柜",
+			"parameters": [
+				": "
+			]
+		},
+		"165": {
+			"ctrlId": "控制器 ID： ",
+			"description": "发现 SAF-TE 磁盘柜",
+			"parameters": [
+				": "
+			]
+		},
+		"166": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜通信中断",
+			"parameters": [
+				": "
+			]
+		},
+		"167": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜通信已恢复",
+			"parameters": [
+				": "
+			]
+		},
+		"168": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜风扇故障",
+			"parameters": [
+				": ",
+				"风扇 "
+			]
+		},
+		"169": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜风扇已插入",
+			"parameters": [
+				": ",
+				"风扇 "
+			]
+		},
+		"170": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜上的风扇已拆下",
+			"parameters": [
+				": ",
+				"风扇"
+			]
+		},
+		"171": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜电源故障",
+			"parameters": [
+				": ",
+				"电源 "
+			]
+		},
+		"172": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜电源已插入",
+			"parameters": [
+				": ",
+				"电源 "
+			]
+		},
+		"173": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜上的电源已拆除",
+			"parameters": [
+				": ",
+				"电源 "
+			]
+		},
+		"174": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜 ESM 故障",
+			"parameters": [
+				": ",
+				"ESM "
+			]
+		},
+		"175": {
+			"ctrlId": "控制器 ID： ",
+			"description": "ESM 插入磁盘柜",
+			"parameters": [
+				": ",
+				"ESM "
+			]
+		},
+		"176": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SIM 模块已从磁盘柜中移除",
+			"parameters": [
+				": ",
+				"ESM "
+			]
+		},
+		"177": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜上的温度传感器低于警告阈值",
+			"parameters": [
+				": ",
+				"传感器 "
+			]
+		},
+		"178": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜上的温度传感器低于错误阈值",
+			"parameters": [
+				": ",
+				"传感器 "
+			]
+		},
+		"179": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜温度传感器高于警告阈值",
+			"parameters": [
+				": ",
+				"传感器 "
+			]
+		},
+		"180": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜温度传感器高于错误阈值",
+			"parameters": [
+				": ",
+				"传感器 "
+			]
+		},
+		"181": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜关闭",
+			"parameters": [
+				": "
+			]
+		},
+		"182": {
+			"ctrlId": "控制器 ID： ",
+			"description": "连接到该端口的磁盘柜过多；不支持该磁盘柜。",
+			"parameters": [
+				": "
+			]
+		},
+		"183": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜上的固件不匹配",
+			"parameters": [
+				": "
+			]
+		},
+		"184": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜上的传感器损坏",
+			"parameters": [
+				": ",
+				"传感器 "
+			]
+		},
+		"185": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜 PHY 故障",
+			"parameters": [
+				": ",
+				"PHY "
+			]
+		},
+		"186": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜不稳定",
+			"parameters": [
+				": "
+			]
+		},
+		"187": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜硬件错误",
+			"parameters": [
+				": "
+			]
+		},
+		"188": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜无响应",
+			"parameters": [
+				": "
+			]
+		},
+		"189": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜中不支持 SAS/SATA 混用；已禁用物理磁盘",
+			"parameters": [
+				": "
+			]
+		},
+		"190": {
+			"ctrlId": "控制器 ID： ",
+			"description": "在 SES 磁盘柜上检测到不支持的热插拔",
+			"parameters": [
+				": "
+			]
+		},
+		"191": {
+			"ctrlId": "控制器 ID： ",
+			"description": "启用集群",
+			"parameters": []
+		},
+		"192": {
+			"ctrlId": "控制器 ID： ",
+			"description": "禁用集群",
+			"parameters": []
+		},
+		"193": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘容量太小，无法用于自动重建",
+			"parameters": [
+				": "
+			]
+		},
+		"194": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 已启用；将直写虚拟磁盘更改为回写",
+			"parameters": []
+		},
+		"195": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 已禁用；将回写虚拟磁盘更改为直写，强制回写虚拟磁盘不受影响",
+			"parameters": []
+		},
+		"196": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的坏块表已达到 80% 容量",
+			"parameters": [
+				": "
+			]
+		},
+		"197": {
+			"ctrlId": "控制器 ID： ",
+			"description": "坏块表已满；无法记录区块",
+			"parameters": [
+				"物理磁盘 = ",
+				"块= "
+			]
+		},
+		"198": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于虚拟磁盘的所有权丢失，一致性检查中止",
+			"parameters": [
+				": "
+			]
+		},
+		"199": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于虚拟磁盘的所有权丢失，后台初始化 (BGI) 中止",
+			"parameters": [
+				": "
+			]
+		},
+		"200": {
+			"ctrlId": "控制器 ID： ",
+			"description": "检测到 阵列卡电池/超级电容 或充电器问题；SOH 不良",
+			"parameters": []
+		},
+		"201": {
+			"ctrlId": "控制器 ID： ",
+			"description": "单比特 ECC 错误；超出警告阈值：",
+			"parameters": [
+				"埃卡=",
+				"ELog = ",
+				"( ",
+				")"
+			]
+		},
+		"202": {
+			"ctrlId": "控制器 ID： ",
+			"description": "单比特 ECC 错误；超过临界阈值：",
+			"parameters": [
+				"埃卡=",
+				"ELog = ",
+				"( ",
+				")"
+			]
+		},
+		"203": {
+			"ctrlId": "控制器 ID： ",
+			"description": "单比特 ECC 错误；进一步报告已禁用：",
+			"parameters": [
+				"埃卡=",
+				"ELog = ",
+				"( ",
+				")"
+			]
+		},
+		"204": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜电源关闭",
+			"parameters": [
+				": ",
+				"电源 "
+			]
+		},
+		"205": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜电源已打开",
+			"parameters": [
+				": ",
+				"电源 "
+			]
+		},
+		"206": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜上的电源线已拆除",
+			"parameters": [
+				": ",
+				"电源 "
+			]
+		},
+		"207": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜电源线已插入",
+			"parameters": [
+				": ",
+				"电源 "
+			]
+		},
+		"208": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜上的风扇恢复正常",
+			"parameters": [
+				": ",
+				"风扇 "
+			]
+		},
+		"209": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 数据保留测试已在上一次启动时启动。",
+			"parameters": []
+		},
+		"210": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 保留测试已通过",
+			"parameters": []
+		},
+		"211": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 保留测试失败！",
+			"parameters": []
+		},
+		"212": {
+			"ctrlId": "控制器 ID： ",
+			"description": "NVRAM 保留测试已在上次启动时启动",
+			"parameters": []
+		},
+		"213": {
+			"ctrlId": "控制器 ID： ",
+			"description": "NVRAM 保留测试已通过",
+			"parameters": []
+		},
+		"214": {
+			"ctrlId": "控制器 ID： ",
+			"description": "NVRAM 保留测试失败！",
+			"parameters": []
+		},
+		"215": {
+			"ctrlId": "控制器 ID： ",
+			"description": "成功完成测试",
+			"parameters": [
+				": ",
+				"通过= "
+			]
+		},
+		"216": {
+			"ctrlId": "控制器 ID： ",
+			"description": "测试失败",
+			"parameters": [
+				": ",
+				"通过= ",
+				"失败数据：ErrorOffset = ",
+				"好数据= ",
+				"坏数据= "
+			]
+		},
+		"217": {
+			"ctrlId": "控制器 ID： ",
+			"description": "自检诊断完成",
+			"parameters": []
+		},
+		"218": {
+			"ctrlId": "控制器 ID： ",
+			"description": "检测到外来配置",
+			"parameters": []
+		},
+		"219": {
+			"ctrlId": "控制器 ID： ",
+			"description": "导入外来配置",
+			"parameters": []
+		},
+		"220": {
+			"ctrlId": "控制器 ID： ",
+			"description": "外来配置已清除",
+			"parameters": []
+		},
+		"221": {
+			"ctrlId": "控制器 ID： ",
+			"description": "NVRAM 已损坏；正在重新初始化",
+			"parameters": []
+		},
+		"222": {
+			"ctrlId": "控制器 ID： ",
+			"description": "检测到 NVRAM 不匹配",
+			"parameters": []
+		},
+		"223": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 宽端口上的链路已丢失",
+			"parameters": [
+				": ",
+				"PHY = "
+			]
+		},
+		"224": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 宽端口上的链路已恢复",
+			"parameters": [
+				": ",
+				"PHY = "
+			]
+		},
+		"225": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 端口的错误率超过允许阈值",
+			"parameters": [
+				": ",
+				"PHY = "
+			]
+		},
+		"226": {
+			"ctrlId": "控制器 ID： ",
+			"description": "坏块重新分配",
+			"parameters": [
+				": ",
+				"先前值 = ",
+				"当前值 = "
+			]
+		},
+		"227": {
+			"ctrlId": "控制器 ID： ",
+			"description": "检测到控制器热插拔",
+			"parameters": []
+		},
+		"228": {
+			"ctrlId": "控制器 ID： ",
+			"description": "检测到磁盘柜温度传感器差异",
+			"parameters": [
+				": ",
+				"传感器 "
+			]
+		},
+		"229": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘测试无法启动。未找到符合条件的磁盘",
+			"parameters": []
+		},
+		"230": {
+			"ctrlId": "控制器 ID： ",
+			"description": "主机提供的时长不足以进行自检",
+			"parameters": []
+		},
+		"231": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列被标记为缺失。",
+			"parameters": [
+				": ",
+				"阵列 ",
+				"行"
+			]
+		},
+		"232": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已替换阵列中缺失的磁盘",
+			"parameters": [
+				": ",
+				"阵列 ",
+				"行"
+			]
+		},
+		"233": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜温度恢复正常",
+			"parameters": [
+				": ",
+				"传感器 "
+			]
+		},
+		"234": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜上的固件下载正在进行中",
+			"parameters": [
+				": "
+			]
+		},
+		"235": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜上的固件下载失败",
+			"parameters": [
+				": "
+			]
+		},
+		"236": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘未经认证",
+			"parameters": [
+				": "
+			]
+		},
+		"237": {
+			"ctrlId": "控制器 ID： ",
+			"description": "用户已丢弃脏缓存数据。",
+			"parameters": []
+		},
+		"238": {
+			"ctrlId": "控制器 ID： ",
+			"description": "启动时配置中缺少物理磁盘",
+			"parameters": []
+		},
+		"239": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘缺少磁盘并将在启动时进入脱机状态",
+			"parameters": [
+				": "
+			]
+		},
+		"240": {
+			"ctrlId": "控制器 ID： ",
+			"description": "启动时缺少虚拟磁盘",
+			"parameters": [
+				": "
+			]
+		},
+		"241": {
+			"ctrlId": "控制器 ID： ",
+			"description": "启动时以前的配置完全丢失",
+			"parameters": []
+		},
+		"242": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 充电完成",
+			"parameters": []
+		},
+		"243": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜上的风扇速度发生变化",
+			"parameters": [
+				": ",
+				"风扇 "
+			]
+		},
+		"244": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于缺少阵列，专用热备盘已转为全局热备盘",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"245": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于阵列不支持 SAS/SATA 混用，无法重建物理磁盘",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"246": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SEP 已作为磁盘柜固件下载的一部分重新启动。在重新启动完成之前，SEP 将不可用。",
+			"parameters": [
+				"SEP: "
+			]
+		},
+		"247": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已插入设备：设备类型",
+			"parameters": [
+				": ",
+				"设备 ID： "
+			]
+		},
+		"248": {
+			"ctrlId": "控制器 ID： ",
+			"description": "设备已删除，设备类型",
+			"parameters": [
+				": ",
+				"设备 ID： "
+			]
+		},
+		"249": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘当前处于最佳状态",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"250": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘当前处于部分降级状态",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"251": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘当前处于降级状态",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"252": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘当前处于脱机状态",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"253": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 需要重新调理；请启动学习周期",
+			"parameters": []
+		},
+		"254": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘已禁用，因为此 RAID 密钥不支持 RAID-5",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"255": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘已禁用，因为此控制器不支持 RAID-6",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"256": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘已禁用，因为此 RAID 密钥不支持 SAS 磁盘",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"257": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘缺失",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"258": {
+			"ctrlId": "控制器 ID： ",
+			"description": "启用 LBA 打孔",
+			"parameters": []
+		},
+		"259": {
+			"ctrlId": "控制器 ID： ",
+			"description": "禁用 LBA 打孔",
+			"parameters": []
+		},
+		"260": {
+			"ctrlId": "控制器 ID： ",
+			"description": "未安装磁盘柜 ESM",
+			"parameters": [
+				": ",
+				"ESM "
+			]
+		},
+		"261": {
+			"ctrlId": "控制器 ID： ",
+			"description": "固件软件包版本",
+			"parameters": [
+				": "
+			]
+		},
+		"262": {
+			"ctrlId": "控制器 ID： ",
+			"description": "全局关联热备盘对应的物理磁盘已在其他磁盘柜中配置",
+			"parameters": [
+				": "
+			]
+		},
+		"263": {
+			"ctrlId": "控制器 ID： ",
+			"description": "外来配置表溢出",
+			"parameters": []
+		},
+		"264": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已导入部分外来配置，未导入物理磁盘",
+			"parameters": [
+				": "
+			]
+		},
+		"265": {
+			"ctrlId": "控制器 ID： ",
+			"description": "连接器处于活动状态",
+			"parameters": [
+				": "
+			]
+		},
+		"266": {
+			"ctrlId": "控制器 ID： ",
+			"description": "董事会修订",
+			"parameters": [
+				": "
+			]
+		},
+		"267": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的命令超时",
+			"parameters": [
+				"物理磁盘 = ",
+				"国开行= ",
+				", 感 = ",
+				"路径= "
+			]
+		},
+		"268": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘重置",
+			"parameters": [
+				"物理磁盘 = ",
+				"错误= ",
+				"路径= "
+			]
+		},
+		"269": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘坏块表已达到 80% 容量",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"270": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘坏块表已满 - 无法记录块",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"271": {
+			"ctrlId": "控制器 ID： ",
+			"description": "记录了不可纠正的介质错误：",
+			"parameters": [
+				"(虚拟磁盘 ",
+				"位置 ",
+				"物理磁盘",
+				"位置 ",
+				")"
+			]
+		},
+		"272": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘介质错误已修正",
+			"parameters": [
+				"虚拟磁盘： ",
+				"地点"
+			]
+		},
+		"273": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘坏块表已达到 100% 容量",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"274": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘坏块表已达到 100% 容量",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"275": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于 IOP 故障，需要更换控制器",
+			"parameters": []
+		},
+		"276": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘替换操作已启动",
+			"parameters": [
+				"物理磁盘：",
+				"源物理磁盘： "
+			]
+		},
+		"277": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘替换操作已中止",
+			"parameters": [
+				"物理磁盘：",
+				"源物理磁盘： "
+			]
+		},
+		"278": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘替换操作已完成",
+			"parameters": [
+				"物理磁盘：",
+				"源物理磁盘： "
+			]
+		},
+		"279": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘替换操作进度：",
+			"parameters": [
+				"物理磁盘：",
+				"百分比： ",
+				"剩余秒数： "
+			]
+		},
+		"280": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的磁盘替换操作已恢复",
+			"parameters": [
+				": ",
+				"源物理磁盘： "
+			]
+		},
+		"281": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的磁盘替换操作已自动启动",
+			"parameters": [
+				": ",
+				"源物理磁盘： "
+			]
+		},
+		"282": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于源物理磁盘错误，磁盘替换操作失败",
+			"parameters": [
+				": ",
+				"源物理磁盘： "
+			]
+		},
+		"283": {
+			"ctrlId": "控制器 ID： ",
+			"description": "提前断电警告不成功 ",
+			"parameters": []
+		},
+		"284": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 FRU 是",
+			"parameters": [
+				": "
+			]
+		},
+		"285": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘 FRU 是：",
+			"parameters": [
+				"物理磁盘：",
+				"弗鲁： "
+			]
+		},
+		"286": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器硬件修订 ID 是",
+			"parameters": [
+				": "
+			]
+		},
+		"287": {
+			"ctrlId": "控制器 ID： ",
+			"description": "外来配置导入可能导致配置元数据向后不兼容升级",
+			"parameters": []
+		},
+		"288": {
+			"ctrlId": "控制器 ID： ",
+			"description": "冗余路径已恢复",
+			"parameters": [
+				"物理磁盘：",
+				"路径： ",
+				"SAS 地址： "
+			]
+		},
+		"289": {
+			"ctrlId": "控制器 ID： ",
+			"description": "冗余路径损坏",
+			"parameters": [
+				"物理磁盘：",
+				"路径： ",
+				"SAS 地址： "
+			]
+		},
+		"290": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已插入冗余磁盘柜管理模块",
+			"parameters": [
+				": ",
+				"主要： "
+			]
+		},
+		"291": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已移除冗余磁盘柜管理模块",
+			"parameters": [
+				": ",
+				"主要： "
+			]
+		},
+		"292": {
+			"ctrlId": "控制器 ID： ",
+			"description": "无法启动巡检读取，因为物理磁盘要么不是联机状态，要么位于具有活动进程的虚拟磁盘中，要么位于排除的虚拟磁盘中",
+			"parameters": []
+		},
+		"293": {
+			"ctrlId": "控制器 ID： ",
+			"description": "用户已中止物理磁盘上的磁盘替换操作",
+			"parameters": [
+				": ",
+				"源物理磁盘： "
+			]
+		},
+		"294": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于热备盘需要用于重建，其磁盘替换操作已中止。热备盘对应的物理磁盘：",
+			"parameters": [
+				": ",
+				"源物理磁盘： "
+			]
+		},
+		"295": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于阵列需要重建，磁盘替换操作已中止。",
+			"parameters": [
+				"物理磁盘：",
+				"源物理磁盘： "
+			]
+		},
+		"296": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器缓存因丢失或脱机虚拟磁盘而被丢弃",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"297": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于磁盘容量过小，无法启动磁盘替换操作。",
+			"parameters": [
+				"物理磁盘：",
+				"源物理磁盘： "
+			]
+		},
+		"298": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于阵列不支持 SAS/SATA 混用，无法启动磁盘替换操作。",
+			"parameters": [
+				"物理磁盘：",
+				"源物理磁盘： "
+			]
+		},
+		"299": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的固件更新已开始",
+			"parameters": [
+				": "
+			]
+		},
+		"300": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的固件更新已完成",
+			"parameters": [
+				": "
+			]
+		},
+		"301": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的固件更新超时",
+			"parameters": [
+				": "
+			]
+		},
+		"302": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的固件更新失败",
+			"parameters": [
+				": "
+			]
+		},
+		"303": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器属性已更改",
+			"parameters": []
+		},
+		"304": {
+			"ctrlId": "控制器 ID： ",
+			"description": "巡检读取属性已更改",
+			"parameters": []
+		},
+		"305": {
+			"ctrlId": "控制器 ID： ",
+			"description": "CC 时间表属性已更改",
+			"parameters": []
+		},
+		"306": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 属性已更改",
+			"parameters": []
+		},
+		"307": {
+			"ctrlId": "控制器 ID： ",
+			"description": "定期 阵列卡电池/超级电容 学习周期待执行。由于未启用自动学习，请启动手动学习周期。",
+			"parameters": []
+		},
+		"308": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘安全密钥已创建",
+			"parameters": []
+		},
+		"309": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘安全密钥已备份",
+			"parameters": []
+		},
+		"310": {
+			"ctrlId": "控制器 ID： ",
+			"description": "托管库中的磁盘安全密钥已验证",
+			"parameters": []
+		},
+		"311": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘安全密钥已更改",
+			"parameters": []
+		},
+		"312": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘安全密钥重新生成操作失败",
+			"parameters": []
+		},
+		"313": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘安全密钥无效",
+			"parameters": []
+		},
+		"314": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘安全密钥已销毁",
+			"parameters": []
+		},
+		"315": {
+			"ctrlId": "控制器 ID： ",
+			"description": "托管库中的磁盘安全密钥无效",
+			"parameters": []
+		},
+		"316": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘现已安全",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"317": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘部分受到保护",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"318": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘安全已激活",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"319": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘安全已禁用",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"320": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘已重新配置",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"321": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘安全密钥已更改",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"322": {
+			"ctrlId": "控制器 ID： ",
+			"description": "检测到物理磁盘的安全子系统问题",
+			"parameters": [
+				": "
+			]
+		},
+		"323": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器缓存因丢失或脱机而固定",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"324": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器缓存因丢失或脱机而固定",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"325": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器缓存因丢失而被用户丢弃",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"326": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已将虚拟磁盘的控制器缓存写入磁盘",
+			"parameters": [
+				": "
+			]
+		},
+		"327": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已在不一致的虚拟磁盘上启动一致性检查",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"328": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘安全密钥故障，无法访问安全配置",
+			"parameters": []
+		},
+		"329": {
+			"ctrlId": "控制器 ID： ",
+			"description": "用户的磁盘安全密码无效",
+			"parameters": []
+		},
+		"330": {
+			"ctrlId": "控制器 ID： ",
+			"description": "检测到远程 阵列卡电池/超级电容 连接器电缆错误",
+			"parameters": []
+		},
+		"331": {
+			"ctrlId": "控制器 ID： ",
+			"description": "电源状态更改开启",
+			"parameters": [
+				"物理磁盘 = ",
+				"先前值 = ",
+				"当前值 = "
+			]
+		},
+		"332": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜元素状态已更改",
+			"parameters": [
+				"磁盘柜： ",
+				"SES 代码 "
+			]
+		},
+		"333": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于虚拟磁盘不支持 HDD/SSD 混用，无法重建物理磁盘",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"334": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于虚拟磁盘不支持 HDD/SSD 混用，无法执行磁盘替换操作。",
+			"parameters": [
+				"物理磁盘：",
+				"源物理磁盘： "
+			]
+		},
+		"335": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘坏块表已清除。",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"336": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 拓扑错误",
+			"parameters": [
+				": "
+			]
+		},
+		"337": {
+			"ctrlId": "控制器 ID： ",
+			"description": "纠正了虚拟磁盘中等错误簇： ",
+			"parameters": [
+				"(虚拟磁盘 ",
+				"位置 ",
+				"物理磁盘",
+				"位置 "
+			]
+		},
+		"338": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器请求重新扫描主机总线。",
+			"parameters": []
+		},
+		"339": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器重新调整用途并恢复出厂默认设置",
+			"parameters": []
+		},
+		"340": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘安全密钥绑定已更新",
+			"parameters": []
+		},
+		"341": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘安全处于 EKM 模式",
+			"parameters": []
+		},
+		"342": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘安全功能无法与 EKMS 通信",
+			"parameters": []
+		},
+		"343": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘需要密钥",
+			"parameters": [
+				" ",
+				"物理磁盘：",
+				"密钥 ID 长度： "
+			]
+		},
+		"344": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘安全失败",
+			"parameters": [
+				": "
+			]
+		},
+		"345": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器遇到致命错误并已重置",
+			"parameters": []
+		},
+		"346": {
+			"ctrlId": "控制器 ID： ",
+			"description": "在虚拟磁盘上启用快照",
+			"parameters": [
+				": ",
+				"快照存储库 虚拟磁盘： "
+			]
+		},
+		"347": {
+			"ctrlId": "控制器 ID： ",
+			"description": "用户在虚拟磁盘上禁用了快照",
+			"parameters": [
+				": ",
+				"快照存储库 虚拟磁盘： "
+			]
+		},
+		"348": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上禁用快照",
+			"parameters": [
+				": ",
+				"快照存储库 虚拟磁盘： "
+			]
+		},
+		"349": {
+			"ctrlId": "控制器 ID： ",
+			"description": "在虚拟磁盘上创建的快照时间点",
+			"parameters": [
+				": ",
+				"PIT创建时间 "
+			]
+		},
+		"350": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已在虚拟磁盘上删除快照时间点",
+			"parameters": [
+				": ",
+				"PIT创建时间 "
+			]
+		},
+		"351": {
+			"ctrlId": "控制器 ID： ",
+			"description": "在虚拟磁盘上创建的快照视图",
+			"parameters": [
+				": ",
+				"PIT创建时间 ",
+				"快照视图创建时间 "
+			]
+		},
+		"352": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已在虚拟磁盘上删除快照视图",
+			"parameters": [
+				": ",
+				"PIT创建时间 ",
+				"快照视图创建时间 "
+			]
+		},
+		"353": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已在虚拟磁盘上的时间点开始快照回滚",
+			"parameters": [
+				": ",
+				"PIT创建时间 "
+			]
+		},
+		"354": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的时间点快照回滚已在内部中止",
+			"parameters": [
+				": ",
+				"PIT创建时间 "
+			]
+		},
+		"355": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上时间点的快照回滚已完成",
+			"parameters": [
+				": ",
+				"PIT创建时间 "
+			]
+		},
+		"356": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上时间点的快照回滚进度",
+			"parameters": [
+				": ",
+				"PIT创建时间 ",
+				"进度= "
+			]
+		},
+		"357": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的快照存储库已达到 80% 容量",
+			"parameters": [
+				": ",
+				"快照存储库 虚拟磁盘： "
+			]
+		},
+		"358": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的快照存储库已满",
+			"parameters": [
+				": ",
+				"快照存储库 虚拟磁盘： "
+			]
+		},
+		"359": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的快照视图已达到 80% 容量",
+			"parameters": [
+				": ",
+				"快照存储库 虚拟磁盘： "
+			]
+		},
+		"360": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的完整快照视图",
+			"parameters": [
+				": ",
+				"快照存储库 虚拟磁盘： "
+			]
+		},
+		"361": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘的存储库丢失",
+			"parameters": [
+				": "
+			]
+		},
+		"362": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已恢复虚拟磁盘的存储库",
+			"parameters": [
+				": "
+			]
+		},
+		"363": {
+			"ctrlId": "控制器 ID： ",
+			"description": "快照遇到意外的内部错误",
+			"parameters": [
+				": "
+			]
+		},
+		"364": {
+			"ctrlId": "控制器 ID： ",
+			"description": "在虚拟磁盘上启用自动快照",
+			"parameters": [
+				": ",
+				"快照存储库 虚拟磁盘： "
+			]
+		},
+		"365": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上禁用自动快照",
+			"parameters": [
+				": ",
+				"快照存储库 虚拟磁盘： "
+			]
+		},
+		"366": {
+			"ctrlId": "控制器 ID： ",
+			"description": "配置命令无法提交到磁盘，请重试！",
+			"parameters": []
+		},
+		"367": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的 COD 已过时，已更新。",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"368": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的电源状态更改失败",
+			"parameters": [
+				": ",
+				"先前值 = ",
+				"当前值 = "
+			]
+		},
+		"369": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘不可用。",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"370": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘可用。",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"371": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘用于 CacheCade。",
+			"parameters": [
+				"虚拟磁盘： ",
+				"容量 - 逻辑块： "
+			]
+		},
+		"372": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘正在由 CacheCade 缓存。",
+			"parameters": [
+				"虚拟磁盘： ",
+				"SSC 虚拟磁盘 "
+			]
+		},
+		"373": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘不再由 CacheCade 缓存。",
+			"parameters": [
+				"虚拟磁盘： ",
+				"SSC 虚拟磁盘 "
+			]
+		},
+		"374": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于虚拟磁盘上的资源限制，快照被删除 ",
+			"parameters": [
+				": ",
+				"快照存储库 虚拟磁盘： "
+			]
+		},
+		"375": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘自动快照失败",
+			"parameters": [
+				": ",
+				"快照存储库 虚拟磁盘： "
+			]
+		},
+		"376": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器重置板载扩展器",
+			"parameters": []
+		},
+		"377": {
+			"ctrlId": "控制器 ID： ",
+			"description": "CacheCade 虚拟磁盘容量已更改。",
+			"parameters": [
+				"虚拟磁盘： ",
+				"容量 - 逻辑块： "
+			]
+		},
+		"378": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 无法启动透明学习周期",
+			"parameters": []
+		},
+		"379": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已应用激活密钥 操作",
+			"parameters": [
+				": ",
+				"MegaRAID 高级软件："
+			]
+		},
+		"380": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的快照计划属性已更改",
+			"parameters": [
+				": "
+			]
+		},
+		"381": {
+			"ctrlId": "控制器 ID： ",
+			"description": "快照计划操作已过期：虚拟磁盘上的计划计时器已过期",
+			"parameters": [
+				": "
+			]
+		},
+		"382": {
+			"ctrlId": "控制器 ID： ",
+			"description": "性能指标：收集命令",
+			"parameters": [
+				": "
+			]
+		},
+		"383": {
+			"ctrlId": "控制器 ID： ",
+			"description": "MegaRAID 高级软件选项转移操作",
+			"parameters": [
+				": ",
+				"MegaRAID 高级软件： "
+			]
+		},
+		"384": {
+			"ctrlId": "控制器 ID： ",
+			"description": "高级软件选项序列号",
+			"parameters": [
+				": "
+			]
+		},
+		"385": {
+			"ctrlId": "控制器 ID： ",
+			"description": "高级软件选项序列号不匹配。",
+			"parameters": [
+				"密钥保管库序列号是： "
+			]
+		},
+		"386": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 无法将数据保留超过数小时。",
+			"parameters": [
+				"时间： ",
+				"请更换 阵列卡电池/超级电容"
+			]
+		},
+		"387": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的电源策略已更改",
+			"parameters": [
+				": ",
+				"先前值 = ",
+				"现在= "
+			]
+		},
+		"388": {
+			"ctrlId": "控制器 ID： ",
+			"description": "无法在虚拟磁盘上转换到最大节能状态",
+			"parameters": [
+				": "
+			]
+		},
+		"389": {
+			"ctrlId": "控制器 ID： ",
+			"description": "主机驱动程序已加载并可运行",
+			"parameters": []
+		},
+		"390": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的镜像已损坏",
+			"parameters": [
+				": "
+			]
+		},
+		"391": {
+			"ctrlId": "控制器 ID： ",
+			"description": "镜像已加入虚拟磁盘",
+			"parameters": [
+				": "
+			]
+		},
+		"392": {
+			"ctrlId": "控制器 ID： ",
+			"description": "宽端口上的链路失败",
+			"parameters": [
+				": ",
+				"链路"
+			]
+		},
+		"393": {
+			"ctrlId": "控制器 ID： ",
+			"description": "宽端口上的链路已恢复",
+			"parameters": [
+				": ",
+				"链路 "
+			]
+		},
+		"394": {
+			"ctrlId": "控制器 ID： ",
+			"description": "内存模块 FRU ",
+			"parameters": [
+				"是： "
+			]
+		},
+		"395": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 电源模块状态不佳。请更换该模块。",
+			"parameters": []
+		},
+		"396": {
+			"ctrlId": "控制器 ID： ",
+			"description": "外来配置自动导入未导入任何磁盘",
+			"parameters": []
+		},
+		"397": {
+			"ctrlId": "控制器 ID： ",
+			"description": "需要更新 阵列卡电池/超级电容 固件。",
+			"parameters": []
+		},
+		"398": {
+			"ctrlId": "控制器 ID： ",
+			"description": "CacheCade(TM) 容量超过允许的最大值，额外容量将不使用。",
+			"parameters": [
+				": "
+			]
+		},
+		"399": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的保护信息丢失",
+			"parameters": [
+				": "
+			]
+		},
+		"400": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘的诊断已通过",
+			"parameters": [
+				": "
+			]
+		},
+		"401": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘诊断失败",
+			"parameters": [
+				": "
+			]
+		},
+		"402": {
+			"ctrlId": "控制器 ID： ",
+			"description": "服务器电源能力诊断测试开始",
+			"parameters": []
+		},
+		"403": {
+			"ctrlId": "控制器 ID： ",
+			"description": "在重建期间为物理磁盘启用磁盘缓存设置",
+			"parameters": [
+				": "
+			]
+		},
+		"404": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘重建后恢复磁盘缓存设置",
+			"parameters": [
+				": "
+			]
+		},
+		"405": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘已配置为紧急备用盘",
+			"parameters": [
+				": "
+			]
+		},
+		"406": {
+			"ctrlId": "控制器 ID： ",
+			"description": "提醒：由于物理磁盘被配置为紧急备用盘，因此可能存在非最佳配置",
+			"parameters": [
+				": "
+			]
+		},
+		"407": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的一致性检查已暂停",
+			"parameters": [
+				": "
+			]
+		},
+		"408": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的一致性检查已恢复",
+			"parameters": [
+				": "
+			]
+		},
+		"409": {
+			"ctrlId": "控制器 ID： ",
+			"description": "后台初始化在虚拟磁盘上暂停",
+			"parameters": [
+				": "
+			]
+		},
+		"410": {
+			"ctrlId": "控制器 ID： ",
+			"description": "后台初始化在虚拟磁盘上恢复",
+			"parameters": [
+				": "
+			]
+		},
+		"411": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的重建暂停",
+			"parameters": [
+				": "
+			]
+		},
+		"412": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的重建已暂停",
+			"parameters": [
+				": "
+			]
+		},
+		"413": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的磁盘替换操作已暂停",
+			"parameters": [
+				": "
+			]
+		},
+		"414": {
+			"ctrlId": "控制器 ID： ",
+			"description": "提醒：虚拟磁盘上的一致性检查已暂停",
+			"parameters": [
+				": "
+			]
+		},
+		"415": {
+			"ctrlId": "控制器 ID： ",
+			"description": "提醒：后台初始化在虚拟磁盘上暂停",
+			"parameters": [
+				": "
+			]
+		},
+		"416": {
+			"ctrlId": "控制器 ID： ",
+			"description": "提醒：虚拟磁盘暂停重建",
+			"parameters": [
+				": "
+			]
+		},
+		"417": {
+			"ctrlId": "控制器 ID： ",
+			"description": "提醒：物理磁盘上的重建已暂停",
+			"parameters": [
+				": "
+			]
+		},
+		"418": {
+			"ctrlId": "控制器 ID： ",
+			"description": "提醒：物理磁盘上的磁盘替换操作已暂停",
+			"parameters": [
+				": "
+			]
+		},
+		"419": {
+			"ctrlId": "控制器 ID： ",
+			"description": "提醒：巡检读取暂停",
+			"parameters": []
+		},
+		"420": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘擦除已中止",
+			"parameters": [
+				": "
+			]
+		},
+		"421": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的擦除失败",
+			"parameters": [
+				": ",
+				"（错误 ",
+				")"
+			]
+		},
+		"422": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘擦除进度",
+			"parameters": [
+				": ",
+				"百分比： ",
+				"剩余秒数： "
+			]
+		},
+		"423": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已开始擦除物理磁盘",
+			"parameters": [
+				": "
+			]
+		},
+		"424": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的擦除已完成",
+			"parameters": [
+				": "
+			]
+		},
+		"425": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘擦除已中止",
+			"parameters": [
+				": "
+			]
+		},
+		"426": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的擦除失败",
+			"parameters": [
+				": "
+			]
+		},
+		"427": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘擦除进度",
+			"parameters": [
+				": ",
+				"百分比： ",
+				"剩余秒数： "
+			]
+		},
+		"428": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已开始擦除虚拟磁盘",
+			"parameters": [
+				": "
+			]
+		},
+		"429": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘上的擦除完成",
+			"parameters": [
+				": "
+			]
+		},
+		"430": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘擦除期间可能存在泄漏",
+			"parameters": [
+				": "
+			]
+		},
+		"431": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于 阵列卡电池/超级电容 温度过高，已暂停 阵列卡电池/超级电容 充电",
+			"parameters": []
+		},
+		"432": {
+			"ctrlId": "控制器 ID： ",
+			"description": "NVCache 固件更新成功",
+			"parameters": []
+		},
+		"433": {
+			"ctrlId": "控制器 ID： ",
+			"description": "NVCache 固件更新失败",
+			"parameters": []
+		},
+		"434": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘 ",
+			"parameters": [
+				": ",
+				"由于 CacheCade(TM) 中的缓存数据不可用，访问被阻止"
+			]
+		},
+		"435": {
+			"ctrlId": "控制器 ID： ",
+			"description": "CacheCade(TM) 已开始解除与虚拟磁盘的关联",
+			"parameters": [
+				": "
+			]
+		},
+		"436": {
+			"ctrlId": "控制器 ID： ",
+			"description": "CacheCade(TM) 在虚拟磁盘上完成解除关联",
+			"parameters": [
+				": "
+			]
+		},
+		"437": {
+			"ctrlId": "控制器 ID： ",
+			"description": "CacheCade(TM) 在虚拟磁盘上解除关联失败",
+			"parameters": [
+				": "
+			]
+		},
+		"438": {
+			"ctrlId": "控制器 ID： ",
+			"description": "CacheCade(TM) 正在解除与虚拟磁盘的关联",
+			"parameters": [
+				": ",
+				"百分比： ",
+				"剩余秒数： "
+			]
+		},
+		"439": {
+			"ctrlId": "控制器 ID： ",
+			"description": "用户已中止 CacheCade(TM) 与虚拟磁盘的解除关联",
+			"parameters": [
+				": "
+			]
+		},
+		"440": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 端口上的链路速率已更改",
+			"parameters": [
+				": ",
+				"PHY "
+			]
+		},
+		"441": {
+			"ctrlId": "控制器 ID： ",
+			"description": "高级软件选项已针对高级功能停用",
+			"parameters": [
+				": - "
+			]
+		},
+		"442": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘现在可以访问。",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"443": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘正在使用 CacheCade(TM)。",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"444": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘不再使用 CacheCade(TM)。",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"445": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的巡检读取已中止",
+			"parameters": [
+				": "
+			]
+		},
+		"446": {
+			"ctrlId": "控制器 ID： ",
+			"description": "与物理磁盘通信时检测到暂时错误",
+			"parameters": [
+				": "
+			]
+		},
+		"447": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘缓存中检测到 PI 错误",
+			"parameters": [
+				": ",
+				"在伦敦银行管理局： "
+			]
+		},
+		"448": {
+			"ctrlId": "控制器 ID： ",
+			"description": "不支持下载闪存映像",
+			"parameters": []
+		},
+		"449": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已选择 阵列卡电池/超级电容 模式",
+			"parameters": [
+				" - "
+			]
+		},
+		"450": {
+			"ctrlId": "控制器 ID： ",
+			"description": "定期 阵列卡电池/超级电容 学习周期未按计划执行，已重新安排至 ",
+			"parameters": [
+				": "
+			]
+		},
+		"451": {
+			"ctrlId": "控制器 ID： ",
+			"description": "主机请求控制器重置。",
+			"parameters": []
+		},
+		"452": {
+			"ctrlId": "控制器 ID： ",
+			"description": "主机请求的控制器重置已完成。",
+			"parameters": []
+		},
+		"453": {
+			"ctrlId": "控制器 ID： ",
+			"description": "检测到 L3 缓存错误。",
+			"parameters": []
+		},
+		"454": {
+			"ctrlId": "控制器 ID： ",
+			"description": "检测到 L2 缓存错误。",
+			"parameters": []
+		},
+		"455": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器在无头模式下启动，但出现错误。",
+			"parameters": []
+		},
+		"456": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于严重错误，控制器启动至安全模式。",
+			"parameters": []
+		},
+		"457": {
+			"ctrlId": "控制器 ID： ",
+			"description": "警告 启动期间出错 ",
+			"parameters": [
+				": ",
+				"%"
+			]
+		},
+		"458": {
+			"ctrlId": "控制器 ID： ",
+			"description": "启动期间出现严重错误 ",
+			"parameters": [
+				": ",
+				"%"
+			]
+		},
+		"459": {
+			"ctrlId": "控制器 ID： ",
+			"description": "启动期间发生致命错误 ",
+			"parameters": [
+				": ",
+				"%"
+			]
+		},
+		"460": {
+			"ctrlId": "控制器 ID： ",
+			"description": "对等控制器进入 HA 域。",
+			"parameters": []
+		},
+		"461": {
+			"ctrlId": "控制器 ID： ",
+			"description": "对等控制器退出 HA 域。",
+			"parameters": []
+		},
+		"462": {
+			"ctrlId": "控制器 ID： ",
+			"description": "对等控制器现在管理",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"463": {
+			"ctrlId": "控制器 ID： ",
+			"description": "本地控制器现在管理 ",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"464": {
+			"ctrlId": "控制器 ID： ",
+			"description": "对等控制器现在管理 ",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"465": {
+			"ctrlId": "控制器 ID： ",
+			"description": "本地控制器现在管理 ",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"466": {
+			"ctrlId": "控制器 ID： ",
+			"description": "在虚拟磁盘上检测到目标 ID 冲突",
+			"parameters": [
+				": ",
+				"对等控制器的访问受到限制"
+			]
+		},
+		"467": {
+			"ctrlId": "控制器 ID： ",
+			"description": "为虚拟磁盘设置的共享访问策略",
+			"parameters": [
+				": "
+			]
+		},
+		"468": {
+			"ctrlId": "控制器 ID： ",
+			"description": "为虚拟磁盘设置的独占访问策略",
+			"parameters": [
+				": "
+			]
+		},
+		"469": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘在 HA 域中不兼容。 ",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"470": {
+			"ctrlId": "控制器 ID： ",
+			"description": "对等控制器不兼容。",
+			"parameters": []
+		},
+		"471": {
+			"ctrlId": "控制器 ID： ",
+			"description": "HA域中的控制器不兼容。",
+			"parameters": []
+		},
+		"472": {
+			"ctrlId": "控制器 ID： ",
+			"description": "检测到控制器属性与对等控制器不匹配。",
+			"parameters": []
+		},
+		"473": {
+			"ctrlId": "控制器 ID： ",
+			"description": "固件版本与对等控制器不匹配。",
+			"parameters": []
+		},
+		"474": {
+			"ctrlId": "控制器 ID： ",
+			"description": "检测到高级软件选项与对等控制器不匹配。",
+			"parameters": []
+		},
+		"475": {
+			"ctrlId": "控制器 ID： ",
+			"description": "缓存镜像处于联机状态。",
+			"parameters": []
+		},
+		"476": {
+			"ctrlId": "控制器 ID： ",
+			"description": "缓存镜像已脱机。",
+			"parameters": []
+		},
+		"477": {
+			"ctrlId": "控制器 ID： ",
+			"description": "对等控制器的缓存数据无法用于虚拟磁盘",
+			"parameters": [
+				": ",
+				"访问策略设置为“阻止”。"
+			]
+		},
+		"478": {
+			"ctrlId": "控制器 ID： ",
+			"description": "不支持 CacheVault 电源模块。请更换该模块。",
+			"parameters": []
+		},
+		"479": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘温度高于警告阈值",
+			"parameters": [
+				": ",
+				"温度： ",
+				"摄氏度"
+			]
+		},
+		"480": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘温度高于临界阈值",
+			"parameters": [
+				": ",
+				"温度： ",
+				"摄氏度"
+			]
+		},
+		"481": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘温度正常",
+			"parameters": [
+				": ",
+				"温度： ",
+				"摄氏度"
+			]
+		},
+		"482": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的 I/O 正在受到限制",
+			"parameters": [
+				": "
+			]
+		},
+		"483": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的 I/O 已恢复正常",
+			"parameters": [
+				": "
+			]
+		},
+		"484": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上剩余生命",
+			"parameters": [
+				": ",
+				"（剩余寿命： ",
+				"% 和 剩余生命阈值 - 警告： ",
+				"%，关键： ",
+				"%)"
+			]
+		},
+		"485": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘上的寿命低于最佳",
+			"parameters": [
+				": ",
+				"（剩余寿命： ",
+				"% 和 剩余生命阈值 - 警告： ",
+				"%，关键： ",
+				"%)"
+			]
+		},
+		"486": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘寿命达到临界状态",
+			"parameters": [
+				": ",
+				"（剩余寿命： ",
+				"% 和 剩余生命阈值 - 警告： ",
+				"%，关键： ",
+				"%)"
+			]
+		},
+		"487": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘失败，设备锁定。",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"488": {
+			"ctrlId": "控制器 ID： ",
+			"description": "主机驱动程序需要升级",
+			"parameters": [
+				": "
+			]
+		},
+		"489": {
+			"ctrlId": "控制器 ID： ",
+			"description": "未建立与对等控制器的直接通信。请检查电缆连接是否正确",
+			"parameters": []
+		},
+		"490": {
+			"ctrlId": "控制器 ID： ",
+			"description": "固件映像不包含签名组件",
+			"parameters": []
+		},
+		"491": {
+			"ctrlId": "控制器 ID： ",
+			"description": "签名固件映像验证失败",
+			"parameters": []
+		},
+		"492": {
+			"ctrlId": "控制器 ID： ",
+			"description": "将虚拟磁盘设置为启动设备。",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"493": {
+			"ctrlId": "控制器 ID： ",
+			"description": "将物理磁盘设置为启动设备。",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"494": {
+			"ctrlId": "控制器 ID： ",
+			"description": "阵列卡电池/超级电容 温度已变化",
+			"parameters": [
+				"到 ",
+				"摄氏度"
+			]
+		},
+		"495": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器温度已变化",
+			"parameters": [
+				"到 ",
+				"摄氏度"
+			]
+		},
+		"496": {
+			"ctrlId": "控制器 ID： ",
+			"description": "NVCache 容量过小，无法支持数据备份。回写虚拟磁盘将切换为直写。",
+			"parameters": []
+		},
+		"497": {
+			"ctrlId": "控制器 ID： ",
+			"description": "NVCache 数据备份能力下降，建议更换。",
+			"parameters": []
+		},
+		"498": {
+			"ctrlId": "控制器 ID： ",
+			"description": "NVCache 设备发生故障，无法保留数据。",
+			"parameters": []
+		},
+		"499": {
+			"ctrlId": "控制器 ID： ",
+			"description": "启动设备已重置，目标 ID 已设为无效。",
+			"parameters": []
+		},
+		"500": {
+			"ctrlId": "控制器 ID： ",
+			"description": "服务器之间的回写 Nytro 缓存大小不匹配。Nytro 缓存大小已调整",
+			"parameters": [
+				"至： ",
+				" GB"
+			]
+		},
+		"501": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘不在服务器之间共享，而是分配用于缓存。该虚拟磁盘的回写 Nytro 缓存内容将被镜像。",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"502": {
+			"ctrlId": "控制器 ID： ",
+			"description": "基于功耗的基本 I/O 节流已启动",
+			"parameters": [
+				"用途： ",
+				"瓦特"
+			]
+		},
+		"503": {
+			"ctrlId": "控制器 ID： ",
+			"description": "基于功耗的基本 I/O 节流已停止。",
+			"parameters": []
+		},
+		"504": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器可调参数已更改。",
+			"parameters": []
+		},
+		"505": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器工作温度在正常范围内，全面恢复运行。",
+			"parameters": []
+		},
+		"506": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器温度超过阈值。这可能表明系统冷却不足。切换到低性能模式。",
+			"parameters": []
+		},
+		"507": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器支持 HA 模式，目前使用 HA 功能集运行。",
+			"parameters": []
+		},
+		"508": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器支持 HA 模式，目前使用单控制器功能集运行。",
+			"parameters": []
+		},
+		"509": {
+			"ctrlId": "控制器 ID： ",
+			"description": "CacheVault 组件不匹配。回写虚拟磁盘将切换为直写。",
+			"parameters": []
+		},
+		"510": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器已进入维护模式",
+			"parameters": [
+				": "
+			]
+		},
+		"511": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器已返回正常模式",
+			"parameters": []
+		},
+		"512": {
+			"ctrlId": "控制器 ID： ",
+			"description": "拓扑处于不同的模式。",
+			"parameters": [
+				": "
+			]
+		},
+		"513": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘不兼容或不受支持，无法进入该模式。",
+			"parameters": [
+				": ",
+				"原因： ",
+				"虚拟磁盘： "
+			]
+		},
+		"514": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘不兼容或不受支持，无法进入该模式。",
+			"parameters": [
+				": ",
+				"原因： ",
+				"物理磁盘："
+			]
+		},
+		"515": {
+			"ctrlId": "控制器 ID： ",
+			"description": "缓存刷新开始",
+			"parameters": [
+				": "
+			]
+		},
+		"516": {
+			"ctrlId": "控制器 ID： ",
+			"description": "缓存刷新完成",
+			"parameters": [
+				": "
+			]
+		},
+		"517": {
+			"ctrlId": "控制器 ID： ",
+			"description": "缓存刷新被用户中止",
+			"parameters": [
+				": "
+			]
+		},
+		"518": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器模式已更改。",
+			"parameters": [
+				"当前模式： "
+			]
+		},
+		"519": {
+			"ctrlId": "控制器 ID： ",
+			"description": "自动创建配置",
+			"parameters": [
+				"通过： "
+			]
+		},
+		"520": {
+			"ctrlId": "控制器 ID： ",
+			"description": "软件区已启用。",
+			"parameters": []
+		},
+		"521": {
+			"ctrlId": "控制器 ID： ",
+			"description": "软件区已禁用。",
+			"parameters": []
+		},
+		"522": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于控制器重置，虚拟磁盘上的初始化已中止。",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"523": {
+			"ctrlId": "控制器 ID： ",
+			"description": "对等控制器安全密钥不匹配。",
+			"parameters": []
+		},
+		"524": {
+			"ctrlId": "控制器 ID： ",
+			"description": "对等控制器安全密钥匹配。",
+			"parameters": []
+		},
+		"525": {
+			"ctrlId": "控制器 ID： ",
+			"description": "兼容HA域。",
+			"parameters": []
+		},
+		"526": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘不兼容",
+			"parameters": [
+				"延误： ",
+				"原因： "
+			]
+		},
+		"527": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘不兼容",
+			"parameters": [
+				"延误：",
+				"原因： "
+			]
+		},
+		"528": {
+			"ctrlId": "控制器 ID： ",
+			"description": "",
+			"parameters": []
+		},
+		"529": {
+			"ctrlId": "控制器 ID： ",
+			"description": "",
+			"parameters": []
+		},
+		"530": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于最高温度阈值异常，MegaRAID 解决方案将关闭。这可能表明系统冷却不足。",
+			"parameters": []
+		},
+		"531": {
+			"ctrlId": "控制器 ID： ",
+			"description": "从主机收到关闭机箱命令。",
+			"parameters": []
+		},
+		"532": {
+			"ctrlId": "控制器 ID： ",
+			"description": "从主机接收到重新启动机箱命令。",
+			"parameters": []
+		},
+		"533": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器信息已更改。",
+			"parameters": []
+		},
+		"534": {
+			"ctrlId": "控制器 ID： ",
+			"description": "未为阵列中的所有虚拟磁盘设置隐藏策略。",
+			"parameters": []
+		},
+		"535": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘不是企业级自加密磁盘。磁盘的加密功能将被禁用。",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"536": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已使用强制选项更新控制器固件。",
+			"parameters": []
+		},
+		"537": {
+			"ctrlId": "控制器 ID： ",
+			"description": "默认访问策略设置为读/写模式。",
+			"parameters": []
+		},
+		"538": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于严重错误而禁用对闪存的写入。重新启动系统以再次启用对闪存的写入。",
+			"parameters": []
+		},
+		"539": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于该部件已损坏，因此禁用对闪存的写入。",
+			"parameters": []
+		},
+		"540": {
+			"ctrlId": "控制器 ID： ",
+			"description": "找到 LED 开始亮起 ",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"541": {
+			"ctrlId": "控制器 ID： ",
+			"description": "找到 LED 停止亮起 ",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"542": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于与其他后台操作冲突，巡检读取已中止",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"543": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已记录不良介质事件。",
+			"parameters": [
+				"物理磁盘：",
+				"错误数量："
+			]
+		},
+		"544": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘性能较差。",
+			"parameters": []
+		},
+		"545": {
+			"ctrlId": "控制器 ID： ",
+			"description": "学习周期后的 阵列卡电池/超级电容 健康状态",
+			"parameters": [
+				"电容： ",
+				"电阻： ",
+				"电压： ",
+				"温度： ",
+				"温度超过 55°C 的桶数： ",
+				"温度超过 60°C 的桶数： ",
+				"温度超过 65°C 的桶数：",
+				"温度超过 70°C 的桶数： ",
+				"温度超过 75°C 的桶数： "
+			]
+		},
+		"546": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器模式将更改为 PCI",
+			"parameters": [
+				"（ID ",
+				"/",
+				"/",
+				"/",
+				" ）"
+			]
+		},
+		"547": {
+			"ctrlId": "控制器 ID： ",
+			"description": "查询信息 ",
+			"parameters": [
+				"物理磁盘：",
+				"。查询信息 - 供应商： ",
+				";型号： ",
+				";序列号： ",
+				";容量： "
+			]
+		},
+		"548": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘被标记为传输就绪",
+			"parameters": [
+				"虚拟磁盘"
+			]
+		},
+		"549": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘已清除传输就绪状态",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"550": {
+			"ctrlId": "控制器 ID： ",
+			"description": "需要重新启动控制器。",
+			"parameters": [
+				"原因："
+			]
+		},
+		"551": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已跳过 CacheVault 的块恢复。请重新启动系统以恢复这些块。",
+			"parameters": []
+		},
+		"552": {
+			"ctrlId": "控制器 ID： ",
+			"description": "自动配置选项已更改。",
+			"parameters": [
+				" 模式： "
+			]
+		},
+		"553": {
+			"ctrlId": "控制器 ID： ",
+			"description": "自动配置参数已更改。",
+			"parameters": []
+		},
+		"554": {
+			"ctrlId": "控制器 ID： ",
+			"description": "提醒：传输就绪。",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"555": {
+			"ctrlId": "控制器 ID： ",
+			"description": "配置文件已更新为",
+			"parameters": [
+				"ID： "
+			]
+		},
+		"556": {
+			"ctrlId": "控制器 ID： ",
+			"description": "固件已自动选择配置文件",
+			"parameters": [
+				"ID： "
+			]
+		},
+		"557": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于配置文件更改，设备 ID 已更改。 ",
+			"parameters": []
+		},
+		"558": {
+			"ctrlId": "控制器 ID： ",
+			"description": "保存控制器 FRU 状态。",
+			"parameters": [
+				"FRU-ID： ",
+				"尺寸： "
+			]
+		},
+		"559": {
+			"ctrlId": "控制器 ID： ",
+			"description": "恢复控制器 FRU 状态。",
+			"parameters": [
+				"FRU-ID： ",
+				"尺寸： "
+			]
+		},
+		"560": {
+			"ctrlId": "控制器 ID： ",
+			"description": "删除控制器 FRU 状态。",
+			"parameters": [
+				"FRU-ID： "
+			]
+		},
+		"561": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘故障。",
+			"parameters": [
+				"磁盘： ",
+				"。磁盘错误计数器： ",
+				";插槽错误计数器： ",
+				";可能的问题： "
+			]
+		},
+		"562": {
+			"ctrlId": "控制器 ID： ",
+			"description": "MFC 数据中存在无效的 SAS 地址",
+			"parameters": []
+		},
+		"563": {
+			"ctrlId": "控制器 ID： ",
+			"description": "发现 SAS 拓扑错误。",
+			"parameters": [
+				"错误： "
+			]
+		},
+		"564": {
+			"ctrlId": "控制器 ID： ",
+			"description": "NVDATA 无效",
+			"parameters": []
+		},
+		"565": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器上没有配置",
+			"parameters": []
+		},
+		"566": {
+			"ctrlId": "控制器 ID： ",
+			"description": "当前固件版本不支持外来配置",
+			"parameters": []
+		},
+		"567": {
+			"ctrlId": "控制器 ID： ",
+			"description": "备份固件映像闪存编程错误",
+			"parameters": []
+		},
+		"568": {
+			"ctrlId": "控制器 ID： ",
+			"description": "活动固件映像校验和错误；备份固件映像已激活",
+			"parameters": []
+		},
+		"569": {
+			"ctrlId": "控制器 ID： ",
+			"description": "无法验证磁盘是否为原厂磁盘。",
+			"parameters": [
+				"磁盘： "
+			]
+		},
+		"570": {
+			"ctrlId": "控制器 ID： ",
+			"description": "启动期间一个或多个磁盘发生故障或缺失。",
+			"parameters": []
+		},
+		"571": {
+			"ctrlId": "控制器 ID： ",
+			"description": "启动期间发现回写缓存数据。",
+			"parameters": []
+		},
+		"572": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于断电，降级虚拟磁盘的写入未完成；请检查数据完整性。",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"573": {
+			"ctrlId": "控制器 ID： ",
+			"description": "无法与功能密钥通信；功能已禁用。",
+			"parameters": []
+		},
+		"574": {
+			"ctrlId": "控制器 ID： ",
+			"description": "活动固件映像闪存编程成功",
+			"parameters": []
+		},
+		"575": {
+			"ctrlId": "控制器 ID： ",
+			"description": "备份固件映像闪存编程成功",
+			"parameters": []
+		},
+		"576": {
+			"ctrlId": "控制器 ID： ",
+			"description": "活动和备份固件映像版本不匹配",
+			"parameters": []
+		},
+		"577": {
+			"ctrlId": "控制器 ID： ",
+			"description": "备份包版本",
+			"parameters": [
+				": "
+			]
+		},
+		"578": {
+			"ctrlId": "控制器 ID： ",
+			"description": "恢复已卸载的缓存数据时发生严重错误",
+			"parameters": []
+		},
+		"579": {
+			"ctrlId": "控制器 ID： ",
+			"description": "从托管库获取的磁盘安全密钥已在磁盘上解锁。",
+			"parameters": [
+				"磁盘： "
+			]
+		},
+		"580": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘温度高于致命阈值",
+			"parameters": [
+				": ",
+				"温度： ",
+				"摄氏度"
+			]
+		},
+		"581": {
+			"ctrlId": "控制器 ID： ",
+			"description": "控制器已重置，以从内存访问错误中恢复",
+			"parameters": []
+		},
+		"582": {
+			"ctrlId": "控制器 ID： ",
+			"description": "运行的固件与配置文件不兼容",
+			"parameters": [
+				"ID： "
+			]
+		},
+		"583": {
+			"ctrlId": "控制器 ID： ",
+			"description": "物理磁盘已安装但无法建立链路。",
+			"parameters": [
+				"物理磁盘："
+			]
+		},
+		"584": {
+			"ctrlId": "控制器 ID： ",
+			"description": "磁盘柜温度传感器高于临界阈值",
+			"parameters": [
+				"磁盘柜： ",
+				"温度： ",
+				"摄氏度"
+			]
+		},
+		"585": {
+			"ctrlId": "控制器 ID： ",
+			"description": "EMM 指示危急情况 ",
+			"parameters": [
+				"磁盘柜： ",
+				"EMM： "
+			]
+		},
+		"586": {
+			"ctrlId": "控制器 ID： ",
+			"description": "EMM 指示警告情况 ",
+			"parameters": [
+				"磁盘柜： ",
+				"EMM： "
+			]
+		},
+		"587": {
+			"ctrlId": "控制器 ID： ",
+			"description": "元素表示危急情况 ",
+			"parameters": [
+				"磁盘柜： ",
+				"元素： "
+			]
+		},
+		"588": {
+			"ctrlId": "控制器 ID： ",
+			"description": "元素指示警告情况 ",
+			"parameters": [
+				"磁盘柜： ",
+				"元素： "
+			]
+		},
+		"589": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SAS 连接器存在链路错误",
+			"parameters": [
+				"磁盘柜： ",
+				"连接器： "
+			]
+		},
+		"590": {
+			"ctrlId": "控制器 ID： ",
+			"description": "有效的快照转储现已可用",
+			"parameters": [
+				" 计数： "
+			]
+		},
+		"591": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘缺少磁盘并且将在启动时进入脱机状态",
+			"parameters": []
+		},
+		"592": {
+			"ctrlId": "控制器 ID： ",
+			"description": "启动时虚拟磁盘丢失",
+			"parameters": []
+		},
+		"593": {
+			"ctrlId": "控制器 ID： ",
+			"description": "已自动丢弃虚拟磁盘的控制器缓存",
+			"parameters": [
+				": "
+			]
+		},
+		"594": {
+			"ctrlId": "控制器 ID： ",
+			"description": "安全擦除失败。",
+			"parameters": [
+				" 物理磁盘： ",
+				";错误： "
+			]
+		},
+		"595": {
+			"ctrlId": "控制器 ID： ",
+			"description": "安全擦除正在进行中。",
+			"parameters": [
+				" 物理磁盘： ",
+				";百分比： ",
+				";剩余秒数： "
+			]
+		},
+		"596": {
+			"ctrlId": "控制器 ID： ",
+			"description": "安全擦除已开始。",
+			"parameters": [
+				" 物理磁盘： "
+			]
+		},
+		"597": {
+			"ctrlId": "控制器 ID： ",
+			"description": "安全擦除已完成。",
+			"parameters": [
+				" 物理磁盘： "
+			]
+		},
+		"598": {
+			"ctrlId": "控制器 ID： ",
+			"description": "由于存在非 SED 磁盘，虚拟磁盘未来无法进行安全保护。",
+			"parameters": [
+				"虚拟磁盘： "
+			]
+		},
+		"599": {
+			"ctrlId": "控制器 ID： ",
+			"description": "需要关闭系统。",
+			"parameters": []
+		},
+		"600": {
+			"ctrlId": "控制器 ID： ",
+			"description": "虚拟磁盘包含一个或多个无法取消映射的物理磁盘。",
+			"parameters": [
+				" 虚拟磁盘： "
+			]
+		},
+		"601": {
+			"ctrlId": "控制器 ID： ",
+			"description": "无法启用取消映射支持。",
+			"parameters": [
+				" 虚拟磁盘： "
+			]
+		},
+		"602": {
+			"ctrlId": "控制器 ID： ",
+			"description": "SSD 磨损量表值",
+			"parameters": [
+				": "
+			]
+		},
+		"603": {
+			"ctrlId": "控制器 ID： ",
+			"description": "安全启动密钥更新待定，请重新启动系统。",
+			"parameters": []
+		},
+		"604": {
+			"ctrlId": "控制器 ID： ",
+			"description": "专用热备盘不支持取消映射，因此不再适用于一个或多个阵列。",
+			"parameters": [
+				" 物理磁盘： "
+			]
+		},
+		"605": {
+			"ctrlId": "控制器 ID： ",
+			"description": "无法重建，因为固件找不到合适的支持取消映射的磁盘。",
+			"parameters": []
+		},
+		"606": {
+			"ctrlId": "控制器 ID： ",
+			"description": "无法替换磁盘，因为固件找不到合适的支持取消映射的磁盘。",
+			"parameters": []
+		},
+		"607": {
+			"ctrlId": "控制器 ID： ",
+			"description": "安全启动密钥更新已完成。",
+			"parameters": []
+		},
+		"608": {
+			"ctrlId": "控制器 ID： ",
+			"description": "Snapdump 属性已更改。",
+			"parameters": []
+		}
+	}
+}
+

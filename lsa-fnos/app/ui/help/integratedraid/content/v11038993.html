@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2020"><meta name="DC.rights.owner" content="(C) Copyright 2020"><meta name="DC.Type" content="concept"><meta name="DC.Coverage" content="audience ="><meta name="DC.Coverage" content="platform ="><meta name="DC.Coverage" content="product ="><meta name="prodname" content="Add list of products or documents where this topic is used."><meta name="version" content="version attribute"><meta name="olh" content="LSA_help_feature_comparison_matrix"><meta name="DC.Format" content="XHTML"><meta name="DC.Identifier" content="v11038993"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>LSI 存储管理功能比较表</title></head><body id="v11038993"><main role="main"><article role="article" aria-labelledby="v11038993__v11038994">
+  <h1 class="title topictitle1" id="v11038993__v11038994">LSI 存储管理功能比较表</h1>
+  
+  <div class="body conbody" id="v11038993__v11039007">
+    <p class="p" id="v11038993__v11039008">下表概述了 MegaRAID、iMegaRAID、 <span class="ph" id="v11038993__v12671082">软件 RAID， </span>以及关于软件功能和固件功能的发起者-目标控制器。这些表还指示特定控制器支持和不支持的功能。</p>
+    <p class="p" id="v11038993__v11156643">某些功能可能并非所有控制器都支持。有关您的控制器支持的功能的信息，请参阅这些功能比较矩阵。</p>
+    <table class="table frame-all table--pgwide-1" id="v11038993__v11480815"><caption><span class="table--title-label">表 1. </span><span id="v11038993__v11480937" class="title">固件特征比较矩阵</span></caption><colgroup><col style="width:2.250in"><col style="width:1.050in"><col style="width:1.050in"><col style="width:1.050in"><col style="width:1.050in"><col style="width:1.050in"></colgroup><thead class="thead" id="v11038993__v11480824">
+          <tr class="row rowsep-1" id="v11038993__v11480825">
+            <th class="entry colsep-1 rowsep-1" id="v11038993__v11480826">功能名称</th>
+            <th class="entry colsep-1 rowsep-1" id="v11038993__v11480827">MegaRAID</th>
+            <th class="entry colsep-1 rowsep-1" id="v11038993__v11480829">iMegaRAID</th>
+            <th class="entry colsep-1 rowsep-1" id="v11038993__v11480830">软件 RAID</th>
+            <th class="entry colsep-1 rowsep-1" id="v11038993__v12029073">集成RAID</th>
+            <th class="entry colsep-1 rowsep-1" id="v11038993__v11480832">发起者-目标</th>
+          </tr>
+        </thead><tbody class="tbody" id="v11038993__v11480833">
+          <tr class="row rowsep-1" id="v11038993__v11480834">
+            <td class="entry colsep-1 rowsep-1" id="v11038993__v11480835" headers="v11038993__v11480826 ">RAID 级别</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480836" headers="v11038993__v11480827 ">RAID 0、 RAID 1、 RAID 5、 RAID 6、 RAID 00、 RAID 10、 RAID 50、 RAID 60、 RAID 1E，并跨越 RAID 1E (PRL-11)</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480838" headers="v11038993__v11480829 ">RAID 0、RAID 1、RAID 5、RAID 10、RAID 50 和 RAID 1E</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480839" headers="v11038993__v11480830 ">RAID 0、RAID 1、RAID 5 和 RAID 10</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029074" headers="v11038993__v12029073 ">RAID 0、RAID 1、RAID 10 和 RAID 1E</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480841" headers="v11038993__v11480832 ">否</td>
+          </tr>
+          <tr class="row rowsep-1" id="v11038993__v11480850">
+            <td class="entry colsep-1 rowsep-1" id="v11038993__v11480851" headers="v11038993__v11480826 ">最大可配置物理磁盘数</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480852" headers="v11038993__v11480827 ">240</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480854" headers="v11038993__v11480829 ">iMegaRAID 32。其余磁盘可用作 JBOD。</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480855" headers="v11038993__v11480830 ">8</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029076" headers="v11038993__v12029073 ">12 个可配置物理磁盘和两个热备盘</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480857" headers="v11038993__v11480832 ">1024</td>
+          </tr>
+          <tr class="row rowsep-1" id="v11038993__v11480858">
+            <td class="entry colsep-1 rowsep-1" id="v11038993__v11480859" headers="v11038993__v11480826 ">最大跨度</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480860" headers="v11038993__v11480827 ">8</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480862" headers="v11038993__v11480829 ">8</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480863" headers="v11038993__v11480830 ">4</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029077" headers="v11038993__v12029073 ">否</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480865" headers="v11038993__v11480832 ">否</td>
+          </tr>
+          <tr class="row rowsep-1" id="v11038993__v11480866">
+            <td class="entry colsep-1 rowsep-1" id="v11038993__v11480867" headers="v11038993__v11480826 ">最大虚拟磁盘数</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480868" headers="v11038993__v11480827 "><span class="ph" id="v11038993__v24925719">240</span></td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480870" headers="v11038993__v11480829 ">32</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480871" headers="v11038993__v11480830 ">8</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029078" headers="v11038993__v12029073 ">2</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480873" headers="v11038993__v11480832 ">否</td>
+          </tr>
+          <tr class="row rowsep-1" id="v11038993__v11480874">
+            <td class="entry colsep-1 rowsep-1" id="v11038993__v11480875" headers="v11038993__v11480826 ">Dimmer Switch</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480876" headers="v11038993__v11480827 ">DS-I 和 DS-II</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480878" headers="v11038993__v11480829 ">否</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480879" headers="v11038993__v11480830 ">否</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029079" headers="v11038993__v12029073 ">否</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480881" headers="v11038993__v11480832 ">否</td>
+          </tr>
+          <tr class="row rowsep-1" id="v11038993__v11480882">
+            <td class="entry colsep-1 rowsep-1" id="v11038993__v11480883" headers="v11038993__v11480826 ">最大介质错误</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480884" headers="v11038993__v11480827 ">256</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480886" headers="v11038993__v11480829 ">102</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480887" headers="v11038993__v11480830 ">256</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029080" headers="v11038993__v12029073 ">否</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480889" headers="v11038993__v11480832 ">否</td>
+          </tr>
+          <tr class="row rowsep-1" id="v11038993__v11480890">
+            <td class="entry colsep-1 rowsep-1" id="v11038993__v11480891" headers="v11038993__v11480826 ">混合磁盘支持</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480892" headers="v11038993__v11480827 ">是</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480894" headers="v11038993__v11480829 ">是</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480895" headers="v11038993__v11480830 ">是</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029081" headers="v11038993__v12029073 ">否</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480897" headers="v11038993__v11480832 ">否</td>
+          </tr>
+          <tr class="row rowsep-1" id="v11038993__v11480898">
+            <td class="entry colsep-1 rowsep-1" id="v11038993__v11480899" headers="v11038993__v11480826 ">条带大小支持</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480900" headers="v11038993__v11480827 ">64 KB、128 KB、256 KB、512 KB 和 1024 KB</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480902" headers="v11038993__v11480829 ">64KB</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480903" headers="v11038993__v11480830 ">64KB</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029082" headers="v11038993__v12029073 ">64KB</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480905" headers="v11038993__v11480832 ">否</td>
+          </tr>
+          <tr class="row rowsep-1" id="v11038993__v11480906">
+            <td class="entry colsep-1 rowsep-1" id="v11038993__v11480907" headers="v11038993__v11480826 ">每个磁盘组的最大 虚拟磁盘 数</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480908" headers="v11038993__v11480827 ">64</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480910" headers="v11038993__v11480829 ">16</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480911" headers="v11038993__v11480830 ">8</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029083" headers="v11038993__v12029073 ">1</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480913" headers="v11038993__v11480832 ">否</td>
+          </tr>
+          <tr class="row rowsep-1" id="v11038993__v11480914">
+            <td class="entry colsep-1 rowsep-1" id="v11038993__v11480915" headers="v11038993__v11480826 ">多路径</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480916" headers="v11038993__v11480827 ">是</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480918" headers="v11038993__v11480829 ">是</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480919" headers="v11038993__v11480830 ">否</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029084" headers="v11038993__v12029073 ">是</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480921" headers="v11038993__v11480832 ">是</td>
+          </tr>
+          <tr class="row rowsep-0" id="v11038993__v11480922">
+            <td class="entry colsep-1 rowsep-1" id="v11038993__v11480923" headers="v11038993__v11480826 ">控制器重置支持</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480924" headers="v11038993__v11480827 ">是</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480926" headers="v11038993__v11480829 ">是</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480927" headers="v11038993__v11480830 ">否</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029085" headers="v11038993__v12029073 ">否</td>
+            <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480929" headers="v11038993__v11480832 ">否</td>
+          </tr>
+        </tbody></table>
+    <div class="p" id="v11038993__v24439421">
+      <table class="table frame-all table--pgwide-1" id="v11038993__v11480967"><caption><span class="table--title-label">表 2. </span><span id="v11038993__v11480968" class="title">软件功能比较表</span></caption><colgroup><col style="width:2.250in"><col style="width:1.050in"><col style="width:1.050in"><col style="width:1.050in"><col style="width:1.050in"><col style="width:1.050in"></colgroup><thead class="thead" id="v11038993__v11480977">
+            <tr class="row rowsep-1" id="v11038993__v11480978">
+              <th class="entry colsep-1 rowsep-1" id="v11038993__v11480979">功能名称</th>
+              <th class="entry colsep-1 rowsep-1" id="v11038993__v11480980">MegaRAID</th>
+              <th class="entry colsep-1 rowsep-1" id="v11038993__v11480982">iMegaRAID</th>
+              <th class="entry colsep-1 rowsep-1" id="v11038993__v11480983">软件 RAID</th>
+              <th class="entry colsep-1 rowsep-1" id="v11038993__v12029092">集成RAID</th>
+              <th class="entry colsep-1 rowsep-1" id="v11038993__v11480985">发起者-目标</th>
+            </tr>
+          </thead><tbody class="tbody" id="v11038993__v11480986">
+            <tr class="row rowsep-1" id="v11038993__v11480987">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11480988" headers="v11038993__v11480979 ">LDAP认证</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480989" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480991" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480992" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029093" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480994" headers="v11038993__v11480985 ">是</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11480995">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11480996" headers="v11038993__v11480979 ">服务器发现和管理服务器</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480997" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11480999" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481000" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029094" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481002" headers="v11038993__v11480985 ">是</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481003">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481004" headers="v11038993__v11480979 ">服务器仪表板</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481005" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481007" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481008" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029095" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481010" headers="v11038993__v11480985 ">是</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481011">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481012" headers="v11038993__v11480979 ">控制器仪表板</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481013" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481016" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481017" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029096" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481019" headers="v11038993__v11480985 ">是</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481020">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481021" headers="v11038993__v11480979 ">简单配置</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481022" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481025" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481026" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029097" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481028" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481029">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481030" headers="v11038993__v11480979 ">高级配置</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481031" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481034" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481035" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029098" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481037" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481038">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481039" headers="v11038993__v11480979 ">CacheCade
+                ®
+                – SSD 缓存配置</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481040" headers="v11038993__v11480980 "><span class="ph" id="v11038993__v24925727">否</span></td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481042" headers="v11038993__v11480982 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481043" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029099" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481045" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481046">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481047" headers="v11038993__v11480979 ">外来配置（导入/清除）</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481048" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481050" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481051" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029100" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481053" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481054">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481055" headers="v11038993__v11480979 ">清除配置</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481056" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481058" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481059" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029101" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481061" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481062">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481063" headers="v11038993__v11480979 ">更新固件</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481064" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481066" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481067" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029102" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481069" headers="v11038993__v11480985 ">是</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481070">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481071" headers="v11038993__v11480979 ">在线固件更新</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481072" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481074" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481075" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029103" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481077" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481078">
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481079" headers="v11038993__v11480979 v11038993__v11480980 v11038993__v11480982 v11038993__v11480983 v11038993__v12029092 v11038993__v11480985 " colspan="6"><strong class="ph b">控制器操作</strong></td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481080">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481081" headers="v11038993__v11480979 ">设置一致性检查属性</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481082" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481084" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481085" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029104" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481087" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481088">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481089" headers="v11038993__v11480979 ">安排一致性检查</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481090" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481092" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481093" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029105" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481095" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481096">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481097" headers="v11038993__v11480979 ">设置巡检读取属性</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481098" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481100" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481101" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029106" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481103" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481104">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481105" headers="v11038993__v11480979 ">开始巡检读取</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481106" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481108" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481109" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029107" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481111" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481112">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481113" headers="v11038993__v11480979 ">停止巡检读取</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481114" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481116" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481117" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029108" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481119" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481120">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481121" headers="v11038993__v11480979 ">管理链路速率</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481122" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481124" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481125" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029109" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481127" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481128">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481129" headers="v11038993__v11480979 ">设置可调整的任务率</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481130" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481132" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481133" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029110" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481136" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481137">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481138" headers="v11038993__v11480979 ">启用和禁用警报</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481139" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481141" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481142" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029111" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481144" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481145">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481146" headers="v11038993__v11480979 ">静音警报</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481147" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481149" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481150" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029112" headers="v11038993__v12029092 "><span class="ph" id="v11038993__v24925730">否</span></td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481153" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481154">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481155" headers="v11038993__v11480979 ">管理省电设置</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481156" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481158" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481159" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029114" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481161" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481162">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481163" headers="v11038993__v11480979 ">启用和禁用 SSD 防护
+                ™
+              </td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481164" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481166" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481167" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029115" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481169" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481170">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481171" headers="v11038993__v11480979 ">启用和禁用安全性</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481172" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481174" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481175" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029116" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481177" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481178">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481179" headers="v11038993__v11480979 ">更改磁盘安全性</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481180" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481182" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481183" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029117" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481185" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481186">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481187" headers="v11038993__v11480979 ">丢弃固定缓存</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481188" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481190" headers="v11038993__v11480982 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481192" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029118" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481194" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481195">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481196" headers="v11038993__v11480979 ">下载 TTY 日志</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481197" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481199" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481200" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029119" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481202" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481203">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481204" headers="v11038993__v11480979 ">后台操作</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481205" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481207" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481208" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029120" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481211" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11505203">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11505204" headers="v11038993__v11480979 ">控制器模式管理</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11505205" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11505206" headers="v11038993__v11480982 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11505207" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029121" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11505209" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481212">
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481213" headers="v11038993__v11480979 v11038993__v11480980 v11038993__v11480982 v11038993__v11480983 v11038993__v12029092 v11038993__v11480985 " colspan="6"><strong class="ph b">高级软件功能</strong></td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481214">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481215" headers="v11038993__v11480979 ">快速通道</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481216" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481218" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481219" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029122" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481221" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481222">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481223" headers="v11038993__v11480979 ">CacheCade SSD</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481224" headers="v11038993__v11480980 "><span class="ph" id="v11038993__v24925732">否</span></td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481226" headers="v11038993__v11480982 "><span class="ph" id="v11038993__v24925735">否</span></td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481228" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029123" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481230" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481231">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481232" headers="v11038993__v11480979 ">CacheCade 专业版</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481233" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481235" headers="v11038993__v11480982 "><span class="ph" id="v11038993__v24925738">否</span></td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481237" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029124" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481239" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481240">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481241" headers="v11038993__v11480979 ">SafeStore
+                ™
+              </td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481242" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481244" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481245" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029125" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481247" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481248">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481249" headers="v11038993__v11480979 ">RAID 5 和 RAID 6</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481250" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481252" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481254" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029126" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481256" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481257">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481258" headers="v11038993__v11480979 ">修改磁盘组</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481259" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481261" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481262" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029127" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481264" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481265">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481266" headers="v11038993__v11480979 ">使用 FDE 确保安全</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481267" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481269" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481270" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029128" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481272" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481273">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481274" headers="v11038993__v11480979 ">禁用数据保护</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481275" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481277" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481278" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029129" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481280" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481281">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481282" headers="v11038993__v11480979 ">隐藏和取消隐藏</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481283" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481285" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481286" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029130" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481288" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481289">
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481290" headers="v11038993__v11480979 v11038993__v11480980 v11038993__v11480982 v11038993__v11480983 v11038993__v12029092 v11038993__v11480985 " colspan="6"><strong class="ph b">虚拟磁盘操作</strong></td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481291">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481292" headers="v11038993__v11480979 ">虚拟磁盘设置和修改虚拟磁盘属性</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481293" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481296" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481298" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029131" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481302" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481303">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481304" headers="v11038993__v11480979 ">启动和停止定位虚拟磁盘</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481305" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481307" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481308" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029133" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481310" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481311">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481312" headers="v11038993__v11480979 ">擦除虚拟磁盘</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481313" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481315" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481316" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029134" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481318" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481319">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481320" headers="v11038993__v11480979 ">初始化虚拟磁盘</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481321" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481323" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481324" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029135" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481326" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481327">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481328" headers="v11038993__v11480979 ">在虚拟磁盘上启动一致性检查</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481329" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481331" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481332" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029136" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481334" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481335">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481336" headers="v11038993__v11480979 ">扩展虚拟磁盘的在线容量</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481337" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481339" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481340" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029137" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481342" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481343">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481344" headers="v11038993__v11480979 ">删除虚拟磁盘</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481345" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481347" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481348" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029138" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481350" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481351">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481352" headers="v11038993__v11480979 ">隐藏和取消隐藏</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481353" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481355" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481356" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029139" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481358" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481359">
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481360" headers="v11038993__v11480979 v11038993__v11480980 v11038993__v11480982 v11038993__v11480983 v11038993__v12029092 v11038993__v11480985 " colspan="6"><strong class="ph b">物理磁盘操作</strong></td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481361">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481362" headers="v11038993__v11480979 ">分配全局热备</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481363" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481365" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481366" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029140" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481368" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481369">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481370" headers="v11038993__v11480979 ">取消分配全局热备盘</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481371" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481373" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481374" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029141" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481376" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481377">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481378" headers="v11038993__v11480979 ">分配专用热备盘</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481379" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481381" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481382" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029142" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481384" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481385">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481386" headers="v11038993__v11480979 ">取消分配专用热备盘</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481387" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481389" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481390" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029143" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481392" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481393">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481394" headers="v11038993__v11480979 ">启动和停止定位磁盘</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481395" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481397" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481398" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029144" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481400" headers="v11038993__v11480985 ">是</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481401">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481402" headers="v11038993__v11480979 ">联机/脱机磁盘操作</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481403" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481405" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481406" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029145" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481408" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481409">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481410" headers="v11038993__v11480979 ">替换磁盘</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481411" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481413" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481414" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029146" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481416" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481417">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481418" headers="v11038993__v11480979 ">重建磁盘</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481419" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481421" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481422" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029147" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481424" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481425">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481426" headers="v11038993__v11480979 ">准备移除</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481427" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481429" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481430" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029148" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481432" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481433">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481434" headers="v11038993__v11480979 ">擦除磁盘</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481435" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481437" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481438" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029149" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481440" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481441">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481442" headers="v11038993__v11480979 ">即时安全擦除</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481443" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481445" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481446" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029150" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481448" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481449">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481450" headers="v11038993__v11480979 ">将未配置的坏物理磁盘转换为未配置的良好物理磁盘</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481451" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481453" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481454" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029151" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481456" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481457">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481458" headers="v11038993__v11480979 ">将磁盘设为未配置的良好</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481459" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481461" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481462" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029152" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481464" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481465">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481466" headers="v11038993__v11480979 ">创建 JBOD 并删除 JBOD</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481467" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481469" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481470" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029153" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481472" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481473">
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481474" headers="v11038993__v11480979 v11038993__v11480980 v11038993__v11480982 v11038993__v11480983 v11038993__v12029092 v11038993__v11480985 " colspan="6"><strong class="ph b">阵列卡电池/超级电容 操作</strong></td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481475">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481476" headers="v11038993__v11480979 ">学习周期</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481477" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481479" headers="v11038993__v11480982 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481480" headers="v11038993__v11480983 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029154" headers="v11038993__v12029092 ">否</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481482" headers="v11038993__v11480985 ">否</td>
+            </tr>
+            <tr class="row rowsep-1" id="v11038993__v11481483">
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481484" headers="v11038993__v11480979 v11038993__v11480980 v11038993__v11480982 v11038993__v11480983 v11038993__v12029092 v11038993__v11480985 " colspan="6"><strong class="ph b">事件日志</strong></td>
+            </tr>
+            <tr class="row rowsep-0" id="v11038993__v11481485">
+              <td class="entry colsep-1 rowsep-1" id="v11038993__v11481486" headers="v11038993__v11480979 ">查看事件日志</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481487" headers="v11038993__v11480980 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481489" headers="v11038993__v11480982 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481490" headers="v11038993__v11480983 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v12029155" headers="v11038993__v12029092 ">是</td>
+              <td class="entry align-center colsep-1 rowsep-1" id="v11038993__v11481492" headers="v11038993__v11480985 ">是</td>
+            </tr>
+          </tbody></table>
+    </div>
+  </div>
+<div class="fn"><sup>1</sup>  可以设置有限的属性。不支持重建率选项。</div><div class="fn"><sup>2</sup>  不支持 阵列卡电池/超级电容。</div><div class="fn"><sup>3</sup>  不支持的后台操作包括重建、回拷和物理磁盘格式化。支持的后台操作包括 RAID 5 和 RAID 6 的重建、完全初始化、快速初始化、检查一致性、巡检读取和 BGI。巡检读取操作不支持暂停和恢复。</div><div class="fn"><sup>4</sup>  不支持 RAID 6。</div><div class="fn"><sup>5</sup>  不支持缓存 I/O 和回写选项。</div><div class="fn"><sup>6</sup>  不支持缓存 I/O 和回写选项。</div><div class="fn"><sup>7</sup>  虚拟设置窗口中除虚拟磁盘名称外的所有设置均被禁用。创建虚拟磁盘后，您只能更改磁盘缓存策略。</div></article></main></body></html>
+

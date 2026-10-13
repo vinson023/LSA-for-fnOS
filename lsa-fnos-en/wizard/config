@@ -1,0 +1,31 @@
+[
+  {
+    "stepTitle": "Change Port Configuration",
+    "items": [
+      {
+        "type": "text",
+        "field": "wizard_web_port",
+        "label": "Web Management Port",
+        "initValue": "2463",
+        "rules": [
+          { "required": true, "message": "Enter the web management port" },
+          { "pattern": "^[0-9]+$", "message": "The port must be numeric" }
+        ]
+      },
+      {
+        "type": "text",
+        "field": "wizard_lsa_port",
+        "label": "LSA Service Port",
+        "initValue": "9000",
+        "rules": [
+          { "required": true, "message": "Enter the LSA service port" },
+          { "pattern": "^[0-9]+$", "message": "The port must be numeric" }
+        ]
+      },
+      {
+        "type": "tips",
+        "helpText": "The LSA service restarts automatically after the port configuration is updated."
+      }
+    ]
+  }
+]

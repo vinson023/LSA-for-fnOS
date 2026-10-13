@@ -1,0 +1,172 @@
+#!/bin/bash
+
+# LSA Service Control Script for fnOS
+
+LSA_HOME="/opt/lsi/LSIStorageAuthority"
+WEB_PORT=2463
+BACKEND_PORT=9000
+
+# Complete library path including LSA's bundled OpenSSL and SLP libraries
+# - /opt/lsi/LSA/libs: bundled OpenSSL 3.2+ (required by libcurl.so.4)
+# - /opt/lsi/LSA/libs2: bundled SLP library
+# - plugins dir: plugin interdependencies (librepository.so etc.)
+LSA_LD_LIBRARY_PATH="/opt/lsi/LSA/libs:/opt/lsi/LSA/libs2:$LSA_HOME/lib:$LSA_HOME/bin:$LSA_HOME/plugins"
+START_TIMEOUT="${LSA_START_TIMEOUT:-120}"
+WATCHDOG_PIDFILE="/run/lsa-fnos-watchdog.pid"
+
+port_open() {
+    ss -ltn 2>/dev/null | grep -q ":$1 "
+}
+
+lsa_running() {
+    pgrep -x LSA >/dev/null 2>&1
+}
+
+stop_watchdog() {
+    if [ -s "$WATCHDOG_PIDFILE" ]; then
+        watchdog_pid=$(cat "$WATCHDOG_PIDFILE" 2>/dev/null || true)
+        case "$watchdog_pid" in
+            ''|*[!0-9]*) ;;
+            *) kill "$watchdog_pid" 2>/dev/null || true ;;
+        esac
+        rm -f "$WATCHDOG_PIDFILE"
+    fi
+}
+
+start_watchdog() {
+    stop_watchdog
+    (
+        echo "$BASHPID" > "$WATCHDOG_PIDFILE"
+        trap 'rm -f "$WATCHDOG_PIDFILE"; exit 0' TERM INT EXIT
+        while [ -x "$LSA_HOME/bin/LSA" ]; do
+            if ! pgrep -x LSA >/dev/null 2>&1; then
+                cd "$LSA_HOME/server" || exit 1
+                LD_LIBRARY_PATH="$LSA_LD_LIBRARY_PATH" nohup ../bin/LSA >> "$LSA_HOME/logs/fnos-watchdog.log" 2>&1 &
+            fi
+            sleep 10
+        done
+    ) >/dev/null 2>&1 &
+}
+
+case "$1" in
+    start)
+        echo "Starting $TRIM_APPNAME $TRIM_APPVER"
+
+        # fnOS may restore LSA.conf after the package callback; make the
+        # installed Chinese health descriptions authoritative before launch.
+        if [ -f "$LSA_HOME/conf/languages/zh-CN/healthspec.json" ] && [ -f "$LSA_HOME/conf/LSA.conf" ]; then
+            sed -i 's#^health_spec = .*#health_spec = ../conf/languages/zh-CN/healthspec.json#' "$LSA_HOME/conf/LSA.conf"
+        fi
+
+        # Keep the appliance integration in full-access mode. The vendor
+        # default is read-only and hides RAID operation menus after login.
+        if [ -f "$LSA_HOME/conf/LSA.conf" ]; then
+            sed -i 's/^readOnly = .*/readOnly = 0/' "$LSA_HOME/conf/LSA.conf"
+            sed -i 's/^full_access_groups = .*/full_access_groups = Administrators,fnos-admin/' "$LSA_HOME/conf/LSA.conf"
+            sed -i 's/^readonly_access_groups = .*/readonly_access_groups = /' "$LSA_HOME/conf/LSA.conf"
+        fi
+
+        # Ensure libslp.so.1 symlink exists
+        if [ -f /opt/lsi/LSA/libs2/libslp.so.1.0.0 ] && [ ! -e /opt/lsi/LSA/libs2/libslp.so.1 ]; then
+            ln -sf /opt/lsi/LSA/libs2/libslp.so.1.0.0 /opt/lsi/LSA/libs2/libslp.so.1
+        fi
+        
+        # Do not restart an already healthy instance. Hardware discovery can be
+        # slow on real RAID controllers, and a forced restart here causes fnOS
+        # to report a false start failure.
+        if port_open "$WEB_PORT" && lsa_running; then
+            echo "LSA is already running; keeping the existing instance"
+            exit 0
+        fi
+
+        # Stop only stale instances when one of the endpoints is left behind.
+        if lsa_running || port_open "$WEB_PORT" || port_open "$BACKEND_PORT"; then
+            pkill -TERM -f '/bin/LSA' 2>/dev/null || true
+            fuser -k "$BACKEND_PORT/tcp" 2>/dev/null || true
+            if [ -x "$LSA_HOME/server/nginx" ]; then
+                cd "$LSA_HOME/server"
+                ./nginx -s quit -p . 2>/dev/null || true
+            fi
+            sleep 2
+            pkill -9 -f '/bin/LSA' 2>/dev/null || true
+            pkill -9 -f "LSIStorageAuthority/server/nginx" 2>/dev/null || true
+            pkill -9 -f "nginx: master process ./nginx -p ." 2>/dev/null || true
+            fuser -k "$WEB_PORT/tcp" 2>/dev/null || true
+        fi
+
+        # Start nginx from server directory.
+        cd "$LSA_HOME/server"
+        if ! port_open "$WEB_PORT"; then
+            ./nginx -p . 2>/dev/null || true
+        fi
+
+        # Start LSA backend from server directory with complete LD_LIBRARY_PATH.
+        cd "$LSA_HOME/server"
+        if ! lsa_running; then
+            LD_LIBRARY_PATH="$LSA_LD_LIBRARY_PATH" nohup ../bin/LSA > /dev/null 2>&1 &
+        fi
+        start_watchdog
+
+        # Real controllers may take much longer than the no-hardware case to
+        # enumerate. Wait without imposing the old five-second false failure.
+        elapsed=0
+        while [ "$elapsed" -lt "$START_TIMEOUT" ]; do
+            if port_open "$WEB_PORT" && port_open "$BACKEND_PORT"; then
+                break
+            fi
+            sleep 2
+            elapsed=$((elapsed + 2))
+        done
+
+        if port_open "$WEB_PORT" && (port_open "$BACKEND_PORT" || lsa_running); then
+            # LSA rewrites its access-group defaults during backend initialization.
+            # Apply fnOS administrator-only access after the backend is ready.
+            sed -i 's/^readOnly = .*/readOnly = 0/; s/^full_access_groups = .*/full_access_groups = Administrators,fnos-admin/; s/^readonly_access_groups = .*/readonly_access_groups = /' "$LSA_HOME/conf/LSA.conf"
+            echo "LSA started successfully"
+            exit 0
+        elif port_open "$WEB_PORT" && lsa_running; then
+            # Keep the app marked running while the vendor backend completes
+            # hardware discovery asynchronously.
+            echo "LSA web service is ready; backend hardware discovery continues"
+            exit 0
+        else
+            if [ -n "$TRIM_TEMP_LOGFILE" ]; then
+                echo "LSA failed to start" > "$TRIM_TEMP_LOGFILE"
+            fi
+            exit 1
+        fi
+        ;;
+        
+    stop)
+        echo "Stopping $TRIM_APPNAME"
+        
+        # Stop LSA backend
+        stop_watchdog
+        pkill -9 -f '/bin/LSA' 2>/dev/null || true
+        fuser -k "$BACKEND_PORT/tcp" 2>/dev/null || true
+        
+        # Stop nginx
+        cd "$LSA_HOME/server"
+        ./nginx -s stop -p . 2>/dev/null || true
+        pkill -9 -f "LSIStorageAuthority/server/nginx" 2>/dev/null || true
+        pkill -9 -f "nginx: master process ./nginx -p ." 2>/dev/null || true
+        
+        sleep 1
+        exit 0
+        ;;
+        
+    status)
+        if port_open "$WEB_PORT" && lsa_running; then
+            exit 0
+        else
+            exit 3
+        fi
+        ;;
+        
+    *)
+        if [ -n "$TRIM_TEMP_LOGFILE" ]; then
+            echo "Unknown command: $1" > "$TRIM_TEMP_LOGFILE"
+        fi
+        exit 1
+        ;;
+esac
