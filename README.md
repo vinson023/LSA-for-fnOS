@@ -1,6 +1,6 @@
 # LSA for fnOS
 
-> LSI Storage Authority 的飞牛 fnOS 移植包
+> 把 **LSI Storage Authority** 移植到**飞牛 fnOS** 的第三方应用包
 
 把 Broadcom / LSI 的 **LSI Storage Authority（LSA）** Web 管理界面移植到**飞牛 fnOS**，让 fnOS 桌面可以直接打开 RAID 控制器的管理界面，无需另开浏览器访问裸端口。
 
