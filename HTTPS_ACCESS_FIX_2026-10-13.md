@@ -2,14 +2,14 @@
 
 日期：2026-10-13
 影响：`lsa` / `lsaen` 两个 FPK 包
-测试机：`192.168.5.24`（fnOS，端口 5666=HTTP、5667=HTTPS）
+测试机：`<NAS_IP>`（fnOS，端口 5666=HTTP、5667=HTTPS）
 
 ---
 
 ## 1. 现象
 
-- `http://192.168.5.24:5666/` → 桌面点开"LSI 存储管理"，正常。
-- `https://192.168.5.24:5667/` → 同一入口打开后，窗口内容区**空白并显示破图图标**（iframe 加载失败）。
+- `http://<NAS_IP>:5666/` → 桌面点开"LSI 存储管理"，正常。
+- `https://<NAS_IP>:5667/` → 同一入口打开后，窗口内容区**空白并显示破图图标**（iframe 加载失败）。
 
 ## 2. 根因
 
@@ -42,8 +42,8 @@ wYe = (e, t) => {
 
 | 门户 | iframe src |
 |---|---|
-| HTTP 5666 | `http://192.168.5.24:2463/ui/remoteserver/index.html` ✅ |
-| HTTPS 5667 | `https://192.168.5.24:2463/ui/remoteserver/index.html` ❌ |
+| HTTP 5666 | `http://<NAS_IP>:2463/ui/remoteserver/index.html` ✅ |
+| HTTPS 5667 | `https://<NAS_IP>:2463/ui/remoteserver/index.html` ❌ |
 
 **LSA 自带的 nginx 在 2463 上只监听明文 HTTP，没有 TLS。** HTTPS 门户下浏览器按 `https://` 去连 2463，
 TLS 握手失败（同时也会被混合内容策略拦截），于是 iframe 变成空白破图。
@@ -80,8 +80,8 @@ TLS 握手失败（同时也会被混合内容策略拦截），于是 iframe �
 
 | 门户 | iframe src |
 |---|---|
-| HTTP 5666 | `http://192.168.5.24:5666/cgi/ThirdParty/lsa/index.cgi/` ✅ |
-| HTTPS 5667 | `https://192.168.5.24:5667/cgi/ThirdParty/lsa/index.cgi/` ✅ |
+| HTTP 5666 | `http://<NAS_IP>:5666/cgi/ThirdParty/lsa/index.cgi/` ✅ |
+| HTTPS 5667 | `https://<NAS_IP>:5667/cgi/ThirdParty/lsa/index.cgi/` ✅ |
 
 ### 为什么选 index.cgi 而不是统一网关
 
@@ -90,15 +90,15 @@ TLS 握手失败（同时也会被混合内容策略拦截），于是 iframe �
 - LSA 不使用 WebSocket（全量检索命中 0 处），所以 index.cgi 唯一的功能短板对本项目无影响。
 - 同机 `fnaudio` 就是 index.cgi 模式的现成范例，HTTPS 下工作正常，可直接对标。
 
-## 4. 验证（真机 192.168.5.24）
+## 4. 验证（真机 <NAS_IP>）
 
 1. `app-center` 接口 `GET /app-center/v1/service/list` 返回：
    - 修复前：`lsa -> {path:"/ui/remoteserver/index.html", port:"2463"}`
    - 修复后：`lsa -> {path:"/cgi/ThirdParty/lsa/index.cgi/", port:""}`（与 `fnaudio` 结构一致）
-2. 无头 Chrome 登录 `https://192.168.5.24:5667/`，点击桌面图标，抓取 iframe 实际 src：
-   `https://192.168.5.24:5667/cgi/ThirdParty/lsa/index.cgi/` —— **同源**。
+2. 无头 Chrome 登录 `https://<NAS_IP>:5667/`，点击桌面图标，抓取 iframe 实际 src：
+   `https://<NAS_IP>:5667/cgi/ThirdParty/lsa/index.cgi/` —— **同源**。
 3. 窗口内完整渲染 LSA 界面（Broadcom 头部、版本 008.017.010.000、中文界面、"远程服务器发现"面板）。
-4. `http://192.168.5.24:5666/` 回归验证通过，iframe src 为 `http://192.168.5.24:5666/cgi/...`。
+4. `http://<NAS_IP>:5666/` 回归验证通过，iframe src 为 `http://<NAS_IP>:5666/cgi/...`。
 
 ## 5. 部署侧需要改的两处
 
@@ -114,6 +114,6 @@ TLS 握手失败（同时也会被混合内容策略拦截），于是 iframe �
 
 ## 6. 遗留事项
 
-- 原仓库位于网络盘 `E:\LSA_Linux`（`\\192.168.5.141\codex`），本次会话中该盘上"会话开始前已存在"的文件
+- 原仓库位于网络盘 `E:\LSA_Linux`（`\\<FILE_SERVER_IP>\codex`），本次会话中该盘上"会话开始前已存在"的文件
   无法被沙箱写入，故全部工作改在副本 `C:\LSA_Linux` 上进行。
 - 同步回 `E:` 需在沙箱外执行一次复制。

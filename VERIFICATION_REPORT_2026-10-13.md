@@ -1,8 +1,8 @@
 # LSA fnOS 移植项目 — 真机整体验证报告
 
 - **验证时间**：2026-10-13 14:2x CST
-- **测试环境**：`http://192.168.5.24:5666`（fnOS 门户）
-- **访问方式**：fnOS 门户 admin / SSH root@192.168.5.24:22
+- **测试环境**：`http://<NAS_IP>:5666`（fnOS 门户）
+- **访问方式**：fnOS 门户 admin / SSH root@<NAS_IP>:22
 - **验证工具**：trim-cli（WebSocket 应用中心通道）+ paramiko（SSH 通道）+ curl（HTTP 通道）
 - **被测交付物**：`lsa-fnos/lsa.fpk`（中文包，8.17.10）
 - **结论**：**部署正确、运行正常、中文本地化端到端生效**；发现 6 类待优化项，均为**非阻塞性**问题，不影响当前功能。
@@ -84,7 +84,7 @@ app status lsa:
 LISTEN  0.0.0.0:2463   nginx      ← Web 管理端口（对外，预期）
 LISTEN  [::]:2463      nginx
 LISTEN  127.0.0.1:9000 LSA ×2     ← 后端端口（仅本地，安全）
-UNCONN 192.168.5.24:427 slpd      ← SLP 服务发现
+UNCONN <NAS_IP>:427 slpd      ← SLP 服务发现
 ```
 
 > 从本机验证：`2463 → HTTP 200`，`9000 → 连接失败`（正确未对外暴露）。
@@ -297,7 +297,7 @@ CmdHlpr:getBbuMode:getSLDPassthruCmd:rval=2 CtrlId=0
 
 | 通道 | 工具 | 用途 |
 |---|---|---|
-| 应用中心 | `tools/skill/bin/trim-cli-windows-x64.exe`（WebSocket `ws://192.168.5.24:5666/websocket`） | 应用列表 / 状态查询 |
+| 应用中心 | `tools/skill/bin/trim-cli-windows-x64.exe`（WebSocket `ws://<NAS_IP>:5666/websocket`） | 应用列表 / 状态查询 |
 | SSH | paramiko 5.0.0（Python venv） | 文件系统、进程、端口、配置、日志核查 |
 | HTTP | curl | 服务可达性、中文资源端到端校验 |
 | 静态 | tar / bash -n / ast.parse / md5sum | FPK 结构、脚本语法、二进制完整性 |

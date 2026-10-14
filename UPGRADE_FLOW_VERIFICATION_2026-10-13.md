@@ -1,7 +1,7 @@
 # LSA for fnOS — 升级 / 卸载流程真机验证报告
 
 **日期**：2026-10-13
-**测试机**：`192.168.5.24`（fnOS 1.2.0800，内核 `6.18.18.c1126-trim`）
+**测试机**：`<NAS_IP>`（fnOS 1.2.0800，内核 `6.18.18.c1126-trim`）
 **被测包**：`lsa-fnos/lsa.fpk`（28,125,050 B，version 8.17.10）
 **测试工具**：`tools/skill/bin/trim-cli-windows-x64.exe`（WebSocket → fnOS）、paramiko（SSH）、无头 Chrome + 自写 CDP 客户端
 
@@ -27,7 +27,7 @@
 - 安装命令（含向导自定义参数，缺参数会报 `custom wizard parameters` 缺失）：
 
 ```bash
-trim-cli --host 192.168.5.24 --port 5666 --scheme ws --allow-insecure-ws \
+trim-cli --host <NAS_IP> --port 5666 --scheme ws --allow-insecure-ws \
   app install-fpk "C:\LSA_Linux\lsa-fnos\lsa.fpk" --volume-id 1 \
   --custom-parameters '[{"key":"wizard_web_port","value":"2463"},
                         {"key":"wizard_lsa_port","value":"9000"},
@@ -234,7 +234,7 @@ LISTEN 0.0.0.0:2463 / [::]:2463
 ```
 /opt/lsi/LSIStorageAuthority/conf/fnos_ports.conf : web=2463  service=9000
 /opt/lsi/LSIStorageAuthority/installtype          : gateway
-                                                      service:x-mgmt.avago:lsa://192.168.5.24:9000
+                                                      service:x-mgmt.avago:lsa://<NAS_IP>:9000
 LSA.conf : listening_port = 9000
            client_listening_port = 2463
            readOnly = 0
@@ -267,8 +267,8 @@ nginx.conf : listen 2463 default_server
 
 | 门户 | 桌面图标点击 | iframe 实际 src | 结果 |
 |------|--------------|-----------------|------|
-| `https://192.168.5.24:5667` | CLICKED | `https://192.168.5.24:5667/cgi/ThirdParty/lsa/index.cgi/` | ✅ 同源，界面完整渲染 |
-| `http://192.168.5.24:5666` | CLICKED | `http://192.168.5.24:5666/cgi/ThirdParty/lsa/index.cgi/` | ✅ 同源，界面完整渲染 |
+| `https://<NAS_IP>:5667` | CLICKED | `https://<NAS_IP>:5667/cgi/ThirdParty/lsa/index.cgi/` | ✅ 同源，界面完整渲染 |
+| `http://<NAS_IP>:5666` | CLICKED | `http://<NAS_IP>:5666/cgi/ThirdParty/lsa/index.cgi/` | ✅ 同源，界面完整渲染 |
 
 渲染内容抽查（两门户一致）：
 
@@ -277,7 +277,7 @@ LSI 存储管理
 - v008.017.010.000
 版权所有 © 2026 Broadcom Inc. 保留所有权利
 远程服务器发现 / Windows / Linux / VMware ESXi
-192.168.5.24  主机名: FNOS  操作系统名称: Linux  操作系统架构: x64
+<NAS_IP>  主机名: FNOS  操作系统名称: Linux  操作系统架构: x64
 服务器 ID：a0:36:9f:a0:00:4b
 操作：重新发现服务器 / 前往管理服务器页面 / 手动发现
 ```

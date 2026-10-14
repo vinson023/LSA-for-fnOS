@@ -2,7 +2,7 @@
 
 日期：2026-10-13
 影响：`lsa` / `lsaen` 两个 FPK 包
-测试机：`192.168.5.24`（fnOS，端口 5666=HTTP、5667=HTTPS）
+测试机：`<NAS_IP>`（fnOS，端口 5666=HTTP、5667=HTTPS）
 改动文件：`lsa-fnos/app/ui/cgi_proxy.py`、`lsa-fnos-en/app/ui/cgi_proxy.py`
 
 ---
@@ -77,7 +77,7 @@ window.navigation.addEventListener('navigate', function (event) {
 门户会话有效的前提下，走完整链路：
 
 ```
-入口  https://192.168.5.24:5667/cgi/ThirdParty/lsa/index.cgi/        # #remoteServer 页
+入口  https://<NAS_IP>:5667/cgi/ThirdParty/lsa/index.cgi/        # #remoteServer 页
   │  点「登录」→ 填 admin / 密码 → 提交
   ▼
 core  .../index.cgi/ui/core/index.html?locale=en&serverID=/LSI/Storage/MR/API/1.0/servers/a0:36:9f:a0:00:4b

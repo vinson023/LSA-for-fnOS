@@ -1,9 +1,25 @@
 # 构建产物：可由 fnpack build 重新生成，不入库
 *.fpk
 
-# 打包工具与真机验证工具的平台二进制：体积大，可按 README 重新获取
+# ---------------------------------------------------------------------------
+# 第三方 / 厂商二进制：不入库（版权与体积原因，获取方式见 NOTICE.md）
+# ---------------------------------------------------------------------------
+# Broadcom / LSI 原厂 deb（LSIStorageAuthority、LSA_lib_utils、LSA_lib_utils2）
+*.deb
+# 但保留各 debs/ 目录下的说明文件
+!lsa-fnos*/app/debs/
+!lsa-fnos*/app/debs/README.md
+# fnOS 官方 trim-cli 真机验证工具（含 6 个平台共约 50MB 二进制）
+tools/skill/
+# fnpack 打包工具
 fnpack-*-amd64.exe
-tools/skill/bin/
+
+# 早期实验残留
+lsa-fnos/app/ui/_hl_test
+lsa-fnos/app/ui/config.new
+lsa-fnos/app/ui/config.orig
+lsa-fnos/app/ui/config.sacrificial
+lsa-fnos/app/ui/t1.txt
 
 # 临时与系统文件
 *.tmp
@@ -13,3 +29,11 @@ Thumbs.db
 desktop.ini
 __pycache__/
 *.pyc
+
+# 本地环境 / 编辑器
+.vscode/
+.idea/
+*.swp
+
+# AI 协作工作记录（含本地环境信息，不随仓库发布）
+.workbuddy-ai/
