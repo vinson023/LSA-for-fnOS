@@ -109,6 +109,8 @@ trim-cli app install <path-to>/lsa.fpk
 
 ## 授权与声明
 
+**开发者 / 发布者**：[@vinson023](https://github.com/vinson023)
+
 本项目的移植层代码以 [MIT License](LICENSE) 发布。
 
 **但请注意**：本项目**不包含也不授权** Broadcom / LSI 的任何专有软件（LSI Storage Authority 及其依赖库）。
