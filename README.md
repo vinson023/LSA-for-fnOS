@@ -6,7 +6,8 @@
 
 > 本项目**只包含移植层**（fnOS 应用包装、生命周期脚本、同源 CGI 代理、本地化资源），
 > **不包含** Broadcom 的专有二进制。构建前需自行获取原厂固件，见 [NOTICE.md](NOTICE.md)。
-![Uploading image.png…]()
+<img width="1916" height="946" alt="image" src="https://github.com/user-attachments/assets/31e98c23-c288-4718-a5e1-d08234c8cfb4" />
+
 
 ---
 
